@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crisis Resources — MindQuilt</title>
+  <meta name="description" content="You are not alone. Immediate mental health crisis support resources including 988 Suicide and Crisis Lifeline, Crisis Text Line, and international resources." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sage:       #8FAF8F;
+      --sage-light: #C8DCC8;
+      --sage-bg:    #EDF4ED;
+      --off-white:  #F9F7F4;
+      --charcoal:   #2D2D2D;
+      --clay:       #C4826A;
+      --white:      #FFFFFF;
+      --radius:     12px;
+      --max-w:      1100px;
+      --font-head:  'DM Serif Display', serif;
+      --font-body:  'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--sage-bg);
+      color: var(--charcoal);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      /* Space for sticky crisis bar at bottom */
+      padding-bottom: 64px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { max-width: 100%; }
+
+    /* ── Nav ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 1px solid #e6ede6;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo .leaf {
+      width: 28px;
+      height: 28px;
+      background: var(--sage);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--sage);
+    }
+
+    .nav-cta {
+      background: var(--sage);
+      color: var(--white) !important;
+      opacity: 1 !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: #7a9e7a !important;
+    }
+
+    /* Mobile nav toggle */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, #daeada 0%, var(--sage-bg) 60%);
+      padding: 72px 24px 56px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(143, 175, 143, 0.2);
+      border: 1px solid var(--sage-light);
+      color: #4a7a4a;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.25;
+      color: var(--charcoal);
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #4e5e4e;
+      max-width: 560px;
+      margin: 0 auto 0;
+      line-height: 1.8;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--sage);
+      border-radius: 2px;
+      margin: 32px auto;
+      opacity: 0.6;
+    }
+
+    /* ── Main Content ── */
+    .main {
+      flex: 1;
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      padding: 56px 24px 72px;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #4e5e4e;
+      max-width: 520px;
+      margin: 0 auto 48px;
+      font-size: 0.98rem;
+    }
+
+    /* ── Resource Cards ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: 0 2px 16px rgba(143, 175, 143, 0.12);
+      border: 1px solid #e0ece0;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(143, 175, 143, 0.22);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon.green  { background: rgba(143, 175, 143, 0.15); }
+    .card-icon.teal   { background: rgba(100, 168, 168, 0.12); }
+    .card-icon.blue   { background: rgba(100, 130, 200, 0.10); }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+      background: rgba(143, 175, 143, 0.12);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .card h2 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 0.93rem;
+      color: #555f55;
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+      background: var(--sage);
+      padding: 12px 22px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .card-action:hover {
+      background: #7a9e7a;
+      transform: translateX(2px);
+    }
+
+    .card-action.clay {
+      background: var(--clay);
+    }
+
+    .card-action.clay:hover {
+      background: #b3735b;
+    }
+
+    .card-action.teal {
+      background: #64a8a8;
+    }
+
+    .card-action.teal:hover {
+      background: #539292;
+    }
+
+    .card-secondary-action {
+      font-size: 0.85rem;
+      color: var(--sage);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .card-secondary-action:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Hotlines shortcut strip ── */
+    .hotlines-strip {
+      background: var(--sage);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .hotlines-strip .strip-text {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 500;
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .hotlines-strip .strip-text strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .strip-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--sage);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .strip-cta:hover {
+      opacity: 0.85;
+    }
+
+    /* ── Gentle reminder box ── */
+    .reminder-box {
+      background: rgba(143, 175, 143, 0.08);
+      border-left: 4px solid var(--sage-light);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 56px;
+      font-size: 0.93rem;
+      color: #4e5e4e;
+      line-height: 1.8;
+    }
+
+    .reminder-box strong {
+      color: var(--charcoal);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.7);
+      padding: 40px 24px 24px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover,
+    .footer-links a.active {
+      color: var(--sage-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    /* ── Sticky Crisis Bar ── */
+    .crisis-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--charcoal);
+      color: var(--white);
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .crisis-bar a {
+      color: var(--sage-light);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .crisis-bar a:hover {
+      color: var(--white);
+    }
+
+    .crisis-bar .bar-dismiss {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 4px;
+      display: none; /* show via JS on desktop */
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 24px;
+        border-bottom: 1px solid #e6ede6;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+        opacity: 1;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        position: relative;
+      }
+
+      .hero {
+        padding: 52px 20px 40px;
+      }
+
+      .main {
+        padding: 40px 20px 56px;
+      }
+
+      .hotlines-strip {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 20px;
+      }
+
+      .strip-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .crisis-bar {
+        font-size: 0.8rem;
+        padding: 10px 40px 10px 16px;
+      }
+
+      .crisis-bar .bar-dismiss {
+        display: block;
+      }
+    }
+
+    /* ── Subtle page fade-in ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, .main > * {
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .cards-grid .card:nth-child(2) { animation-delay: 0.08s; }
+    .cards-grid .card:nth-child(3) { animation-delay: 0.16s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
+        <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="experts.html">Find an Expert</a></li>
+        <li><a href="crisis.html" class="active" aria-current="page">Crisis Resources</a></li>
+        <li><a href="login.html" class="nav-cta">Sign In</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero" role="banner">
+    <div class="hero-badge" aria-label="Always available">Available 24 / 7 · Free · No Login Required</div>
+    <h1>You are not alone.<br />Help is available right now.</h1>
+    <p>
+      If you or someone you know is struggling, trained counselors are
+      ready to listen — any time of day or night, completely free.
+    </p>
+    <div class="divider" aria-hidden="true"></div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main class="main" id="main-content">
+
+    <p class="section-label">Immediate Support</p>
+    <h2 class="section-title">Free, confidential crisis resources</h2>
+    <p class="section-sub">
+      All resources below are free to use and available around the clock.
+      You do not need to be in immediate danger to reach out.
+    </p>
+
+    <!-- Resource Cards -->
+    <div class="cards-grid" role="list">
+
+      <!-- 988 Lifeline -->
+      <article class="card" role="listitem" aria-labelledby="card1-title">
+        <div class="card-icon green" aria-hidden="true">📞</div>
+        <span class="card-tag">Call or Text</span>
+        <h2 id="card1-title">988 Suicide &amp; Crisis Lifeline</h2>
+        <p>
+          The 988 Lifeline connects you with a trained counselor from a
+          local crisis center. Available 24 hours a day, 7 days a week,
+          in English and Spanish. Free and confidential.
+        </p>
+        <a href="tel:988" class="card-action" id="call-988" aria-label="Call 988 — Suicide and Crisis Lifeline">
+          📞 Call or Text 988
+        </a>
+        <a href="https://988lifeline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action" aria-label="Visit 988 Lifeline website (opens in new tab)">
+          Visit website →
+        </a>
+      </article>
+
+      <!-- Crisis Text Line -->
+      <article class="card" role="listitem" aria-labelledby="card2-title">
+        <div class="card-icon teal" aria-hidden="true">💬</div>
+        <span class="card-tag">Text</span>
+        <h2 id="card2-title">Crisis Text Line</h2>
+        <p>
+          Prefer to text? Text HOME to 741741 to connect with a trained
+          Crisis Counselor via text message — no phone call required.
+          Free, 24/7, confidential support.
+        </p>
+        <a href="sms:741741?body=HOME" class="card-action teal" id="text-741741" aria-label="Text HOME to 741741 — Crisis Text Line">
+          💬 Text HOME to 741741
+        </a>
+        <a href="https://www.crisistextline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action" aria-label="Visit Crisis Text Line website (opens in new tab)">
+          Visit website →
+        </a>
+      </article>
+
+      <!-- IASP -->
+      <article class="card" role="listitem" aria-labelledby="card3-title">
+        <div class="card-icon blue" aria-hidden="true">🌍</div>
+        <span class="card-tag">International</span>
+        <h2 id="card3-title">International Crisis Centres</h2>
+        <p>
+          Outside the US? The International Association for Suicide
+          Prevention maintains a directory of crisis centers in over
+          70 countries. Find local support wherever you are.
+        </p>
+        <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener noreferrer" class="card-action clay" id="iasp-link" aria-label="Find international crisis centres (opens in new tab)">
+          🌍 Find a Crisis Centre
+        </a>
+        <span class="card-secondary-action" aria-hidden="true">iasp.info/resources →</span>
+      </article>
+
+    </div>
+
+    <!-- Quick-ref strip -->
+    <div class="hotlines-strip" role="complementary" aria-label="Quick crisis contact">
+      <div class="strip-text">
+        <strong>In an emergency? Act now.</strong>
+        Call 988 instantly or text HOME to 741741 — a real human
+        will respond within minutes, free of charge.
+      </div>
+      <a href="tel:988" class="strip-cta" aria-label="Call 988 now">
+        📞 Call 988 Now
+      </a>
+    </div>
+
+    <!-- Gentle reminder -->
+    <div class="reminder-box" role="note" aria-label="Important note">
+      <strong>A gentle reminder:</strong> MindQuilt is not a crisis service.
+      The resources above connect you to trained professionals who are ready
+      to help immediately. If you are in a life-threatening emergency, please
+      call <strong>911</strong> (US) or your local emergency number.
+      The blog content and expert services on MindQuilt are educational and
+      supportive — they are not a substitute for emergency care.
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy" style="filter:brightness(0) invert(1);opacity:0.85;" />
+      </div>
+      <p class="footer-tagline">A calm place to understand your mind.</p>
+      <ul class="footer-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="experts.html">Find an Expert</a></li>
+        <li><a href="crisis.html" class="active" aria-current="page">Crisis Resources</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
+      <p class="footer-bottom">
+        © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or treatment.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── Sticky Crisis Bar ── -->
+  <aside class="crisis-bar" id="crisis-bar" role="complementary" aria-label="Crisis support">
+    <span>
+      🫂 If you are in crisis, <a href="tel:988" aria-label="Call 988">call or text <strong>988</strong></a> (US)
+      or text <strong>HOME</strong> to <a href="sms:741741?body=HOME" aria-label="Text HOME to 741741"><strong>741741</strong></a>
+    </span>
+    <button class="bar-dismiss" id="bar-dismiss" aria-label="Dismiss crisis bar">&times;</button>
+  </aside>
+
+  <script>
+    // ── Mobile Nav Toggle ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Crisis bar dismiss (desktop only) ──
+    const barDismiss = document.getElementById('bar-dismiss');
+    barDismiss.addEventListener('click', () => {
+      const bar = document.getElementById('crisis-bar');
+      bar.style.display = 'none';
+      // Re-remove body padding
+      document.body.style.paddingBottom = '0';
+    });
+  </script>
+</body>
+</html>

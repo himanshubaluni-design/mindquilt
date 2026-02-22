@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindQuilt — A Calm Place to Understand Your Mind</title>
+    <meta name="description"
+        content="MindQuilt is a calm mental health platform with free educational articles and a curated directory of verified mental health experts." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sage: #8FAF8F;
+            --sage-dark: #4d7a4d;
+            --sage-mid: #6e936e;
+            --sage-light: #C8DCC8;
+            --sage-bg: #EDF4ED;
+            --sage-pale: #f4f9f4;
+            --off-white: #F9F7F4;
+            --charcoal: #1e2b1e;
+            --charcoal-2: #2D2D2D;
+            --clay: #C4826A;
+            --clay-dark: #a86850;
+            --white: #FFFFFF;
+            --muted: #6b7b6b;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --max-w: 1100px;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.09);
+            --shadow-sage: 0 12px 40px rgba(78, 120, 78, 0.18);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal-2);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 54px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-sm {
+            padding: 64px 0;
+        }
+
+        /* ── Gradient text ── */
+        .grad-text {
+            background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage-mid) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Label / section-eyebrow ── */
+        .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sage-dark);
+            margin-bottom: 14px;
+        }
+
+        .label::before {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--sage);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .heading {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+            line-height: 1.18;
+            color: var(--charcoal-2);
+            margin-bottom: 14px;
+        }
+
+        .subtext {
+            color: var(--muted);
+            max-width: 520px;
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .center .subtext {
+            margin: 0 auto;
+        }
+
+        .center .label {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 14px 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.2s, background 0.2s, opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-sage {
+            background: linear-gradient(135deg, var(--sage-mid) 0%, var(--sage) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 18px rgba(78, 120, 78, 0.30);
+        }
+
+        .btn-sage:hover {
+            box-shadow: 0 8px 28px rgba(78, 120, 78, 0.38);
+        }
+
+        .btn-clay {
+            background: linear-gradient(135deg, var(--clay-dark) 0%, var(--clay) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 18px rgba(196, 130, 106, 0.28);
+        }
+
+        .btn-clay:hover {
+            box-shadow: 0 8px 28px rgba(196, 130, 106, 0.38);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--charcoal-2);
+            border: 1.5px solid rgba(45, 45, 45, 0.14);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--sage);
+            color: var(--sage-dark);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--sage-dark);
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-white:hover {
+            background: var(--sage-pale);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+        }
+
+        .btn-outline-white {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* ── Nav ── */
+        .nav {
+            background: rgba(249, 247, 244, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(143, 175, 143, 0.18);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 28px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--charcoal-2);
+            opacity: 0.62;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: opacity 0.2s, color 0.2s, background 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--sage-dark);
+            background: rgba(143, 175, 143, 0.1);
+        }
+
+        .nav-links a[aria-current="page"] {
+            opacity: 1;
+            color: var(--sage-dark);
+        }
+
+        .nav-cta-btn {
+            background: var(--sage) !important;
+            color: var(--white) !important;
+            opacity: 1 !important;
+            padding: 9px 22px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 3px 14px rgba(78, 120, 78, 0.28) !important;
+            transition: background 0.2s, box-shadow 0.2s !important;
+        }
+
+        .nav-cta-btn:hover {
+            background: var(--sage-mid) !important;
+            box-shadow: 0 6px 20px rgba(78, 120, 78, 0.38) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal-2);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 110px 28px 96px;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 10%, rgba(143, 175, 143, 0.22) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 10% 80%, rgba(143, 175, 143, 0.14) 0%, transparent 55%),
+                linear-gradient(160deg, #daeada 0%, #f0f6f0 35%, var(--off-white) 100%);
+        }
+
+        /* Decorative blobs */
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 500px;
+            height: 500px;
+            top: -180px;
+            right: -120px;
+            background: radial-gradient(circle, rgba(143, 175, 143, 0.15) 0%, transparent 65%);
+        }
+
+        .hero::after {
+            width: 360px;
+            height: 360px;
+            bottom: -120px;
+            left: -80px;
+            background: radial-gradient(circle, rgba(196, 130, 106, 0.08) 0%, transparent 65%);
+        }
+
+        .hero-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(143, 175, 143, 0.35);
+            backdrop-filter: blur(8px);
+            color: var(--sage-dark);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 100px;
+            margin-bottom: 26px;
+            width: fit-content;
+        }
+
+        .hero-eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--sage);
+            border-radius: 50%;
+            animation: blink 2.2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.75);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2.4rem, 5.2vw, 3.8rem);
+            line-height: 1.1;
+            color: var(--charcoal-2);
+            margin-bottom: 22px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--sage-dark);
+        }
+
+        .hero-sub {
+            font-size: 1.08rem;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 38px;
+            max-width: 430px;
+            font-weight: 400;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 0;
+            margin-top: 48px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(143, 175, 143, 0.2);
+            border-radius: 14px;
+            padding: 18px 24px;
+            width: fit-content;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .stat+.stat {
+            border-left: 1px solid rgba(143, 175, 143, 0.25);
+        }
+
+        .stat-num {
+            font-family: var(--font-head);
+            font-size: 1.9rem;
+            color: var(--sage-dark);
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .stat-label {
+            font-size: 0.76rem;
+            color: var(--muted);
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-photo-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .hero-photo-bg {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            right: -16px;
+            bottom: -16px;
+            background: linear-gradient(135deg, var(--sage-light) 0%, rgba(200, 220, 200, 0.4) 100%);
+            border-radius: 24px;
+        }
+
+        .hero-photo {
+            position: relative;
+            width: 100%;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(78, 120, 78, 0.24), 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-photo-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .photo-badge-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--sage-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .photo-badge-text {
+            line-height: 1.35;
+        }
+
+        .photo-badge-text strong {
+            font-size: 0.86rem;
+            color: var(--charcoal-2);
+            display: block;
+        }
+
+        .photo-badge-text span {
+            font-size: 0.74rem;
+            color: var(--muted);
+        }
+
+        /* Floating accent card */
+        .hero-float-card {
+            position: absolute;
+            top: -16px;
+            right: -24px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(143, 175, 143, 0.25);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-md);
+            animation: floatY 4s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .hero-float-card .fc-dot {
+            width: 8px;
+            height: 8px;
+            background: #5cb85c;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .hero-float-card span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--charcoal-2);
+            white-space: nowrap;
+        }
+
+        /* ── Features ── */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .feature-card {
+            position: relative;
+            background: var(--off-white);
+            border-radius: var(--radius-lg);
+            padding: 38px 30px;
+            border: 1px solid rgba(143, 175, 143, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.3s;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sage-mid), var(--sage-light));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-sage);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--clay-dark), var(--clay));
+        }
+
+        .feature-card:nth-child(3)::before {
+            background: linear-gradient(90deg, #4a9e9e, #7ecece);
+        }
+
+        .feature-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.55rem;
+            margin-bottom: 22px;
+        }
+
+        .fi-green {
+            background: linear-gradient(135deg, rgba(143, 175, 143, 0.18), rgba(143, 175, 143, 0.06));
+        }
+
+        .fi-clay {
+            background: linear-gradient(135deg, rgba(196, 130, 106, 0.15), rgba(196, 130, 106, 0.05));
+        }
+
+        .fi-teal {
+            background: linear-gradient(135deg, rgba(100, 168, 168, 0.14), rgba(100, 168, 168, 0.04));
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: var(--charcoal-2);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.91rem;
+            color: var(--muted);
+            line-height: 1.78;
+        }
+
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--sage-dark);
+            margin-top: 18px;
+            transition: gap 0.2s;
+        }
+
+        .feature-link:hover {
+            gap: 10px;
+        }
+
+        /* ── Blog Posts ── */
+        .blog-section {
+            background: linear-gradient(180deg, var(--sage-bg) 0%, rgba(237, 244, 237, 0.6) 100%);
+            position: relative;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 52px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(143, 175, 143, 0.15);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(78, 120, 78, 0.18);
+        }
+
+        .blog-thumb {
+            height: 210px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-thumb img {
+            transform: scale(1.06);
+        }
+
+        .blog-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 43, 30, 0.22) 0%, transparent 50%);
+        }
+
+        .blog-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .blog-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage-dark);
+            background: rgba(143, 175, 143, 0.14);
+            padding: 4px 12px;
+            border-radius: 100px;
+            width: fit-content;
+        }
+
+        .blog-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.07rem;
+            color: var(--charcoal-2);
+            line-height: 1.35;
+        }
+
+        .blog-excerpt {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.72;
+            flex: 1;
+        }
+
+        .blog-meta {
+            font-size: 0.77rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-read-link {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--sage-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+            margin-top: 4px;
+        }
+
+        .blog-read-link:hover {
+            gap: 10px;
+        }
+
+        .blog-footer-row {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* ── How It Works ── */
+        .how-it-works {
+            background: var(--white);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 56px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: calc(100% / 6);
+            right: calc(100% / 6);
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--sage-light) 0, var(--sage-light) 10px, transparent 10px, transparent 20px);
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 18px;
+            position: relative;
+        }
+
+        .step-num {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage-bg), var(--white));
+            border: 2px solid var(--sage-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-size: 1.7rem;
+            color: var(--sage-dark);
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(143, 175, 143, 0.2);
+            transition: all 0.3s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .step:hover .step-num {
+            background: linear-gradient(135deg, var(--sage-mid), var(--sage));
+            border-color: transparent;
+            color: var(--white);
+            transform: scale(1.08);
+            box-shadow: 0 8px 28px rgba(78, 120, 78, 0.3);
+        }
+
+        .step h3 {
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            color: var(--charcoal-2);
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.78;
+            max-width: 280px;
+        }
+
+        /* ── Trust Signals ── */
+        .trust {
+            background: var(--sage-bg);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 52px;
+        }
+
+        .trust-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 34px 28px;
+            border: 1px solid rgba(143, 175, 143, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .trust-icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--sage-bg), rgba(237, 244, 237, 0.4));
+            border: 1px solid rgba(143, 175, 143, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .trust-card h4 {
+            font-family: var(--font-head);
+            font-size: 1.08rem;
+            color: var(--charcoal-2);
+        }
+
+        .trust-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        /* ── Testimonial stripe ── */
+        .testimonials {
+            background: var(--charcoal);
+            padding: 72px 28px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '"';
+            position: absolute;
+            font-family: var(--font-head);
+            font-size: 18rem;
+            color: rgba(143, 175, 143, 0.06);
+            top: -40px;
+            left: 40px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .testimonials-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sage-light);
+            opacity: 0.7;
+            margin-bottom: 36px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 28px 30px;
+            max-width: 320px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            transition: background 0.3s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .testimonial-stars {
+            color: #f5c842;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-quote {
+            font-size: 0.93rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.75;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--sage-light);
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage-mid) 60%, #7aac7a 100%);
+            padding: 96px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 440px;
+            height: 440px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -60px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+        }
+
+        .cta-banner h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.18;
+            position: relative;
+        }
+
+        .cta-banner p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-banner-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .footer-top {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 64px 28px 44px;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .f-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            font-size: 0.86rem;
+            line-height: 1.75;
+            max-width: 220px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.32);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-col a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.52);
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--sage-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 22px 28px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            font-size: 0.78rem;
+            opacity: 0.38;
+        }
+
+        /* ── Crisis Bar ── */
+        .crisis-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 52px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(143, 175, 143, 0.18);
+        }
+
+        .crisis-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        .crisis-bar a:hover {
+            color: var(--white);
+        }
+
+        .bar-close {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+            display: none;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anim {
+            opacity: 0;
+        }
+
+        .anim.visible {
+            animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .anim-d1 {
+            animation-delay: 0.08s;
+        }
+
+        .anim-d2 {
+            animation-delay: 0.16s;
+        }
+
+        .anim-d3 {
+            animation-delay: 0.24s;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 52px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 960px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-track {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 72px 20px 60px;
+            }
+
+            .section,
+            .section-sm {
+                padding: 64px 0;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .hero-ctas .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-row {
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-banner-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-banner-btns .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 320px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: rgba(249, 247, 244, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px 24px;
+                border-bottom: 1px solid rgba(143, 175, 143, 0.18);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+                gap: 4px;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                opacity: 1;
+                width: 100%;
+                padding: 10px 14px;
+            }
+
+            .nav {
+                position: relative;
+            }
+
+            .crisis-bar {
+                font-size: 0.78rem;
+                padding: 10px 48px 10px 16px;
+            }
+
+            .bar-close {
+                display: block;
+            }
+
+            .stats-row {
+                padding: 14px 16px;
+                gap: 0;
+            }
+
+            .stat {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
+                <img src="logo.svg" alt="MindQuilt" height="38" width="auto" loading="eager" />
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="experts.html">Find an Expert</a></li>
+                <li><a href="games.html">Mind Games</a></li>
+                <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <header class="hero" role="banner">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+                    Mental Health Education &amp; Expert Support
+                </div>
+                <h1>A calm place to<br /><em>understand your mind.</em><br />Find expert help when you're ready.</h1>
+                <p class="hero-sub">
+                    Free articles written for real life. A curated directory of licensed professionals ready to support
+                    you — at your own pace, with no pressure.
+                </p>
+                <div class="hero-ctas">
+                    <a href="blog.html" class="btn btn-sage">📖 Read Free Articles</a>
+                    <a href="experts.html" class="btn btn-clay">🌿 Find an Expert</a>
+                </div>
+                <div class="stats-row" aria-label="Platform highlights">
+                    <div class="stat">
+                        <span class="stat-num">100+</span>
+                        <span class="stat-label">Free articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Verified experts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-label">Crisis support</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero photo visual -->
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo-bg"></div>
+                    <div class="hero-photo">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=640&h=480&fit=crop&q=82"
+                            alt="Person in a peaceful, calm setting" loading="eager"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=640&h=480&fit=crop&q=82';" />
+                        <div class="hero-photo-badge">
+                            <div class="photo-badge-icon">🌿</div>
+                            <div class="photo-badge-text">
+                                <strong>Start at your own pace</strong>
+                                <span>No pressure, no commitments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating accent -->
+                    <div class="hero-float-card">
+                        <span class="fc-dot"></span>
+                        <span>50+ licensed experts online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Feature Highlights ── -->
+    <section class="features section" aria-labelledby="features-heading">
+        <div class="container">
+            <div class="center">
+                <p class="label">What MindQuilt offers</p>
+                <h2 class="heading" id="features-heading">Everything you need, at your own pace</h2>
+                <p class="subtext">No pressure, no commitments. Explore free resources and connect with a professional
+                    when you feel ready.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card anim">
+                    <div class="feature-icon fi-green" aria-hidden="true">📰</div>
+                    <h3>Free Blog</h3>
+                    <p>Thoughtful, evidence-based articles on anxiety, depression, burnout, relationships, self-care,
+                        and more — written in plain language, not jargon.</p>
+                    <a href="blog.html" class="feature-link">Browse articles →</a>
+                </div>
+                <div class="feature-card anim anim-d1">
+                    <div class="feature-icon fi-clay" aria-hidden="true">🌱</div>
+                    <h3>Expert Directory</h3>
+                    <p>Browse a curated list of licensed therapists, counselors, and coaches. Filter by specialty, view
+                        rates, and book a session with one click.</p>
+                    <a href="experts.html" class="feature-link">Find an expert →</a>
+                </div>
+                <div class="feature-card anim anim-d2">
+                    <div class="feature-icon fi-teal" aria-hidden="true">🫂</div>
+                    <h3>Crisis Support</h3>
+                    <p>Always one tap away — every page on MindQuilt links directly to free, confidential crisis
+                        resources including 988 and the Crisis Text Line.</p>
+                    <a href="crisis.html" class="feature-link">See crisis resources →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Recent Blog Posts ── -->
+    <section class="blog-section section" aria-labelledby="blog-heading">
+        <div class="container">
+            <div class="center">
+                <p class="label">From the blog</p>
+                <h2 class="heading" id="blog-heading">Recent articles</h2>
+                <p class="subtext">Free educational content for anyone navigating their mental health journey.</p>
+            </div>
+            <div class="blog-grid" role="list">
+
+                <article class="blog-card anim" role="listitem" aria-labelledby="post1-title">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&h=400&fit=crop&q=80"
+                            alt="Person practicing mindfulness" loading="lazy" />
+                        <div class="blog-thumb-overlay"></div>
+                    </div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Anxiety &amp; Stress</span>
+                        <h3 id="post1-title">5 Ways to Calm Your Nervous System in Under 5 Minutes</h3>
+                        <p class="blog-excerpt">When anxiety spikes, your body needs simple, proven tools — not lengthy
+                            exercises. Here are five techniques backed by research that you can use anywhere.</p>
+                        <p class="blog-meta"><span>Dr. Sarah Kim</span><span>·</span><span>5 min read</span></p>
+                        <a href="blog-post.html" class="blog-read-link"
+                            aria-label="Read: 5 Ways to Calm Your Nervous System">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card anim anim-d1" role="listitem" aria-labelledby="post2-title">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1499728603263-13726abce5fd?w=600&h=400&fit=crop&q=80"
+                            alt="Person experiencing burnout" loading="lazy" />
+                        <div class="blog-thumb-overlay"></div>
+                    </div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Work &amp; Burnout</span>
+                        <h3 id="post2-title">How to Recognise Burnout Before It Breaks You</h3>
+                        <p class="blog-excerpt">Burnout doesn't arrive overnight. Learn the early warning signs —
+                            emotional exhaustion, detachment, and declining performance — and what to do about them.</p>
+                        <p class="blog-meta"><span>Marcus Osei, LPC</span><span>·</span><span>7 min read</span></p>
+                        <a href="blog-post.html" class="blog-read-link" aria-label="Read: How to Recognise Burnout">Read
+                            more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card anim anim-d2" role="listitem" aria-labelledby="post3-title">
+                    <div class="blog-thumb">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop&q=80"
+                            alt="Therapist with client" loading="lazy" />
+                        <div class="blog-thumb-overlay"></div>
+                    </div>
+                    <div class="blog-body">
+                        <span class="blog-tag">Therapy 101</span>
+                        <h3 id="post3-title">What to Expect in Your First Therapy Session</h3>
+                        <p class="blog-excerpt">Thinking about therapy but not sure what happens? This guide walks you
+                            through a typical first session — what you'll be asked, what's normal to feel, and what
+                            comes next.</p>
+                        <p class="blog-meta"><span>Priya Nair, LCSW</span><span>·</span><span>6 min read</span></p>
+                        <a href="blog-post.html" class="blog-read-link" aria-label="Read: First Therapy Session">Read
+                            more →</a>
+                    </div>
+                </article>
+
+            </div>
+            <div class="blog-footer-row">
+                <a href="blog.html" class="btn btn-sage">View all articles →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── How It Works ── -->
+    <section class="how-it-works section" aria-labelledby="how-heading">
+        <div class="container">
+            <div class="center">
+                <p class="label">Simple &amp; straightforward</p>
+                <h2 class="heading" id="how-heading">How MindQuilt works</h2>
+                <p class="subtext">Three simple steps to go from curious to supported — on your own timeline.</p>
+            </div>
+            <div class="steps-grid" role="list">
+                <div class="step anim" role="listitem">
+                    <div class="step-num" aria-label="Step 1">1</div>
+                    <h3>Explore the Blog</h3>
+                    <p>Browse free, educational articles on every mental health topic — anxiety, burnout, relationships,
+                        self-care, and more. No account needed.</p>
+                </div>
+                <div class="step anim anim-d1" role="listitem">
+                    <div class="step-num" aria-label="Step 2">2</div>
+                    <h3>Find Your Expert</h3>
+                    <p>Search our directory of verified, licensed professionals. Filter by specialty, check session
+                        prices, and read full profiles before committing.</p>
+                </div>
+                <div class="step anim anim-d2" role="listitem">
+                    <div class="step-num" aria-label="Step 3">3</div>
+                    <h3>Book &amp; Begin</h3>
+                    <p>Use the expert's built-in booking widget to pick a time that works for you. Pay securely online
+                        and attend your first session — from anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Trust Signals ── -->
+    <section class="trust section-sm" aria-labelledby="trust-heading">
+        <div class="container">
+            <div class="center">
+                <p class="label">Why MindQuilt</p>
+                <h2 class="heading" id="trust-heading">Built on trust and care</h2>
+            </div>
+            <div class="trust-grid" role="list">
+                <div class="trust-card anim" role="listitem">
+                    <div class="trust-icon-wrap" aria-hidden="true">🎓</div>
+                    <h4>Licensed Experts Only</h4>
+                    <p>Every professional on MindQuilt is an independently licensed therapist, counselor, or coach. We
+                        verify credentials before anyone is listed.</p>
+                </div>
+                <div class="trust-card anim anim-d1" role="listitem">
+                    <div class="trust-icon-wrap" aria-hidden="true">🔒</div>
+                    <h4>Private &amp; Secure</h4>
+                    <p>Your data stays yours. We use Supabase with row-level security and encryption. We never share or
+                        sell your information.</p>
+                </div>
+                <div class="trust-card anim anim-d2" role="listitem">
+                    <div class="trust-icon-wrap" aria-hidden="true">🌿</div>
+                    <h4>No Commitments</h4>
+                    <p>Browse freely. Book once if and when you're ready. No subscriptions, no lock-in, and no pressure
+                        before you feel comfortable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Testimonials ── -->
+    <section class="testimonials" aria-labelledby="testimonials-heading">
+        <p class="testimonials-label" id="testimonials-heading">What people are saying</p>
+        <div class="testimonials-track">
+            <div class="testimonial-card anim">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"I found my therapist through MindQuilt in under 10 minutes. The whole
+                    process felt calm and unpressured — exactly what I needed when I was anxious about reaching out."
+                </p>
+                <span class="testimonial-author">— Aisha R., London</span>
+            </div>
+            <div class="testimonial-card anim anim-d1">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"The free articles helped me understand my burnout long before I was ready
+                    for therapy. This platform truly meets you where you are."</p>
+                <span class="testimonial-author">— James T., Manchester</span>
+            </div>
+            <div class="testimonial-card anim anim-d2">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"Knowing crisis support is always a tap away on every page made me feel
+                    safe using the platform — even on difficult days."</p>
+                <span class="testimonial-author">— Meera P., Birmingham</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA Banner ── -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">Ready to take the first step?</h2>
+        <p>Create a free account to save articles, bookmark experts, and manage upcoming sessions — all in one calm
+            space.</p>
+        <div class="cta-banner-btns">
+            <a href="signup.html" class="btn btn-white">Create Free Account</a>
+            <a href="blog.html" class="btn btn-outline-white">Browse Articles First</a>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer role="contentinfo">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="f-logo">
+                    <img src="logo.svg" alt="MindQuilt" height="34" width="auto" loading="lazy"
+                        style="filter:brightness(0) invert(1);opacity:0.88;" />
+                </div>
+                <p>A calm mental health platform with free educational content and a directory of verified experts.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="experts.html">Find an Expert</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="crisis.html">Crisis Resources</a></li>
+                    <li><a href="expert-apply.html">Apply as Expert</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or
+            treatment.
+        </div>
+    </footer>
+
+    <!-- ── Sticky Crisis Bar ── -->
+    <aside class="crisis-bar" id="crisis-bar" role="complementary" aria-label="Crisis support always available">
+        🫂 If you are in crisis, <a href="tel:988" aria-label="Call 988 now">call or text <strong>988</strong></a> (US)
+        or text <strong>HOME</strong> to <a href="sms:741741?body=HOME"
+            aria-label="Text HOME to crisis text line"><strong>741741</strong></a>
+        <button class="bar-close" id="bar-close" aria-label="Dismiss crisis bar">✕</button>
+    </aside>
+
+    <script>
+        // Mobile nav toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', open);
+        });
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Crisis bar close
+        document.getElementById('bar-close').addEventListener('click', () => {
+            document.getElementById('crisis-bar').style.display = 'none';
+            document.body.style.paddingBottom = '0';
+        });
+
+        // Scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+        // Stat counter animation
+        function animateCount(el, target, suffix) {
+            let start = 0;
+            const duration = 1400;
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const nums = entry.target.querySelectorAll('.stat-num');
+                    nums[0] && animateCount(nums[0], 100, '+');
+                    nums[1] && animateCount(nums[1], 50, '+');
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsRow = document.querySelector('.stats-row');
+        if (statsRow) statsObserver.observe(statsRow);
+    </script>
+
+</body>
+
+</html>
