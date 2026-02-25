@@ -14,7 +14,13 @@
         rel="stylesheet" />
     <style>
         /* ── Reset & Tokens ── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         :root {
             --sage: #8FAF8F;
@@ -35,7 +41,9 @@
             --font-body: 'DM Sans', sans-serif;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: var(--font-body);
@@ -48,10 +56,21 @@
             padding-bottom: 56px;
         }
 
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; display: block; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
         /* ── Crisis Banner ── */
         .crisis-banner {
@@ -62,7 +81,12 @@
             font-size: 0.85rem;
             line-height: 1.5;
         }
-        .crisis-banner a { color: var(--sage-light); text-decoration: underline; font-weight: 600; }
+
+        .crisis-banner a {
+            color: var(--sage-light);
+            text-decoration: underline;
+            font-weight: 600;
+        }
 
         /* ── Nav ── */
         nav {
@@ -74,6 +98,7 @@
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(143, 175, 143, 0.2);
         }
+
         .nav-inner {
             max-width: var(--max-w);
             margin: 0 auto;
@@ -84,6 +109,7 @@
             justify-content: space-between;
             gap: 16px;
         }
+
         .nav-logo {
             display: flex;
             align-items: center;
@@ -93,6 +119,7 @@
             color: var(--charcoal);
             flex-shrink: 0;
         }
+
         .nav-links {
             display: flex;
             align-items: center;
@@ -100,6 +127,7 @@
             list-style: none;
             flex-wrap: wrap;
         }
+
         .nav-links a {
             padding: 6px 14px;
             border-radius: 20px;
@@ -108,8 +136,13 @@
             color: var(--muted);
             transition: background 0.2s, color 0.2s;
         }
+
         .nav-links a:hover,
-        .nav-links a.active { background: var(--sage-bg); color: var(--sage-dark); }
+        .nav-links a.active {
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+        }
+
         .nav-cta {
             background: var(--clay) !important;
             color: var(--white) !important;
@@ -119,15 +152,19 @@
             font-size: 0.88rem !important;
             transition: background 0.2s !important;
         }
-        .nav-cta:hover { background: var(--clay-dark) !important; }
+
+        .nav-cta:hover {
+            background: var(--clay-dark) !important;
+        }
 
         /* ── Page Hero ── */
         .page-hero {
             background: linear-gradient(135deg, var(--sage-pale) 0%, var(--sage-bg) 100%);
             padding: 72px 0 56px;
             text-align: center;
-            border-bottom: 1px solid rgba(143,175,143,0.15);
+            border-bottom: 1px solid rgba(143, 175, 143, 0.15);
         }
+
         .page-hero .eyebrow {
             font-size: 0.73rem;
             font-weight: 600;
@@ -136,6 +173,7 @@
             color: var(--sage-dark);
             margin-bottom: 12px;
         }
+
         .page-hero h1 {
             font-family: var(--font-head);
             font-size: clamp(2rem, 4vw, 3rem);
@@ -143,6 +181,7 @@
             margin-bottom: 16px;
             line-height: 1.2;
         }
+
         .page-hero p {
             color: var(--muted);
             font-size: 1.05rem;
@@ -150,6 +189,7 @@
             margin: 0 auto 28px;
             line-height: 1.8;
         }
+
         .hero-search {
             display: flex;
             max-width: 420px;
@@ -158,8 +198,9 @@
             border: 1.5px solid var(--sage-light);
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(143,175,143,0.15);
+            box-shadow: 0 2px 12px rgba(143, 175, 143, 0.15);
         }
+
         .hero-search input {
             flex: 1;
             border: none;
@@ -170,7 +211,11 @@
             background: transparent;
             color: var(--charcoal);
         }
-        .hero-search input::placeholder { color: #adb8ad; }
+
+        .hero-search input::placeholder {
+            color: #adb8ad;
+        }
+
         .hero-search button {
             background: var(--sage);
             border: none;
@@ -180,17 +225,21 @@
             font-size: 1rem;
             transition: background 0.2s;
         }
-        .hero-search button:hover { background: var(--sage-dark); }
+
+        .hero-search button:hover {
+            background: var(--sage-dark);
+        }
 
         /* ── Filter Bar ── */
         .filter-bar {
             padding: 20px 0;
             background: var(--white);
-            border-bottom: 1px solid rgba(143,175,143,0.15);
+            border-bottom: 1px solid rgba(143, 175, 143, 0.15);
             position: sticky;
             top: 64px;
             z-index: 90;
         }
+
         .filter-scroll {
             display: flex;
             gap: 8px;
@@ -199,7 +248,11 @@
             -webkit-overflow-scrolling: touch;
             padding-bottom: 2px;
         }
-        .filter-scroll::-webkit-scrollbar { display: none; }
+
+        .filter-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
         .filter-pill {
             flex-shrink: 0;
             padding: 7px 18px;
@@ -213,7 +266,13 @@
             cursor: pointer;
             transition: all 0.18s;
         }
-        .filter-pill:hover { background: var(--sage-bg); color: var(--sage-dark); border-color: var(--sage); }
+
+        .filter-pill:hover {
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+            border-color: var(--sage);
+        }
+
         .filter-pill.active {
             background: var(--sage-dark);
             color: white;
@@ -224,6 +283,7 @@
         .blog-layout {
             padding: 48px 0 72px;
         }
+
         .blog-grid-wrap {
             display: grid;
             grid-template-columns: 1fr 300px;
@@ -236,7 +296,7 @@
             background: var(--white);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 2px 16px rgba(45,45,45,0.06);
+            box-shadow: 0 2px 16px rgba(45, 45, 45, 0.06);
             display: grid;
             grid-template-columns: 1fr 1fr;
             margin-bottom: 32px;
@@ -244,21 +304,25 @@
             text-decoration: none;
             color: inherit;
         }
+
         .featured-post:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(45,45,45,0.1);
+            box-shadow: 0 8px 32px rgba(45, 45, 45, 0.1);
         }
+
         .featured-post img {
             width: 100%;
             height: 280px;
             object-fit: cover;
         }
+
         .featured-post-body {
             padding: 32px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+
         .featured-badge {
             display: inline-flex;
             align-items: center;
@@ -270,16 +334,19 @@
             color: var(--clay);
             margin-bottom: 12px;
         }
+
         .featured-badge::before {
             content: '★';
             font-size: 0.8rem;
         }
+
         .featured-post h2 {
             font-family: var(--font-head);
             font-size: clamp(1.3rem, 2.5vw, 1.65rem);
             line-height: 1.25;
             margin-bottom: 12px;
         }
+
         .featured-post p {
             color: var(--muted);
             font-size: 0.95rem;
@@ -290,6 +357,7 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
         .featured-meta {
             display: flex;
             align-items: center;
@@ -297,12 +365,14 @@
             font-size: 0.82rem;
             color: var(--muted);
         }
+
         .featured-meta img {
             width: 32px;
             height: 32px;
             border-radius: 50%;
             object-fit: cover;
         }
+
         .cat-pill {
             display: inline-block;
             padding: 3px 10px;
@@ -322,47 +392,63 @@
             color: var(--sage-dark);
             margin-bottom: 20px;
         }
+
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
         }
+
         .article-card {
             background: var(--white);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(45,45,45,0.05);
+            box-shadow: 0 2px 10px rgba(45, 45, 45, 0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             text-decoration: none;
             color: inherit;
         }
+
         .article-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(45,45,45,0.1);
+            box-shadow: 0 8px 28px rgba(45, 45, 45, 0.1);
         }
-        .article-card.hidden { display: none; }
+
+        .article-card.hidden {
+            display: none;
+        }
+
         .article-thumb {
             width: 100%;
             height: 188px;
             object-fit: cover;
             transition: transform 0.35s;
         }
-        .article-card:hover .article-thumb { transform: scale(1.04); }
-        .article-thumb-wrap { overflow: hidden; }
+
+        .article-card:hover .article-thumb {
+            transform: scale(1.04);
+        }
+
+        .article-thumb-wrap {
+            overflow: hidden;
+        }
+
         .article-body {
             padding: 20px 22px 24px;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
+
         .article-meta {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 10px;
         }
+
         .article-card h3 {
             font-family: var(--font-head);
             font-size: 1.1rem;
@@ -370,6 +456,7 @@
             margin-bottom: 10px;
             color: var(--charcoal);
         }
+
         .article-excerpt {
             font-size: 0.88rem;
             color: var(--muted);
@@ -381,6 +468,7 @@
             flex: 1;
             margin-bottom: 14px;
         }
+
         .article-footer {
             display: flex;
             align-items: center;
@@ -391,7 +479,13 @@
             padding-top: 14px;
             margin-top: auto;
         }
-        .read-time { display: flex; align-items: center; gap: 4px; }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .read-link {
             font-size: 0.82rem;
             font-weight: 600;
@@ -400,7 +494,10 @@
             align-items: center;
             gap: 4px;
         }
-        .read-link::after { content: '→'; }
+
+        .read-link::after {
+            content: '→';
+        }
 
         /* ── No Results ── */
         .no-results {
@@ -409,18 +506,30 @@
             padding: 60px 20px;
             color: var(--muted);
         }
-        .no-results.visible { display: block; }
-        .no-results p { margin-top: 8px; font-size: 0.95rem; }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        .no-results p {
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
 
         /* ── Sidebar ── */
-        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
 
         .sidebar-card {
             background: var(--white);
             border-radius: var(--radius);
             padding: 24px;
-            box-shadow: 0 2px 10px rgba(45,45,45,0.05);
+            box-shadow: 0 2px 10px rgba(45, 45, 45, 0.05);
         }
+
         .sidebar-card h4 {
             font-family: var(--font-head);
             font-size: 1.05rem;
@@ -429,7 +538,13 @@
         }
 
         /* Popular topics */
-        .topic-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .topic-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
         .topic-list li a {
             display: flex;
             align-items: center;
@@ -441,8 +556,15 @@
             color: var(--charcoal);
             transition: background 0.2s;
         }
-        .topic-list li a:hover { background: var(--sage-bg); }
-        .topic-list li a span { font-size: 0.78rem; color: var(--muted); }
+
+        .topic-list li a:hover {
+            background: var(--sage-bg);
+        }
+
+        .topic-list li a span {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
 
         /* Newsletter signup */
         .sidebar-newsletter p {
@@ -451,6 +573,7 @@
             margin-bottom: 14px;
             line-height: 1.65;
         }
+
         .sidebar-email {
             width: 100%;
             border: 1.5px solid var(--sage-light);
@@ -463,7 +586,11 @@
             outline: none;
             background: var(--off-white);
         }
-        .sidebar-email:focus { border-color: var(--sage); }
+
+        .sidebar-email:focus {
+            border-color: var(--sage);
+        }
+
         .sidebar-btn {
             width: 100%;
             background: var(--sage-dark);
@@ -477,41 +604,65 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        .sidebar-btn:hover { background: var(--sage-mid); }
-        .sidebar-btn.success { background: #4a7a4a; }
+
+        .sidebar-btn:hover {
+            background: var(--sage-mid);
+        }
+
+        .sidebar-btn.success {
+            background: #4a7a4a;
+        }
 
         /* Crisis card */
         .sidebar-crisis {
             background: linear-gradient(135deg, #2D2D2D 0%, #1e2b1e 100%);
             color: white;
         }
-        .sidebar-crisis h4 { color: var(--sage-light); }
+
+        .sidebar-crisis h4 {
+            color: var(--sage-light);
+        }
+
         .sidebar-crisis p {
             font-size: 0.88rem;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             line-height: 1.65;
             margin-bottom: 14px;
         }
-        .crisis-nums { display: flex; flex-direction: column; gap: 8px; }
+
+        .crisis-nums {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
         .crisis-num {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 10px 14px;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             font-size: 0.88rem;
         }
-        .crisis-num strong { font-size: 1rem; color: var(--sage-light); }
+
+        .crisis-num strong {
+            font-size: 1rem;
+            color: var(--sage-light);
+        }
 
         /* Expert CTA sidebar */
-        .sidebar-expert { background: linear-gradient(135deg, var(--sage-pale), var(--sage-bg)); }
+        .sidebar-expert {
+            background: linear-gradient(135deg, var(--sage-pale), var(--sage-bg));
+        }
+
         .sidebar-expert p {
             font-size: 0.88rem;
             color: var(--muted);
             line-height: 1.65;
             margin-bottom: 14px;
         }
+
         .sidebar-expert-btn {
             display: block;
             text-align: center;
@@ -523,10 +674,17 @@
             font-size: 0.9rem;
             transition: background 0.2s;
         }
-        .sidebar-expert-btn:hover { background: var(--clay-dark); }
+
+        .sidebar-expert-btn:hover {
+            background: var(--clay-dark);
+        }
 
         /* ── Load More ── */
-        .load-more-wrap { text-align: center; margin-top: 40px; }
+        .load-more-wrap {
+            text-align: center;
+            margin-top: 40px;
+        }
+
         .btn-load {
             background: transparent;
             border: 2px solid var(--sage-dark);
@@ -539,29 +697,39 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .btn-load:hover { background: var(--sage-dark); color: white; }
-        .btn-load.hidden { display: none; }
+
+        .btn-load:hover {
+            background: var(--sage-dark);
+            color: white;
+        }
+
+        .btn-load.hidden {
+            display: none;
+        }
 
         /* ── Footer ── */
         footer {
             background: #1e2b1e;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             padding: 52px 0 28px;
             margin-top: auto;
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.4fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 44px;
         }
+
         .footer-brand p {
             font-size: 0.88rem;
             line-height: 1.75;
             margin-top: 12px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             max-width: 260px;
         }
+
         .footer-logo {
             display: flex;
             align-items: center;
@@ -570,6 +738,7 @@
             font-size: 1.2rem;
             color: white;
         }
+
         .footer-col h5 {
             font-size: 0.78rem;
             font-weight: 600;
@@ -578,11 +747,26 @@
             color: var(--sage-light);
             margin-bottom: 14px;
         }
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-        .footer-col ul a { font-size: 0.88rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
-        .footer-col ul a:hover { color: white; }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-col ul a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 24px;
             display: flex;
             align-items: center;
@@ -590,10 +774,17 @@
             flex-wrap: wrap;
             gap: 12px;
             font-size: 0.82rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
         }
-        .footer-bottom a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
-        .footer-bottom a:hover { color: white; }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
 
         /* ── Crisis Sticky Footer ── */
         .crisis-footer-bar {
@@ -603,14 +794,19 @@
             right: 0;
             z-index: 200;
             background: #1e2b1e;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255, 255, 255, 0.85);
             text-align: center;
             padding: 11px 20px;
             font-size: 0.82rem;
             line-height: 1.4;
             border-top: 2px solid var(--sage-dark);
         }
-        .crisis-footer-bar a { color: var(--sage-light); font-weight: 700; text-decoration: underline; }
+
+        .crisis-footer-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+        }
 
         /* ── Animations ── */
         .fade-up {
@@ -618,20 +814,48 @@
             transform: translateY(22px);
             transition: opacity 0.55s ease, transform 0.55s ease;
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-            .blog-grid-wrap { grid-template-columns: 1fr; }
-            .sidebar { order: -1; }
-            .sidebar-crisis, .sidebar-expert { display: none; }
-            .featured-post { grid-template-columns: 1fr; }
-            .featured-post img { height: 220px; }
+            .blog-grid-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .sidebar-crisis,
+            .sidebar-expert {
+                display: none;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-post img {
+                height: 220px;
+            }
         }
+
         @media (max-width: 640px) {
-            .nav-links { display: none; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .articles-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -640,7 +864,8 @@
 
     <!-- Crisis Banner -->
     <div class="crisis-banner" role="alert">
-        🌿 If you are in crisis, please call or text <a href="tel:988">988</a> &nbsp;|&nbsp; Text HOME to <a href="sms:741741">741741</a>
+        🌿 If you are in crisis, please call or text <a href="tel:988">988</a> &nbsp;|&nbsp; Text HOME to <a
+            href="sms:741741">741741</a>
     </div>
 
     <!-- Nav -->
@@ -650,11 +875,14 @@
                 <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
             </a>
             <ul class="nav-links" role="list">
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="experts.html">Find an Expert</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="active" aria-current="page">Blog</a></li>
                 <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html">Speak to Expert</a></li>
                 <li><a href="crisis.html">Crisis Resources</a></li>
-                <li><a href="#signup" class="nav-cta">Get Started</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="nav-cta">Sign In</a></li>
             </ul>
         </div>
     </nav>
@@ -664,7 +892,8 @@
         <div class="container">
             <p class="eyebrow">Free Mental Health Reading</p>
             <h1 id="blog-heading">Articles That Actually Help</h1>
-            <p>Warm, non-clinical writing on anxiety, burnout, relationships, and finding the right support. No jargon, no pressure.</p>
+            <p>Warm, non-clinical writing on anxiety, burnout, relationships, and finding the right support. No jargon,
+                no pressure.</p>
             <div class="hero-search" role="search">
                 <label for="search-input" class="sr-only">Search articles</label>
                 <input type="search" id="search-input" placeholder="Search articles…" autocomplete="off"
@@ -699,22 +928,22 @@
                 <div class="main-col">
 
                     <!-- Featured Post -->
-                    <a href="blog-post.html" class="featured-post fade-up" aria-label="Featured: What is Anxiety and Why Does It Happen">
-                        <img
-                            src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=700&h=400&fit=crop&q=80"
-                            alt="A person sitting quietly, looking thoughtful and calm"
-                            loading="eager"
-                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&h=400&fit=crop&q=80';"
-                        />
+                    <a href="blog-post.html" class="featured-post fade-up"
+                        aria-label="Featured: What is Anxiety and Why Does It Happen">
+                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=700&h=400&fit=crop&q=80"
+                            alt="A person sitting quietly, looking thoughtful and calm" loading="eager"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&h=400&fit=crop&q=80';" />
                         <div class="featured-post-body">
                             <div class="featured-badge">Editor's Pick</div>
-                            <span class="cat-pill" style="width:fit-content;margin-bottom:12px;">Anxiety &amp; Stress</span>
+                            <span class="cat-pill" style="width:fit-content;margin-bottom:12px;">Anxiety &amp;
+                                Stress</span>
                             <h2>What Is Anxiety — and Why Does It Happen to You?</h2>
-                            <p>Anxiety is one of the most common things humans experience — and one of the most misunderstood. We look at what it actually is, why your brain creates it, and what that means for you day to day.</p>
+                            <p>Anxiety is one of the most common things humans experience — and one of the most
+                                misunderstood. We look at what it actually is, why your brain creates it, and what that
+                                means for you day to day.</p>
                             <div class="featured-meta">
                                 <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=60&h=60&fit=crop&q=80"
-                                     alt="Author"
-                                     onerror="this.onerror=null;this.src='';" />
+                                    alt="Author" onerror="this.onerror=null;this.src='';" />
                                 <div>
                                     <strong style="font-size:0.85rem;display:block;">Dr. Sarah Kim</strong>
                                     <span>8 min read · Feb 2026</span>
@@ -728,13 +957,12 @@
                     <div class="articles-grid" id="articles-grid" role="list" aria-label="Article list">
 
                         <!-- 1 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="depression" data-title="the difference between sadness and depression">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="depression"
+                            data-title="the difference between sadness and depression">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1499728603263-13726abce5fd?w=600&h=400&fit=crop&q=80"
-                                    alt="Soft morning light through window"
-                                    loading="lazy"
+                                    alt="Soft morning light through window" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -742,7 +970,8 @@
                                     <span class="cat-pill">Depression</span>
                                 </div>
                                 <h3>The Difference Between Sadness and Depression</h3>
-                                <p class="article-excerpt">Feeling down is part of being human. But when does sadness cross a line? Here's how to tell the difference — and why it matters.</p>
+                                <p class="article-excerpt">Feeling down is part of being human. But when does sadness
+                                    cross a line? Here's how to tell the difference — and why it matters.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 6 min read</span>
                                     <span class="read-link">Read</span>
@@ -751,21 +980,22 @@
                         </a>
 
                         <!-- 2 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="burnout" data-title="signs you might be burning out at work">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="burnout"
+                            data-title="signs you might be burning out at work">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop&q=80"
-                                    alt="Person looking tired at a desk"
-                                    loading="lazy"
+                                    alt="Person looking tired at a desk" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
                                 <div class="article-meta">
-                                    <span class="cat-pill" style="background:#fef3ee;color:#b3501a;">Work &amp; Burnout</span>
+                                    <span class="cat-pill" style="background:#fef3ee;color:#b3501a;">Work &amp;
+                                        Burnout</span>
                                 </div>
                                 <h3>Signs You Might Be Burning Out at Work</h3>
-                                <p class="article-excerpt">Burnout doesn't arrive all at once. It creeps in. These are the warning signs most people miss — and what you can do when you spot them.</p>
+                                <p class="article-excerpt">Burnout doesn't arrive all at once. It creeps in. These are
+                                    the warning signs most people miss — and what you can do when you spot them.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 7 min read</span>
                                     <span class="read-link">Read</span>
@@ -774,13 +1004,12 @@
                         </a>
 
                         <!-- 3 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="therapy" data-title="what actually happens in a therapy session">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="therapy"
+                            data-title="what actually happens in a therapy session">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop&q=80"
-                                    alt="Two people in a calm, professional conversation"
-                                    loading="lazy"
+                                    alt="Two people in a calm, professional conversation" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -788,7 +1017,8 @@
                                     <span class="cat-pill" style="background:#eef4ff;color:#3b5bdb;">Therapy 101</span>
                                 </div>
                                 <h3>What Actually Happens in a Therapy Session?</h3>
-                                <p class="article-excerpt">First sessions feel mysterious. We break down exactly what to expect — from the first hello to how you'll feel walking out the door.</p>
+                                <p class="article-excerpt">First sessions feel mysterious. We break down exactly what to
+                                    expect — from the first hello to how you'll feel walking out the door.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 5 min read</span>
                                     <span class="read-link">Read</span>
@@ -797,21 +1027,22 @@
                         </a>
 
                         <!-- 4 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="relationships" data-title="how to talk to someone you trust about mental health">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="relationships"
+                            data-title="how to talk to someone you trust about mental health">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop&q=80"
-                                    alt="Two friends having a meaningful conversation"
-                                    loading="lazy"
+                                    alt="Two friends having a meaningful conversation" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
                                 <div class="article-meta">
-                                    <span class="cat-pill" style="background:#fff4f4;color:#c0392b;">Relationships</span>
+                                    <span class="cat-pill"
+                                        style="background:#fff4f4;color:#c0392b;">Relationships</span>
                                 </div>
                                 <h3>How to Talk to Someone You Trust About Mental Health</h3>
-                                <p class="article-excerpt">Opening up is hard. This guide helps you find the words, pick the right moment, and manage the conversation without feeling overwhelmed.</p>
+                                <p class="article-excerpt">Opening up is hard. This guide helps you find the words, pick
+                                    the right moment, and manage the conversation without feeling overwhelmed.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 6 min read</span>
                                     <span class="read-link">Read</span>
@@ -820,13 +1051,12 @@
                         </a>
 
                         <!-- 5 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="self-care" data-title="why sleep matters more than you think for mental health">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="self-care"
+                            data-title="why sleep matters more than you think for mental health">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&h=400&fit=crop&q=80"
-                                    alt="Peaceful bedroom with soft morning light"
-                                    loading="lazy"
+                                    alt="Peaceful bedroom with soft morning light" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -834,7 +1064,8 @@
                                     <span class="cat-pill" style="background:#f4f9ff;color:#1971c2;">Self-Care</span>
                                 </div>
                                 <h3>Why Sleep Matters More Than You Think for Mental Health</h3>
-                                <p class="article-excerpt">Poor sleep and poor mental health feed each other in a loop. Here's the science, and more importantly, what you can actually do tonight.</p>
+                                <p class="article-excerpt">Poor sleep and poor mental health feed each other in a loop.
+                                    Here's the science, and more importantly, what you can actually do tonight.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 7 min read</span>
                                     <span class="read-link">Read</span>
@@ -843,21 +1074,22 @@
                         </a>
 
                         <!-- 6 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="relationships" data-title="setting boundaries without feeling guilty">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="relationships"
+                            data-title="setting boundaries without feeling guilty">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&h=400&fit=crop&q=80"
-                                    alt="Person looking confident and at ease"
-                                    loading="lazy"
+                                    alt="Person looking confident and at ease" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
                                 <div class="article-meta">
-                                    <span class="cat-pill" style="background:#fff4f4;color:#c0392b;">Relationships</span>
+                                    <span class="cat-pill"
+                                        style="background:#fff4f4;color:#c0392b;">Relationships</span>
                                 </div>
                                 <h3>Setting Boundaries Without Feeling Guilty</h3>
-                                <p class="article-excerpt">Why does saying "no" feel so hard? We look at the psychology behind guilt and give you practical ways to hold your limits without apology.</p>
+                                <p class="article-excerpt">Why does saying "no" feel so hard? We look at the psychology
+                                    behind guilt and give you practical ways to hold your limits without apology.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 8 min read</span>
                                     <span class="read-link">Read</span>
@@ -866,13 +1098,12 @@
                         </a>
 
                         <!-- 7 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="depression" data-title="the stigma around mental health and why it is changing">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="depression"
+                            data-title="the stigma around mental health and why it is changing">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop&q=80"
-                                    alt="Diverse group of people in a supportive setting"
-                                    loading="lazy"
+                                    alt="Diverse group of people in a supportive setting" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -880,7 +1111,8 @@
                                     <span class="cat-pill">Depression</span>
                                 </div>
                                 <h3>The Stigma Around Mental Health — and Why It's Changing</h3>
-                                <p class="article-excerpt">The conversation is shifting. Here's how attitudes around mental health have evolved, why it matters, and what still needs to change.</p>
+                                <p class="article-excerpt">The conversation is shifting. Here's how attitudes around
+                                    mental health have evolved, why it matters, and what still needs to change.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 6 min read</span>
                                     <span class="read-link">Read</span>
@@ -889,13 +1121,12 @@
                         </a>
 
                         <!-- 8 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="therapy" data-title="how to find the right therapist for you">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="therapy"
+                            data-title="how to find the right therapist for you">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=400&fit=crop&q=80"
-                                    alt="Person in a warm, welcoming therapy office"
-                                    loading="lazy"
+                                    alt="Person in a warm, welcoming therapy office" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -903,7 +1134,9 @@
                                     <span class="cat-pill" style="background:#eef4ff;color:#3b5bdb;">Therapy 101</span>
                                 </div>
                                 <h3>How to Find the Right Therapist for You</h3>
-                                <p class="article-excerpt">Therapist-fit matters more than most people realise. We explain what to look for, what questions to ask, and how to try without committing.</p>
+                                <p class="article-excerpt">Therapist-fit matters more than most people realise. We
+                                    explain what to look for, what questions to ask, and how to try without committing.
+                                </p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 9 min read</span>
                                     <span class="read-link">Read</span>
@@ -912,13 +1145,12 @@
                         </a>
 
                         <!-- 9 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="self-care" data-title="simple self-care habits that are backed by evidence">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="self-care"
+                            data-title="simple self-care habits that are backed by evidence">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop&q=80"
-                                    alt="Person journaling and enjoying a warm drink"
-                                    loading="lazy"
+                                    alt="Person journaling and enjoying a warm drink" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
@@ -926,7 +1158,8 @@
                                     <span class="cat-pill" style="background:#f4f9ff;color:#1971c2;">Self-Care</span>
                                 </div>
                                 <h3>Simple Self-Care Habits That Are Actually Backed by Evidence</h3>
-                                <p class="article-excerpt">Not all self-care is bubble baths. Some of the simplest habits have real science behind them. Here's what actually works — and why.</p>
+                                <p class="article-excerpt">Not all self-care is bubble baths. Some of the simplest
+                                    habits have real science behind them. Here's what actually works — and why.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 7 min read</span>
                                     <span class="read-link">Read</span>
@@ -935,21 +1168,22 @@
                         </a>
 
                         <!-- 10 -->
-                        <a href="blog-post.html" class="article-card fade-up" role="listitem"
-                            data-cat="crisis" data-title="what to do when you're struggling and don't know where to start">
+                        <a href="blog-post.html" class="article-card fade-up" role="listitem" data-cat="crisis"
+                            data-title="what to do when you're struggling and don't know where to start">
                             <div class="article-thumb-wrap">
                                 <img class="article-thumb"
                                     src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=600&h=400&fit=crop&q=80"
-                                    alt="Hands holding a warm cup — feeling held"
-                                    loading="lazy"
+                                    alt="Hands holding a warm cup — feeling held" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&q=80';" />
                             </div>
                             <div class="article-body">
                                 <div class="article-meta">
-                                    <span class="cat-pill" style="background:#f4f4ff;color:#6c3fbb;">Crisis &amp; Support</span>
+                                    <span class="cat-pill" style="background:#f4f4ff;color:#6c3fbb;">Crisis &amp;
+                                        Support</span>
                                 </div>
                                 <h3>What to Do When You're Struggling and Don't Know Where to Start</h3>
-                                <p class="article-excerpt">Sometimes the hardest part isn't finding help — it's knowing the very first step. This is that step. Read this first.</p>
+                                <p class="article-excerpt">Sometimes the hardest part isn't finding help — it's knowing
+                                    the very first step. This is that step. Read this first.</p>
                                 <div class="article-footer">
                                     <span class="read-time">📖 5 min read</span>
                                     <span class="read-link">Read</span>
@@ -980,7 +1214,8 @@
                     <div class="sidebar-card fade-up">
                         <h4>Popular Topics</h4>
                         <ul class="topic-list">
-                            <li><a href="#" data-cat-link="anxiety">Anxiety &amp; Stress <span>12 articles</span></a></li>
+                            <li><a href="#" data-cat-link="anxiety">Anxiety &amp; Stress <span>12 articles</span></a>
+                            </li>
                             <li><a href="#" data-cat-link="depression">Depression <span>8 articles</span></a></li>
                             <li><a href="#" data-cat-link="burnout">Work &amp; Burnout <span>6 articles</span></a></li>
                             <li><a href="#" data-cat-link="therapy">Therapy 101 <span>7 articles</span></a></li>
@@ -993,16 +1228,11 @@
                     <div class="sidebar-card sidebar-newsletter fade-up">
                         <h4>Weekly Reading</h4>
                         <p>One thoughtful article every Sunday. No spam, no pressure. Unsubscribe anytime.</p>
-                        <input class="sidebar-email" type="email" placeholder="your@email.com" id="newsletter-email" aria-label="Email for newsletter" />
+                        <input class="sidebar-email" type="email" placeholder="your@email.com" id="newsletter-email"
+                            aria-label="Email for newsletter" />
                         <button class="sidebar-btn" id="newsletter-btn" type="button">Subscribe Free</button>
                     </div>
 
-                    <!-- Expert CTA -->
-                    <div class="sidebar-card sidebar-expert fade-up">
-                        <h4>Ready to Talk to Someone?</h4>
-                        <p>Reading is a great start. When you're ready, our verified experts are here — no waitlist, no commitment.</p>
-                        <a href="experts.html" class="sidebar-expert-btn">Browse Experts →</a>
-                    </div>
 
                     <!-- Crisis Card -->
                     <div class="sidebar-card sidebar-crisis fade-up">
@@ -1013,7 +1243,8 @@
                                 <span>📞</span>
                                 <div>
                                     <strong>988</strong>
-                                    <div style="font-size:0.78rem;color:rgba(255,255,255,0.6)">Suicide &amp; Crisis Lifeline</div>
+                                    <div style="font-size:0.78rem;color:rgba(255,255,255,0.6)">Suicide &amp; Crisis
+                                        Lifeline</div>
                                 </div>
                             </div>
                             <div class="crisis-num">
@@ -1038,8 +1269,9 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                    <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy" style="filter:brightness(0) invert(1);opacity:0.85;" />
-                </div>
+                        <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy"
+                            style="filter:brightness(0) invert(1);opacity:0.85;" />
+                    </div>
                     <p>A calm space to understand your mind and find the right support — at your own pace.</p>
                 </div>
                 <div class="footer-col">
@@ -1055,8 +1287,9 @@
                 <div class="footer-col">
                     <h5>Support</h5>
                     <ul>
-                        <li><a href="experts.html">Find an Expert</a></li>
                         <li><a href="games.html">Mind Games</a></li>
+                        <li><a href="sounds.html">Soothing Sounds</a></li>
+                        <li><a href="experts.html">Speak to Expert</a></li>
                         <li><a href="crisis.html">Crisis Resources</a></li>
                         <li><a href="#">Expert Application</a></li>
                     </ul>
@@ -1080,7 +1313,8 @@
 
     <!-- Crisis Sticky Footer -->
     <div class="crisis-footer-bar" role="alert" aria-label="Crisis resources">
-        In crisis? Call or text <a href="tel:988">988</a> &nbsp;·&nbsp; Text HOME to <a href="sms:741741">741741</a> &nbsp;·&nbsp; <a href="crisis.html">More resources →</a>
+        In crisis? Call or text <a href="tel:988">988</a> &nbsp;·&nbsp; Text HOME to <a href="sms:741741">741741</a>
+        &nbsp;·&nbsp; <a href="crisis.html">More resources →</a>
     </div>
 
     <script>
@@ -1181,4 +1415,5 @@
     </script>
 
 </body>
+
 </html>

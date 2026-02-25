@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crisis Resources — MindQuilt</title>
-  <meta name="description" content="You are not alone. Immediate mental health crisis support resources including 988 Suicide and Crisis Lifeline, Crisis Text Line, and international resources." />
+  <meta name="description"
+    content="You are not alone. Immediate mental health crisis support resources including 988 Suicide and Crisis Lifeline, Crisis Text Line, and international resources." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <style>
     /* ── Reset & Base ── */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     :root {
-      --sage:       #8FAF8F;
+      --sage: #8FAF8F;
       --sage-light: #C8DCC8;
-      --sage-bg:    #EDF4ED;
-      --off-white:  #F9F7F4;
-      --charcoal:   #2D2D2D;
-      --clay:       #C4826A;
-      --white:      #FFFFFF;
-      --radius:     12px;
-      --max-w:      1100px;
-      --font-head:  'DM Serif Display', serif;
-      --font-body:  'DM Sans', sans-serif;
+      --sage-bg: #EDF4ED;
+      --off-white: #F9F7F4;
+      --charcoal: #2D2D2D;
+      --clay: #C4826A;
+      --white: #FFFFFF;
+      --radius: 12px;
+      --max-w: 1100px;
+      --font-head: 'DM Serif Display', serif;
+      --font-body: 'DM Sans', sans-serif;
     }
 
     html {
@@ -51,7 +57,9 @@
       text-decoration: none;
     }
 
-    img { max-width: 100%; }
+    img {
+      max-width: 100%;
+    }
 
     /* ── Nav ── */
     .nav {
@@ -263,9 +271,17 @@
       flex-shrink: 0;
     }
 
-    .card-icon.green  { background: rgba(143, 175, 143, 0.15); }
-    .card-icon.teal   { background: rgba(100, 168, 168, 0.12); }
-    .card-icon.blue   { background: rgba(100, 130, 200, 0.10); }
+    .card-icon.green {
+      background: rgba(143, 175, 143, 0.15);
+    }
+
+    .card-icon.teal {
+      background: rgba(100, 168, 168, 0.12);
+    }
+
+    .card-icon.blue {
+      background: rgba(100, 130, 200, 0.10);
+    }
 
     .card-tag {
       display: inline-block;
@@ -409,7 +425,7 @@
     /* ── Footer ── */
     footer {
       background: var(--charcoal);
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       padding: 40px 24px 24px;
     }
 
@@ -440,7 +456,7 @@
 
     .footer-links a {
       font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       transition: color 0.2s;
     }
 
@@ -450,7 +466,7 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 20px;
       font-size: 0.8rem;
       opacity: 0.5;
@@ -496,12 +512,13 @@
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
       font-size: 1.1rem;
       line-height: 1;
       padding: 4px;
-      display: none; /* show via JS on desktop */
+      display: none;
+      /* show via JS on desktop */
     }
 
     /* ── Responsive ── */
@@ -518,7 +535,7 @@
         background: var(--white);
         padding: 24px;
         border-bottom: 1px solid #e6ede6;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       }
 
       .nav-links.open {
@@ -569,18 +586,32 @@
 
     /* ── Subtle page fade-in ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero, .main > * {
+    .hero,
+    .main>* {
       animation: fadeUp 0.55s ease both;
     }
 
-    .cards-grid .card:nth-child(2) { animation-delay: 0.08s; }
-    .cards-grid .card:nth-child(3) { animation-delay: 0.16s; }
+    .cards-grid .card:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .cards-grid .card:nth-child(3) {
+      animation-delay: 0.16s;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ── Navigation ── -->
@@ -589,14 +620,18 @@
       <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
         <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false"
+        aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="experts.html">Find an Expert</a></li>
+        <li><a href="games.html">Mind Games</a></li>
+        <li><a href="sounds.html">Soothing Sounds</a></li>
+        <li><a href="experts.html">Speak to Expert</a></li>
         <li><a href="crisis.html" class="active" aria-current="page">Crisis Resources</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="login.html" class="nav-cta">Sign In</a></li>
       </ul>
     </div>
@@ -639,7 +674,8 @@
         <a href="tel:988" class="card-action" id="call-988" aria-label="Call 988 — Suicide and Crisis Lifeline">
           📞 Call or Text 988
         </a>
-        <a href="https://988lifeline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action" aria-label="Visit 988 Lifeline website (opens in new tab)">
+        <a href="https://988lifeline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action"
+          aria-label="Visit 988 Lifeline website (opens in new tab)">
           Visit website →
         </a>
       </article>
@@ -654,10 +690,12 @@
           Crisis Counselor via text message — no phone call required.
           Free, 24/7, confidential support.
         </p>
-        <a href="sms:741741?body=HOME" class="card-action teal" id="text-741741" aria-label="Text HOME to 741741 — Crisis Text Line">
+        <a href="sms:741741?body=HOME" class="card-action teal" id="text-741741"
+          aria-label="Text HOME to 741741 — Crisis Text Line">
           💬 Text HOME to 741741
         </a>
-        <a href="https://www.crisistextline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action" aria-label="Visit Crisis Text Line website (opens in new tab)">
+        <a href="https://www.crisistextline.org" target="_blank" rel="noopener noreferrer" class="card-secondary-action"
+          aria-label="Visit Crisis Text Line website (opens in new tab)">
           Visit website →
         </a>
       </article>
@@ -672,7 +710,8 @@
           Prevention maintains a directory of crisis centers in over
           70 countries. Find local support wherever you are.
         </p>
-        <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener noreferrer" class="card-action clay" id="iasp-link" aria-label="Find international crisis centres (opens in new tab)">
+        <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noopener noreferrer"
+          class="card-action clay" id="iasp-link" aria-label="Find international crisis centres (opens in new tab)">
           🌍 Find a Crisis Centre
         </a>
         <span class="card-secondary-action" aria-hidden="true">iasp.info/resources →</span>
@@ -708,19 +747,24 @@
   <footer role="contentinfo">
     <div class="footer-inner">
       <div class="footer-logo">
-        <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy" style="filter:brightness(0) invert(1);opacity:0.85;" />
+        <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy"
+          style="filter:brightness(0) invert(1);opacity:0.85;" />
       </div>
       <p class="footer-tagline">A calm place to understand your mind.</p>
       <ul class="footer-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="experts.html">Find an Expert</a></li>
+        <li><a href="games.html">Mind Games</a></li>
+        <li><a href="sounds.html">Soothing Sounds</a></li>
+        <li><a href="experts.html">Speak to Expert</a></li>
         <li><a href="crisis.html" class="active" aria-current="page">Crisis Resources</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
       </ul>
       <p class="footer-bottom">
-        © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or treatment.
+        © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or
+        treatment.
       </p>
     </div>
   </footer>
@@ -729,7 +773,8 @@
   <aside class="crisis-bar" id="crisis-bar" role="complementary" aria-label="Crisis support">
     <span>
       🫂 If you are in crisis, <a href="tel:988" aria-label="Call 988">call or text <strong>988</strong></a> (US)
-      or text <strong>HOME</strong> to <a href="sms:741741?body=HOME" aria-label="Text HOME to 741741"><strong>741741</strong></a>
+      or text <strong>HOME</strong> to <a href="sms:741741?body=HOME"
+        aria-label="Text HOME to 741741"><strong>741741</strong></a>
     </span>
     <button class="bar-dismiss" id="bar-dismiss" aria-label="Dismiss crisis bar">&times;</button>
   </aside>
@@ -737,7 +782,7 @@
   <script>
     // ── Mobile Nav Toggle ──
     const hamburger = document.getElementById('hamburger');
-    const navLinks  = document.getElementById('nav-links');
+    const navLinks = document.getElementById('nav-links');
 
     hamburger.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
@@ -762,4 +807,5 @@
     });
   </script>
 </body>
+
 </html>

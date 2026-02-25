@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Is Anxiety — and Why Does It Happen to You? — MindQuilt</title>
+    <meta name="description"
+        content="Anxiety is one of the most common things humans experience — and one of the most misunderstood. We look at what it actually is, why your brain creates it, and what that means for you day to day." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ── Reset & Tokens ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sage: #8FAF8F;
+            --sage-dark: #5e8a5e;
+            --sage-mid: #6e936e;
+            --sage-light: #C8DCC8;
+            --sage-bg: #EDF4ED;
+            --sage-pale: #f4f9f4;
+            --off-white: #F9F7F4;
+            --charcoal: #2D2D2D;
+            --clay: #C4826A;
+            --clay-dark: #b3735b;
+            --white: #FFFFFF;
+            --muted: #6b7b6b;
+            --radius: 12px;
+            --max-w: 1100px;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 56px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Crisis Banner ── */
+        .crisis-banner {
+            background: #2D2D2D;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .crisis-banner a {
+            color: var(--sage-light);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(249, 247, 244, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(143, 175, 143, 0.2);
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+        }
+
+        .nav-cta {
+            background: var(--clay) !important;
+            color: var(--white) !important;
+            padding: 8px 18px !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--clay-dark) !important;
+        }
+
+        /* ── Breadcrumb ── */
+        .breadcrumb {
+            padding: 16px 0 0;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .breadcrumb a {
+            color: var(--sage-dark);
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 6px;
+            opacity: 0.5;
+        }
+
+        /* ── Article Header ── */
+        .article-header {
+            padding: 28px 0 40px;
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+            margin-bottom: 16px;
+            letter-spacing: 0.04em;
+        }
+
+        .article-title {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 2.9rem);
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            max-width: 740px;
+        }
+
+        .article-subtitle {
+            font-size: 1.1rem;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 640px;
+            margin-bottom: 28px;
+        }
+
+        .article-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .author-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--sage-light);
+        }
+
+        .byline-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .byline-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+        }
+
+        .byline-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .byline-sep {
+            width: 1px;
+            height: 28px;
+            background: var(--sage-light);
+            margin: 0 4px;
+        }
+
+        .byline-stat {
+            font-size: 0.82rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ── Hero Image ── */
+        .article-hero {
+            width: 100%;
+            max-width: 100%;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 24px rgba(45, 45, 45, 0.08);
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .article-hero figcaption {
+            padding: 10px 16px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+            background: var(--white);
+        }
+
+        /* ── Layout ── */
+        .post-layout {
+            padding-bottom: 80px;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* ── Article Body ── */
+        .article-body {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--charcoal);
+        }
+
+        .article-body h2 {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            line-height: 1.25;
+            color: var(--charcoal);
+            margin: 44px 0 16px;
+        }
+
+        .article-body h3 {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin: 32px 0 12px;
+        }
+
+        .article-body p {
+            margin-bottom: 22px;
+            color: #3a3a3a;
+        }
+
+        .article-body p:first-child::first-letter {
+            font-family: var(--font-head);
+            font-size: 3.4rem;
+            font-weight: 400;
+            float: left;
+            line-height: 0.82;
+            margin: 6px 10px 0 0;
+            color: var(--sage-dark);
+        }
+
+        .article-body strong {
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .article-body em {
+            font-style: italic;
+            color: var(--sage-dark);
+        }
+
+        .article-body a {
+            color: var(--sage-dark);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-body a:hover {
+            color: var(--sage-mid);
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            border-left: 4px solid var(--sage);
+            margin: 36px 0;
+            padding: 20px 28px;
+            background: var(--sage-pale);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .pull-quote p {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: var(--sage-dark);
+            margin: 0 !important;
+            font-style: italic;
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--sage-bg);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin: 32px 0;
+            border: 1px solid var(--sage-light);
+        }
+
+        .highlight-box .hb-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage-dark);
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0 !important;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        /* Tags */
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 40px 0 32px;
+            padding-top: 28px;
+            border-top: 1px solid var(--sage-light);
+        }
+
+        .tag {
+            padding: 5px 14px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            border: 1.5px solid var(--sage-light);
+            color: var(--muted);
+            transition: all 0.18s;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: var(--sage-bg);
+            border-color: var(--sage);
+            color: var(--sage-dark);
+        }
+
+        /* Share bar */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            padding: 20px 24px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 10px rgba(45, 45, 45, 0.05);
+        }
+
+        .share-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-right: 4px;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: opacity 0.2s;
+        }
+
+        .share-btn:hover {
+            opacity: 0.85;
+        }
+
+        .share-copy {
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+            margin-left: auto;
+        }
+
+        .share-twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .share-copy.copied {
+            background: #d4edda;
+            color: #2a6b2a;
+        }
+
+        /* Author bio */
+        .author-bio {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(45, 45, 45, 0.06);
+            margin-bottom: 48px;
+        }
+
+        .author-bio img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--sage-light);
+        }
+
+        .author-bio-content h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .author-bio-content .role {
+            font-size: 0.8rem;
+            color: var(--sage-dark);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .author-bio-content p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ── Related Articles ── */
+        .related-section {
+            border-top: 1px solid var(--sage-light);
+            padding-top: 48px;
+            margin-top: 8px;
+        }
+
+        .related-label {
+            font-size: 0.73rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage-dark);
+            margin-bottom: 8px;
+        }
+
+        .related-heading {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            margin-bottom: 28px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .related-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(45, 45, 45, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(45, 45, 45, 0.1);
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .related-card-body {
+            padding: 16px 18px 20px;
+        }
+
+        .related-card-cat {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--sage-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .related-card h4 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+
+        .related-card-meta {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 88px;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(45, 45, 45, 0.05);
+        }
+
+        .sidebar-card h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+            color: var(--charcoal);
+        }
+
+        /* Progress bar */
+        .reading-progress-wrap {
+            background: var(--sage-pale);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            border: 1.5px solid var(--sage-light);
+        }
+
+        .reading-progress-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--sage-dark);
+            margin-bottom: 10px;
+        }
+
+        .reading-bar-bg {
+            height: 6px;
+            background: var(--sage-light);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .reading-bar-fill {
+            height: 100%;
+            background: var(--sage-dark);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+
+        .reading-pct {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        /* Table of contents */
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .toc-list a {
+            display: block;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-size: 0.86rem;
+            color: var(--muted);
+            transition: background 0.18s, color 0.18s;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+            border-left-color: var(--sage-dark);
+        }
+
+        /* Newsletter */
+        .sidebar-newsletter p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 14px;
+            line-height: 1.65;
+        }
+
+        .sidebar-email {
+            width: 100%;
+            border: 1.5px solid var(--sage-light);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+            outline: none;
+            background: var(--off-white);
+        }
+
+        .sidebar-email:focus {
+            border-color: var(--sage);
+        }
+
+        .sidebar-btn {
+            width: 100%;
+            background: var(--sage-dark);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 11px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sidebar-btn:hover {
+            background: var(--sage-mid);
+        }
+
+        .sidebar-btn.success {
+            background: #4a7a4a;
+        }
+
+        /* Expert CTA */
+        .sidebar-expert {
+            background: linear-gradient(135deg, var(--sage-pale), var(--sage-bg));
+        }
+
+        .sidebar-expert p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .sidebar-expert-btn {
+            display: block;
+            text-align: center;
+            background: var(--clay);
+            color: white;
+            padding: 11px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .sidebar-expert-btn:hover {
+            background: var(--clay-dark);
+        }
+
+        /* Crisis sidebar */
+        .sidebar-crisis {
+            background: linear-gradient(135deg, #2D2D2D, #1e2b1e);
+            color: white;
+        }
+
+        .sidebar-crisis h4 {
+            color: var(--sage-light);
+        }
+
+        .sidebar-crisis p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .crisis-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .crisis-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .crisis-line strong {
+            color: var(--sage-light);
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.75);
+            padding: 52px 0 28px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 44px;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.75;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 260px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage-light);
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-col ul a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        /* ── Crisis Sticky Footer ── */
+        .crisis-footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+            padding: 11px 20px;
+            font-size: 0.82rem;
+            line-height: 1.4;
+            border-top: 2px solid var(--sage-dark);
+        }
+
+        .crisis-footer-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* ── Animations ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .sidebar-crisis {
+                display: none;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .article-hero img {
+                height: 260px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .author-bio {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Crisis Banner -->
+    <div class="crisis-banner" role="alert">
+        🌿 If you are in crisis, please call or text <a href="tel:988">988</a> &nbsp;|&nbsp; Text HOME to <a
+            href="sms:741741">741741</a>
+    </div>
+
+    <!-- Nav -->
+    <nav aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
+                <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
+            </a>
+            <ul class="nav-links" role="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="active" aria-current="page">Blog</a></li>
+                <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html">Speak to Expert</a></li>
+                <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="nav-cta">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="post-layout">
+        <div class="container">
+
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="blog.html">Blog</a>
+                <span>›</span>
+                <span>Anxiety &amp; Stress</span>
+            </nav>
+
+            <!-- Article Header -->
+            <header class="article-header fade-up">
+                <span class="article-category">Anxiety &amp; Stress</span>
+                <h1 class="article-title">What Is Anxiety — and Why Does It Happen to You?</h1>
+                <p class="article-subtitle">Anxiety is one of the most common things humans experience — and one of the
+                    most misunderstood. Here's what it actually is, why your brain creates it, and what that means day
+                    to day.</p>
+                <div class="article-byline">
+                    <img class="author-avatar"
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&q=80"
+                        alt="Dr. Sarah Kim" onerror="this.onerror=null;this.style.background='var(--sage-bg)';" />
+                    <div class="byline-text">
+                        <span class="byline-name">Dr. Sarah Kim</span>
+                        <span class="byline-meta">Licensed Psychologist · MindQuilt Contributor</span>
+                    </div>
+                    <div class="byline-sep" aria-hidden="true"></div>
+                    <span class="byline-stat">📅 February 2026</span>
+                    <span class="byline-stat">📖 8 min read</span>
+                </div>
+            </header>
+
+            <!-- Hero Image -->
+            <figure class="article-hero fade-up">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1100&h=500&fit=crop&q=80"
+                    alt="A person sitting in a calm, thoughtful space, looking peacefully out a window" loading="eager"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1100&h=500&fit=crop&q=80';" />
+                <figcaption>Photo by Conscious Design on Unsplash</figcaption>
+            </figure>
+
+            <!-- Post Grid -->
+            <div class="post-grid">
+
+                <!-- Article Content -->
+                <article class="fade-up" aria-label="Article content">
+
+                    <!-- Reading Progress -->
+                    <div class="reading-progress-wrap" style="margin-bottom:32px;" aria-hidden="true">
+                        <div class="reading-progress-label">📖 Reading progress</div>
+                        <div class="reading-bar-bg">
+                            <div class="reading-bar-fill" id="reading-fill"></div>
+                        </div>
+                        <div class="reading-pct" id="reading-pct">0%</div>
+                    </div>
+
+                    <!-- Article Body -->
+                    <div class="article-body" id="article-body">
+
+                        <p>Anxiety is something almost every person on this planet has felt at some point — the racing
+                            heart before a difficult conversation, the knot in your stomach when you're waiting for
+                            important news, the restlessness that keeps you awake at 2am with no clear reason. And yet,
+                            for something so universal, it is remarkably poorly understood by the people experiencing
+                            it.</p>
+
+                        <p>Most people treat anxiety like a problem to be switched off. They try to push it away,
+                            distract themselves from it, or feel frustrated with themselves for having it. That approach
+                            rarely works. Understanding what anxiety actually is — why your brain generates it and what
+                            it's trying to do — changes everything about how you can respond to it.</p>
+
+                        <h2 id="what-is">What anxiety actually is</h2>
+
+                        <p>At its most basic, anxiety is your brain's threat detection system doing its job. It is not a
+                            malfunction. It is not a sign of weakness. It is a deeply evolved response that has kept
+                            humans alive for hundreds of thousands of years. When your brain perceives a threat —
+                            whether that threat is a predator, a social rejection, or an overdue email from your manager
+                            — it triggers a cascade of physical and mental responses designed to prepare you to deal
+                            with danger.</p>
+
+                        <p>This response is often called the fight-or-flight response. Your heart beats faster to pump
+                            blood to your muscles. Your breathing quickens to bring in more oxygen. Your attention
+                            narrows to focus on the perceived threat. Your digestive system slows down because digesting
+                            lunch is not a priority when you're running from danger. Your muscles tense, ready for
+                            action.</p>
+
+                        <div class="pull-quote">
+                            <p>"Anxiety is not your enemy. It is your brain trying — sometimes clumsily — to protect
+                                you."</p>
+                            <cite>— Dr. Sarah Kim, Licensed Psychologist</cite>
+                        </div>
+
+                        <p>All of that is extremely useful if you're facing a physical threat. The problem is that the
+                            human brain cannot reliably distinguish between a tiger and a difficult meeting. To your
+                            nervous system, the anticipation of a hard conversation or a social situation where you fear
+                            judgment can activate the same response as genuine physical danger. The sensations are the
+                            same. The chemistry is the same. The experience, in your body, is identical.</p>
+
+                        <h2 id="why-it-persists">Why it persists when there is no danger</h2>
+
+                        <p>If anxiety is just a response to perceived threats, then why does it sometimes seem to take
+                            on a life of its own? Why does it linger even when the original trigger is gone? Why do some
+                            people experience it almost constantly, even when nothing bad is happening?</p>
+
+                        <p>There are a few things happening here. First, our modern lives are full of what the brain
+                            interprets as low-level threats — social pressures, financial uncertainty, workplace stress,
+                            relationship tensions, the relentless noise of news and social media. These don't register
+                            as discrete events with a clear beginning and end. They are persistent background
+                            conditions. So the threat detection system never quite gets to switch off.</p>
+
+                        <div class="highlight-box">
+                            <div class="hb-label">Worth knowing</div>
+                            <p>Anxiety becomes a clinical concern not because of its presence, but because of its
+                                intensity and how much it interferes with your daily life. Occasional anxiety is normal.
+                                Anxiety that is persistent, disproportionate, or stopping you from doing things you want
+                                to do is worth speaking to a professional about.</p>
+                        </div>
+
+                        <p>Second, anxiety has a particularly nasty feedback loop built in. When we feel anxious, we
+                            often become anxious about the anxiety itself. <em>Why am I feeling this? Something must be
+                                seriously wrong. What if it gets worse?</em> This meta-anxiety amplifies the original
+                            signal, creating more of the very thing you're worried about. It is one of the most common
+                            traps people fall into, and one of the hardest to notice in the moment.</p>
+
+                        <p>Third, avoidance — the most natural response to anxiety — actually makes it worse over time.
+                            When you avoid a situation because it triggers anxiety, your brain receives confirmation
+                            that the threat was real and serious. The anxiety around that situation grows. Over time,
+                            the list of things that trigger anxiety can expand, and life can shrink to accommodate it.
+                        </p>
+
+                        <h2 id="types">Different kinds of anxiety</h2>
+
+                        <p>It helps to know that anxiety is not one single thing. It shows up differently in different
+                            people, and in different situations for the same person. Some people experience it primarily
+                            as physical sensations — heart pounding, breathlessness, dizziness. Others experience it
+                            primarily as mental — racing thoughts, catastrophising, an inability to quiet the mind. Many
+                            people experience both.</p>
+
+                        <p>Generalised anxiety tends to float freely across many areas of life, attaching to whatever is
+                            available. Social anxiety is specifically focused on how you are being perceived and judged
+                            by others. Panic attacks are episodes of intense, overwhelming anxiety that come on quickly
+                            and feel extremely frightening, though they are not physically dangerous. Phobias are
+                            anxieties concentrated on specific triggers.</p>
+
+                        <p>None of these categories are rigid. People often experience several different kinds of
+                            anxiety, or find that their anxiety changes character over time. The categories are more
+                            useful as descriptions than as boxes to put yourself in.</p>
+
+                        <h2 id="what-you-can-do">What this means for you</h2>
+
+                        <p>Understanding anxiety doesn't immediately make it go away. But it does change your
+                            relationship with it in ways that matter. When you know that the physical sensations of
+                            anxiety are your nervous system doing its job — not a sign that something catastrophic is
+                            happening — you can start to sit with them differently, rather than treating them as an
+                            emergency.</p>
+
+                        <p>Breathing exercises and mindfulness practices work, at least in part, by directly engaging
+                            the part of your nervous system that is responsible for calming the threat response. When
+                            you breathe slowly and deliberately, you are not just distracting yourself — you are sending
+                            a direct signal to your brain that the situation is safe enough to slow down.</p>
+
+                        <p>Movement is one of the most underrated tools for anxiety. Physical exercise helps metabolise
+                            the stress hormones that accumulate when the threat response is activated. It doesn't need
+                            to be intense — even a 20-minute walk has a measurable effect on anxiety levels.</p>
+
+                        <p>And when anxiety is persistent, disproportionate, or significantly affecting your quality of
+                            life, talking to a therapist is one of the most effective things you can do. Cognitive
+                            Behavioural Therapy has a strong evidence base for anxiety. It helps you identify the
+                            thought patterns that sustain anxiety and learn to respond to them differently. It is not
+                            about positive thinking. It is about accuracy — seeing situations as they actually are,
+                            rather than through the distorting lens of a nervous system that is in overdrive.</p>
+
+                        <p>Anxiety is not something you have to push through alone, pretend isn't there, or fix by force
+                            of will. It is something you can understand, work with, and, with the right support,
+                            significantly reduce. That process starts here, with this — knowing what it actually is.</p>
+
+                    </div><!-- /article-body -->
+
+                    <!-- Tags -->
+                    <div class="article-tags" role="list" aria-label="Article tags">
+                        <span class="tag" role="listitem">Anxiety</span>
+                        <span class="tag" role="listitem">Mental Health Basics</span>
+                        <span class="tag" role="listitem">Stress</span>
+                        <span class="tag" role="listitem">Brain Science</span>
+                        <span class="tag" role="listitem">Self-Awareness</span>
+                        <span class="tag" role="listitem">Coping Strategies</span>
+                    </div>
+
+                    <!-- Share Bar -->
+                    <div class="share-bar" aria-label="Share this article">
+                        <span class="share-label">Share</span>
+                        <button class="share-btn share-twitter" onclick="shareTwitter()" type="button"
+                            aria-label="Share on Twitter">
+                            𝕏 Twitter
+                        </button>
+                        <button class="share-btn share-linkedin" onclick="shareLinkedIn()" type="button"
+                            aria-label="Share on LinkedIn">
+                            in LinkedIn
+                        </button>
+                        <button class="share-btn share-copy" id="copy-btn" onclick="copyLink()" type="button"
+                            aria-label="Copy link">
+                            🔗 Copy link
+                        </button>
+                    </div>
+
+                    <!-- Author Bio -->
+                    <div class="author-bio">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=140&h=140&fit=crop&q=80"
+                            alt="Dr. Sarah Kim" onerror="this.onerror=null;this.style.background='var(--sage-bg)';" />
+                        <div class="author-bio-content">
+                            <h4>Dr. Sarah Kim</h4>
+                            <p class="role">Licensed Psychologist · MindQuilt Contributor</p>
+                            <p>Dr. Kim is a licensed psychologist with 12 years of experience specialising in anxiety,
+                                depression, and stress management. She believes in making mental health knowledge
+                                accessible to everyone — not just those already in therapy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Articles -->
+                    <section class="related-section" aria-labelledby="related-heading">
+                        <p class="related-label">Keep reading</p>
+                        <h2 class="related-heading" id="related-heading">You might also find helpful</h2>
+                        <div class="related-grid">
+                            <a href="blog-post.html" class="related-card">
+                                <img src="https://images.unsplash.com/photo-1499728603263-13726abce5fd?w=500&h=300&fit=crop&q=80"
+                                    alt="Soft morning light" loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&q=80';" />
+                                <div class="related-card-body">
+                                    <div class="related-card-cat">Depression</div>
+                                    <h4>The Difference Between Sadness and Depression</h4>
+                                    <span class="related-card-meta">6 min read</span>
+                                </div>
+                            </a>
+                            <a href="blog-post.html" class="related-card">
+                                <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&h=300&fit=crop&q=80"
+                                    alt="Peaceful bedroom" loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&q=80';" />
+                                <div class="related-card-body">
+                                    <div class="related-card-cat">Self-Care</div>
+                                    <h4>Why Sleep Matters More Than You Think for Mental Health</h4>
+                                    <span class="related-card-meta">7 min read</span>
+                                </div>
+                            </a>
+                            <a href="blog-post.html" class="related-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&h=300&fit=crop&q=80"
+                                    alt="Calm conversation" loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&q=80';" />
+                                <div class="related-card-body">
+                                    <div class="related-card-cat">Therapy 101</div>
+                                    <h4>What Actually Happens in a Therapy Session?</h4>
+                                    <span class="related-card-meta">5 min read</span>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="sidebar" aria-label="Article sidebar">
+
+                    <!-- Table of Contents -->
+                    <div class="sidebar-card">
+                        <h4>In this article</h4>
+                        <ul class="toc-list" role="list">
+                            <li><a href="#what-is" class="toc-link">What anxiety actually is</a></li>
+                            <li><a href="#why-it-persists" class="toc-link">Why it persists</a></li>
+                            <li><a href="#types" class="toc-link">Different kinds of anxiety</a></li>
+                            <li><a href="#what-you-can-do" class="toc-link">What you can do</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar-card sidebar-newsletter">
+                        <h4>Weekly Reading</h4>
+                        <p>One article every Sunday. No noise, no spam. Unsubscribe anytime.</p>
+                        <input class="sidebar-email" type="email" placeholder="your@email.com" id="nl-email"
+                            aria-label="Email for newsletter" />
+                        <button class="sidebar-btn" id="nl-btn" type="button">Subscribe Free</button>
+                    </div>
+
+
+                    <!-- Crisis -->
+                    <div class="sidebar-card sidebar-crisis">
+                        <h4>🌿 In Crisis?</h4>
+                        <p>If you're in immediate distress, please reach out now.</p>
+                        <div class="crisis-line">
+                            <span>📞</span>
+                            <div><strong>988</strong><br><span
+                                    style="font-size:0.76rem;color:rgba(255,255,255,0.6)">Suicide &amp; Crisis
+                                    Lifeline</span></div>
+                        </div>
+                        <div class="crisis-line">
+                            <span>💬</span>
+                            <div><strong>Text HOME to 741741</strong><br><span
+                                    style="font-size:0.76rem;color:rgba(255,255,255,0.6)">Crisis Text Line</span></div>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div><!-- /post-grid -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy"
+                            style="filter:brightness(0) invert(1);opacity:0.85;" />
+                    </div>
+                    <p>A calm space to understand your mind and find the right support — at your own pace.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Read</h5>
+                    <ul>
+                        <li><a href="blog.html">All Articles</a></li>
+                        <li><a href="#">Anxiety &amp; Stress</a></li>
+                        <li><a href="#">Depression</a></li>
+                        <li><a href="#">Work &amp; Burnout</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="games.html">Mind Games</a></li>
+                        <li><a href="sounds.html">Soothing Sounds</a></li>
+                        <li><a href="experts.html">Speak to Expert</a></li>
+                        <li><a href="crisis.html">Crisis Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>MindQuilt</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 MindQuilt. All rights reserved.</span>
+                <span>Blog content is educational only — not medical advice.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Crisis Sticky Footer -->
+    <div class="crisis-footer-bar" role="alert">
+        In crisis? Call or text <a href="tel:988">988</a> &nbsp;·&nbsp; Text HOME to <a href="sms:741741">741741</a>
+        &nbsp;·&nbsp; <a href="crisis.html">More resources →</a>
+    </div>
+
+    <script>
+        // ── Reading Progress ──
+        const fill = document.getElementById('reading-fill');
+        const pct = document.getElementById('reading-pct');
+        const articleBody = document.getElementById('article-body');
+
+        function updateProgress() {
+            const articleTop = articleBody.getBoundingClientRect().top + window.scrollY;
+            const articleH = articleBody.offsetHeight;
+            const scrolled = window.scrollY + window.innerHeight * 0.85;
+            const progress = Math.max(0, Math.min(100, ((scrolled - articleTop) / articleH) * 100));
+            fill.style.width = progress + '%';
+            pct.textContent = Math.round(progress) + '%';
+        }
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+
+        // ── Table of Contents — Active State ──
+        const headings = document.querySelectorAll('.article-body h2[id]');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        const tocObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    tocLinks.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        headings.forEach(h => tocObserver.observe(h));
+
+        // ── Share ──
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('What Is Anxiety — and Why Does It Happen to You? A clear, warm read from @MindQuilt');
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener');
+        }
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener');
+        }
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '🔗 Copy link'; btn.classList.remove('copied'); }, 2200);
+            });
+        }
+
+        // ── Newsletter ──
+        document.getElementById('nl-btn').addEventListener('click', () => {
+            const val = document.getElementById('nl-email').value.trim();
+            if (!val || !val.includes('@')) {
+                document.getElementById('nl-email').style.borderColor = '#e74c3c';
+                document.getElementById('nl-email').focus();
+                return;
+            }
+            document.getElementById('nl-email').style.borderColor = '';
+            const btn = document.getElementById('nl-btn');
+            btn.textContent = '✓ Subscribed!';
+            btn.classList.add('success');
+            btn.disabled = true;
+            document.getElementById('nl-email').disabled = true;
+        });
+
+        // ── Scroll Animations ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+            });
+        }, { threshold: 0.06 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+
+</html>

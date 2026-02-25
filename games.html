@@ -5,12 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mind Games — MindQuilt</title>
-    <meta name="description" content="Sharpen your mind and calm your body with MindQuilt's free brain games and guided breathing exercises." />
+    <meta name="description"
+        content="Sharpen your mind and calm your body with MindQuilt's free brain games and guided breathing exercises." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
+        rel="stylesheet" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         :root {
             --sage: #8FAF8F;
@@ -31,7 +40,9 @@
             --font-body: 'DM Sans', sans-serif;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: var(--font-body);
@@ -44,15 +55,29 @@
             padding-bottom: 56px;
         }
 
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; display: block; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-        .section { padding: 80px 0; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
 
         /* ── Nav ── */
         .nav {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #e4ece4;
             position: sticky;
@@ -79,7 +104,12 @@
             gap: 10px;
         }
 
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
 
         .nav-links a {
             font-size: 0.88rem;
@@ -88,7 +118,12 @@
             opacity: 0.65;
             transition: opacity 0.2s, color 0.2s;
         }
-        .nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; color: var(--sage-dark); }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            opacity: 1;
+            color: var(--sage-dark);
+        }
 
         .nav-cta-btn {
             background: var(--sage) !important;
@@ -99,10 +134,28 @@
             font-size: 0.88rem;
             font-weight: 600;
         }
-        .nav-cta-btn:hover { background: var(--sage-mid) !important; }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; }
+        .nav-cta-btn:hover {
+            background: var(--sage-mid) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+        }
 
         /* ── Page Hero ── */
         .page-hero {
@@ -128,7 +181,10 @@
             margin-bottom: 14px;
         }
 
-        .page-hero h1 em { font-style: italic; color: var(--sage-dark); }
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--sage-dark);
+        }
 
         .page-hero p {
             font-size: 1.05rem;
@@ -171,17 +227,30 @@
             gap: 8px;
         }
 
-        .tab-btn:hover { color: var(--sage-dark); }
-        .tab-btn.active { color: var(--sage-dark); border-bottom-color: var(--sage); }
+        .tab-btn:hover {
+            color: var(--sage-dark);
+        }
+
+        .tab-btn.active {
+            color: var(--sage-dark);
+            border-bottom-color: var(--sage);
+        }
 
         /* ── Tab Panels ── */
-        .tab-panel { display: none; }
-        .tab-panel.active { display: block; }
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
 
         /* ════════════════════════════════════
            BREATHING GAME
         ════════════════════════════════════ */
-        .breathing-section { background: var(--sage-bg); }
+        .breathing-section {
+            background: var(--sage-bg);
+        }
 
         .breathing-layout {
             display: grid;
@@ -217,8 +286,14 @@
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .pattern-card:hover { border-color: var(--sage-light); }
-        .pattern-card.selected { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(143,175,143,0.15); }
+        .pattern-card:hover {
+            border-color: var(--sage-light);
+        }
+
+        .pattern-card.selected {
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(143, 175, 143, 0.15);
+        }
 
         .pattern-card-name {
             font-weight: 600;
@@ -248,8 +323,15 @@
             color: var(--sage-dark);
         }
 
-        .timing-pill.hold-pill { background: rgba(196,130,106,0.1); color: var(--clay-dark); }
-        .timing-pill.exhale-pill { background: rgba(100,140,180,0.1); color: #4a7aa0; }
+        .timing-pill.hold-pill {
+            background: rgba(196, 130, 106, 0.1);
+            color: var(--clay-dark);
+        }
+
+        .timing-pill.exhale-pill {
+            background: rgba(100, 140, 180, 0.1);
+            color: #4a7aa0;
+        }
 
         /* Breathing circle arena */
         .breath-arena {
@@ -278,7 +360,9 @@
             transition: opacity 0.3s;
         }
 
-        .breath-ring.visible { opacity: 1; }
+        .breath-ring.visible {
+            opacity: 1;
+        }
 
         /* Main animated circle */
         .breath-circle {
@@ -291,7 +375,7 @@
             align-items: center;
             justify-content: center;
             gap: 4px;
-            box-shadow: 0 0 40px rgba(143,175,143,0.35), 0 8px 32px rgba(0,0,0,0.08);
+            box-shadow: 0 0 40px rgba(143, 175, 143, 0.35), 0 8px 32px rgba(0, 0, 0, 0.08);
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
@@ -309,38 +393,72 @@
         .breath-circle .phase-count {
             font-size: 2rem;
             font-weight: 300;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1;
             font-family: var(--font-body);
         }
 
         .breath-circle .phase-tap {
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.65);
+            color: rgba(255, 255, 255, 0.65);
             margin-top: 4px;
         }
 
         /* Scale animations */
-        .breath-circle.inhale { animation: breatheIn var(--inhale-dur, 4s) ease-in-out forwards; }
-        .breath-circle.hold-in { animation: breatheHold var(--hold-in-dur, 4s) ease-in-out forwards; }
-        .breath-circle.exhale { animation: breatheOut var(--exhale-dur, 4s) ease-in-out forwards; }
-        .breath-circle.hold-out { animation: breatheHoldOut var(--hold-out-dur, 0s) ease-in-out forwards; }
+        .breath-circle.inhale {
+            animation: breatheIn var(--inhale-dur, 4s) ease-in-out forwards;
+        }
+
+        .breath-circle.hold-in {
+            animation: breatheHold var(--hold-in-dur, 4s) ease-in-out forwards;
+        }
+
+        .breath-circle.exhale {
+            animation: breatheOut var(--exhale-dur, 4s) ease-in-out forwards;
+        }
+
+        .breath-circle.hold-out {
+            animation: breatheHoldOut var(--hold-out-dur, 0s) ease-in-out forwards;
+        }
 
         @keyframes breatheIn {
-            from { transform: scale(1); }
-            to { transform: scale(1.32); }
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.32);
+            }
         }
+
         @keyframes breatheHold {
-            from { transform: scale(1.32); }
-            to { transform: scale(1.32); }
+            from {
+                transform: scale(1.32);
+            }
+
+            to {
+                transform: scale(1.32);
+            }
         }
+
         @keyframes breatheOut {
-            from { transform: scale(1.32); }
-            to { transform: scale(1); }
+            from {
+                transform: scale(1.32);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
+
         @keyframes breatheHoldOut {
-            from { transform: scale(1); }
-            to { transform: scale(1); }
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
 
         .breath-stats {
@@ -361,7 +479,10 @@
             color: var(--muted);
         }
 
-        .breath-controls { display: flex; gap: 12px; }
+        .breath-controls {
+            display: flex;
+            gap: 12px;
+        }
 
         .btn-breath {
             padding: 12px 28px;
@@ -373,12 +494,29 @@
             border: none;
             transition: transform 0.15s, box-shadow 0.15s;
         }
-        .btn-breath:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
 
-        .btn-start { background: var(--sage); color: var(--white); }
-        .btn-start:hover { background: var(--sage-mid); }
-        .btn-stop { background: rgba(196,130,106,0.12); color: var(--clay-dark); }
-        .btn-stop:hover { background: rgba(196,130,106,0.2); }
+        .btn-breath:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-start {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .btn-start:hover {
+            background: var(--sage-mid);
+        }
+
+        .btn-stop {
+            background: rgba(196, 130, 106, 0.12);
+            color: var(--clay-dark);
+        }
+
+        .btn-stop:hover {
+            background: rgba(196, 130, 106, 0.2);
+        }
 
         /* Progress bar */
         .breath-progress-wrap {
@@ -400,7 +538,9 @@
         /* ════════════════════════════════════
            MEMORY CARD GAME
         ════════════════════════════════════ */
-        .memory-section { background: var(--white); }
+        .memory-section {
+            background: var(--white);
+        }
 
         .memory-header {
             display: flex;
@@ -444,7 +584,11 @@
             line-height: 1;
         }
 
-        .score-label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+        .score-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
 
         /* Difficulty selector */
         .difficulty-bar {
@@ -455,7 +599,11 @@
             flex-wrap: wrap;
         }
 
-        .diff-label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+        .diff-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
 
         .diff-btn {
             padding: 7px 18px;
@@ -469,8 +617,17 @@
             cursor: pointer;
             transition: all 0.18s;
         }
-        .diff-btn:hover { border-color: var(--sage-light); color: var(--sage-dark); }
-        .diff-btn.active { border-color: var(--sage); background: var(--sage-bg); color: var(--sage-dark); }
+
+        .diff-btn:hover {
+            border-color: var(--sage-light);
+            color: var(--sage-dark);
+        }
+
+        .diff-btn.active {
+            border-color: var(--sage);
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+        }
 
         /* Card grid */
         .card-grid {
@@ -479,9 +636,17 @@
             margin-bottom: 28px;
         }
 
-        .card-grid.grid-4x4 { grid-template-columns: repeat(4, 1fr); }
-        .card-grid.grid-5x4 { grid-template-columns: repeat(5, 1fr); }
-        .card-grid.grid-6x4 { grid-template-columns: repeat(6, 1fr); }
+        .card-grid.grid-4x4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .card-grid.grid-5x4 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .card-grid.grid-6x4 {
+            grid-template-columns: repeat(6, 1fr);
+        }
 
         .mem-card {
             aspect-ratio: 1;
@@ -499,21 +664,49 @@
             border-radius: 14px;
         }
 
-        .mem-card.flipped .mem-card-inner { transform: rotateY(180deg); }
-        .mem-card.matched .mem-card-inner { transform: rotateY(180deg); }
-        .mem-card.matched .mem-card-back { background: var(--sage-bg); border-color: var(--sage-light); }
-        .mem-card.matched { cursor: default; }
+        .mem-card.flipped .mem-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .mem-card.matched .mem-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .mem-card.matched .mem-card-back {
+            background: var(--sage-bg);
+            border-color: var(--sage-light);
+        }
+
+        .mem-card.matched {
+            cursor: default;
+        }
 
         .mem-card.shake {
             animation: shake 0.4s ease;
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-6px); }
-            40% { transform: translateX(6px); }
-            60% { transform: translateX(-4px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .mem-card-face {
@@ -554,7 +747,10 @@
         }
 
         .card-pattern span:nth-child(2),
-        .card-pattern span:nth-child(3) { background: var(--sage-mid); opacity: 0.6; }
+        .card-pattern span:nth-child(3) {
+            background: var(--sage-mid);
+            opacity: 0.6;
+        }
 
         .mem-card-back {
             background: var(--white);
@@ -565,7 +761,9 @@
             gap: 4px;
         }
 
-        .card-emoji { line-height: 1; }
+        .card-emoji {
+            line-height: 1;
+        }
 
         /* Win overlay */
         .win-overlay {
@@ -578,11 +776,21 @@
             margin-top: 24px;
         }
 
-        .win-overlay.show { display: block; animation: fadeUp 0.5s ease both; }
+        .win-overlay.show {
+            display: block;
+            animation: fadeUp 0.5s ease both;
+        }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .win-overlay h3 {
@@ -592,7 +800,10 @@
             margin-bottom: 8px;
         }
 
-        .win-overlay p { color: var(--muted); margin-bottom: 20px; }
+        .win-overlay p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
 
         /* Buttons */
         .btn-game {
@@ -608,16 +819,38 @@
             border: none;
             transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
         }
-        .btn-game:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        .btn-sage { background: var(--sage); color: var(--white); }
-        .btn-sage:hover { background: var(--sage-mid); }
-        .btn-outline-sage { background: transparent; border: 2px solid var(--sage-light); color: var(--sage-dark); }
-        .btn-outline-sage:hover { background: var(--sage-bg); border-color: var(--sage); }
+
+        .btn-game:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-sage {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .btn-sage:hover {
+            background: var(--sage-mid);
+        }
+
+        .btn-outline-sage {
+            background: transparent;
+            border: 2px solid var(--sage-light);
+            color: var(--sage-dark);
+        }
+
+        .btn-outline-sage:hover {
+            background: var(--sage-bg);
+            border-color: var(--sage);
+        }
 
         /* ════════════════════════════════════
            SEQUENCE GAME
         ════════════════════════════════════ */
-        .sequence-section { background: var(--sage-pale); }
+        .sequence-section {
+            background: var(--sage-pale);
+        }
 
         .sequence-game-wrap {
             max-width: 560px;
@@ -629,8 +862,16 @@
             margin-bottom: 36px;
         }
 
-        .seq-header h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 8px; }
-        .seq-header p { color: var(--muted); font-size: 0.92rem; }
+        .seq-header h2 {
+            font-family: var(--font-head);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 8px;
+        }
+
+        .seq-header p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
 
         .seq-scoreboard {
             display: flex;
@@ -648,8 +889,17 @@
             min-width: 90px;
         }
 
-        .seq-score-num { font-family: var(--font-head); font-size: 1.6rem; color: var(--sage-dark); display: block; }
-        .seq-score-label { font-size: 0.72rem; color: var(--muted); }
+        .seq-score-num {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            color: var(--sage-dark);
+            display: block;
+        }
+
+        .seq-score-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
 
         /* Tile grid */
         .seq-grid {
@@ -670,27 +920,71 @@
             border: 3px solid transparent;
             transition: transform 0.12s, border-color 0.15s;
             user-select: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
         }
 
-        .seq-tile:hover { transform: scale(0.96); }
-        .seq-tile.lit { animation: tileFlash 0.45s ease; }
-        .seq-tile.player-press { transform: scale(0.92); border-color: rgba(255,255,255,0.6); }
-        .seq-tile.wrong { animation: seqShake 0.4s ease; border-color: #e57373; }
+        .seq-tile:hover {
+            transform: scale(0.96);
+        }
+
+        .seq-tile.lit {
+            animation: tileFlash 0.45s ease;
+        }
+
+        .seq-tile.player-press {
+            transform: scale(0.92);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .seq-tile.wrong {
+            animation: seqShake 0.4s ease;
+            border-color: #e57373;
+        }
 
         @keyframes tileFlash {
-            0% { filter: brightness(1); transform: scale(1); }
-            30% { filter: brightness(1.6); transform: scale(1.05); }
-            70% { filter: brightness(1.4); transform: scale(1.03); }
-            100% { filter: brightness(1); transform: scale(1); }
+            0% {
+                filter: brightness(1);
+                transform: scale(1);
+            }
+
+            30% {
+                filter: brightness(1.6);
+                transform: scale(1.05);
+            }
+
+            70% {
+                filter: brightness(1.4);
+                transform: scale(1.03);
+            }
+
+            100% {
+                filter: brightness(1);
+                transform: scale(1);
+            }
         }
 
         @keyframes seqShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-6px); }
-            40% { transform: translateX(6px); }
-            60% { transform: translateX(-4px); }
-            80% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
         }
 
         .seq-status {
@@ -702,24 +996,62 @@
             font-weight: 500;
         }
 
-        .seq-status.success { color: var(--sage-dark); }
-        .seq-status.fail { color: var(--clay-dark); }
+        .seq-status.success {
+            color: var(--sage-dark);
+        }
 
-        .seq-controls { display: flex; justify-content: center; gap: 12px; }
+        .seq-status.fail {
+            color: var(--clay-dark);
+        }
+
+        .seq-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
 
         /* Tile colors */
-        .t1 { background: #c8e6c9; }
-        .t2 { background: #dcedc8; }
-        .t3 { background: #b2dfdb; }
-        .t4 { background: #c5cae9; }
-        .t5 { background: #f8bbd0; }
-        .t6 { background: #ffe0b2; }
-        .t7 { background: #e1bee7; }
-        .t8 { background: #b3e5fc; }
-        .t9 { background: #f0f4c3; }
+        .t1 {
+            background: #c8e6c9;
+        }
+
+        .t2 {
+            background: #dcedc8;
+        }
+
+        .t3 {
+            background: #b2dfdb;
+        }
+
+        .t4 {
+            background: #c5cae9;
+        }
+
+        .t5 {
+            background: #f8bbd0;
+        }
+
+        .t6 {
+            background: #ffe0b2;
+        }
+
+        .t7 {
+            background: #e1bee7;
+        }
+
+        .t8 {
+            background: #b3e5fc;
+        }
+
+        .t9 {
+            background: #f0f4c3;
+        }
 
         /* ── Footer ── */
-        footer { background: #1e2b1e; color: rgba(255,255,255,0.6); }
+        footer {
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.6);
+        }
 
         .footer-top {
             max-width: var(--max-w);
@@ -740,23 +1072,40 @@
             margin-bottom: 12px;
         }
 
-        .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 220px; }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 220px;
+        }
 
         .footer-col h5 {
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.35);
             margin-bottom: 16px;
         }
 
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .footer-col a { font-size: 0.88rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
-        .footer-col a:hover { color: var(--sage-light); }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-col a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--sage-light);
+        }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.07);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
             padding: 20px 24px;
             max-width: var(--max-w);
             margin: 0 auto;
@@ -767,7 +1116,9 @@
         /* ── Crisis Bar ── */
         .crisis-bar {
             position: fixed;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             z-index: 200;
             background: #1e2b1e;
             color: var(--white);
@@ -782,44 +1133,118 @@
             flex-wrap: wrap;
         }
 
-        .crisis-bar a { color: var(--sage-light); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-        .crisis-bar a:hover { color: var(--white); }
+        .crisis-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .crisis-bar a:hover {
+            color: var(--white);
+        }
 
         .crisis-bar .bar-close {
-            position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; color: rgba(255,255,255,0.4);
-            font-size: 1rem; cursor: pointer; padding: 4px;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 4px;
             display: none;
         }
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-            .breathing-layout { grid-template-columns: 1fr; }
-            .breath-arena { order: -1; }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-            .card-grid.grid-6x4 { grid-template-columns: repeat(4, 1fr); }
+            .breathing-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .breath-arena {
+                order: -1;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .card-grid.grid-6x4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         @media (max-width: 640px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                display: none; flex-direction: column;
-                position: absolute; top: 66px; left: 0; right: 0;
-                background: var(--white); padding: 20px 24px;
-                border-bottom: 1px solid #e4ece4; box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-                gap: 16px; align-items: flex-start;
+            .hamburger {
+                display: flex;
             }
-            .nav-links.open { display: flex; }
-            .nav { position: relative; }
-            .tab-nav { top: 66px; }
-            .tab-btn { padding: 14px 16px; font-size: 0.8rem; }
-            .memory-header { flex-direction: column; align-items: flex-start; }
-            .card-grid.grid-4x4 { gap: 8px; }
-            .card-grid.grid-5x4 { grid-template-columns: repeat(4, 1fr); gap: 8px; }
-            .crisis-bar { font-size: 0.78rem; padding: 10px 44px 10px 16px; }
-            .crisis-bar .bar-close { display: block; }
-            .footer-top { grid-template-columns: 1fr; }
-            .seq-grid { gap: 10px; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 66px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px 24px;
+                border-bottom: 1px solid #e4ece4;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav {
+                position: relative;
+            }
+
+            .tab-nav {
+                top: 66px;
+            }
+
+            .tab-btn {
+                padding: 14px 16px;
+                font-size: 0.8rem;
+            }
+
+            .memory-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-grid.grid-4x4 {
+                gap: 8px;
+            }
+
+            .card-grid.grid-5x4 {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+
+            .crisis-bar {
+                font-size: 0.78rem;
+                padding: 10px 44px 10px 16px;
+            }
+
+            .crisis-bar .bar-close {
+                display: block;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .seq-grid {
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -838,9 +1263,11 @@
             <ul class="nav-links" id="nav-links" role="list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="experts.html">Find an Expert</a></li>
-                <li><a href="games.html" aria-current="page">Mind Games</a></li>
+                <li><a href="games.html" class="active" aria-current="page">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html">Speak to Expert</a></li>
                 <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
             </ul>
         </div>
@@ -850,19 +1277,23 @@
     <div class="page-hero">
         <p class="label">Brain Training &amp; Mindfulness</p>
         <h1>Calm your body.<br /><em>Sharpen your mind.</em></h1>
-        <p>Free interactive exercises to reduce stress, improve focus, and build a healthier brain — one session at a time.</p>
+        <p>Free interactive exercises to reduce stress, improve focus, and build a healthier brain — one session at a
+            time.</p>
     </div>
 
     <!-- ── Tab Navigation ── -->
     <div class="tab-nav" role="tablist" aria-label="Game tabs">
         <div class="tab-nav-inner">
-            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-breath" id="tab-breath" onclick="switchTab('breath')">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-breath" id="tab-breath"
+                onclick="switchTab('breath')">
                 🌬️ Breathing
             </button>
-            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-memory" id="tab-memory" onclick="switchTab('memory')">
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-memory" id="tab-memory"
+                onclick="switchTab('memory')">
                 🧠 Memory Match
             </button>
-            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sequence" id="tab-sequence" onclick="switchTab('sequence')">
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sequence" id="tab-sequence"
+                onclick="switchTab('sequence')">
                 ✨ Pattern Recall
             </button>
         </div>
@@ -871,7 +1302,8 @@
     <!-- ══════════════════════════════════
          TAB: BREATHING
     ══════════════════════════════════ -->
-    <div id="panel-breath" class="tab-panel active breathing-section section" role="tabpanel" aria-labelledby="tab-breath">
+    <div id="panel-breath" class="tab-panel active breathing-section section" role="tabpanel"
+        aria-labelledby="tab-breath">
         <div class="container">
             <div class="breathing-layout">
 
@@ -882,7 +1314,8 @@
                         <div class="pattern-cards">
                             <div class="pattern-card selected" data-pattern="box" onclick="selectPattern(this)">
                                 <div class="pattern-card-name">Box Breathing</div>
-                                <div class="pattern-card-desc">Used by Navy SEALs and athletes to reset under pressure.</div>
+                                <div class="pattern-card-desc">Used by Navy SEALs and athletes to reset under pressure.
+                                </div>
                                 <div class="pattern-card-timing">
                                     <span class="timing-pill">Inhale 4s</span>
                                     <span class="timing-pill hold-pill">Hold 4s</span>
@@ -892,7 +1325,8 @@
                             </div>
                             <div class="pattern-card" data-pattern="478" onclick="selectPattern(this)">
                                 <div class="pattern-card-name">4-7-8 Breathing</div>
-                                <div class="pattern-card-desc">Dr. Weil's sleep and anxiety technique. Great before bed.</div>
+                                <div class="pattern-card-desc">Dr. Weil's sleep and anxiety technique. Great before bed.
+                                </div>
                                 <div class="pattern-card-timing">
                                     <span class="timing-pill">Inhale 4s</span>
                                     <span class="timing-pill hold-pill">Hold 7s</span>
@@ -910,7 +1344,8 @@
                             </div>
                             <div class="pattern-card" data-pattern="energize" onclick="selectPattern(this)">
                                 <div class="pattern-card-name">Energising Breath</div>
-                                <div class="pattern-card-desc">Quick and stimulating. Use to boost focus and energy.</div>
+                                <div class="pattern-card-desc">Quick and stimulating. Use to boost focus and energy.
+                                </div>
                                 <div class="pattern-card-timing">
                                     <span class="timing-pill">Inhale 3s</span>
                                     <span class="timing-pill exhale-pill">Exhale 3s</span>
@@ -920,13 +1355,24 @@
                     </div>
 
                     <!-- Breath tips -->
-                    <div style="background: var(--white); border-radius: 14px; padding: 20px 22px; border: 1px solid #e4ece4;">
-                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--sage-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Tips for best results</p>
+                    <div
+                        style="background: var(--white); border-radius: 14px; padding: 20px 22px; border: 1px solid #e4ece4;">
+                        <p
+                            style="font-size: 0.82rem; font-weight: 600; color: var(--sage-dark); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em;">
+                            Tips for best results</p>
                         <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;"><span>🪑</span>Sit or lie comfortably with your spine straight</li>
-                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;"><span>👃</span>Breathe through your nose when possible</li>
-                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;"><span>🔁</span>Aim for at least 4–6 full cycles per session</li>
-                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;"><span>😌</span>Let your shoulders drop and jaw unclench</li>
+                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;">
+                                <span>🪑</span>Sit or lie comfortably with your spine straight
+                            </li>
+                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;">
+                                <span>👃</span>Breathe through your nose when possible
+                            </li>
+                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;">
+                                <span>🔁</span>Aim for at least 4–6 full cycles per session
+                            </li>
+                            <li style="font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px;">
+                                <span>😌</span>Let your shoulders drop and jaw unclench
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -962,11 +1408,14 @@
                     </div>
 
                     <div class="breath-controls">
-                        <button class="btn-breath btn-start" id="breath-start-btn" onclick="startBreathing()">▶ Start</button>
-                        <button class="btn-breath btn-stop" id="breath-stop-btn" onclick="stopBreathing()" style="display:none;">■ Stop</button>
+                        <button class="btn-breath btn-start" id="breath-start-btn" onclick="startBreathing()">▶
+                            Start</button>
+                        <button class="btn-breath btn-stop" id="breath-stop-btn" onclick="stopBreathing()"
+                            style="display:none;">■ Stop</button>
                     </div>
 
-                    <p style="font-size: 0.78rem; color: var(--muted); text-align: center; max-width: 240px; line-height: 1.6;">
+                    <p
+                        style="font-size: 0.78rem; color: var(--muted); text-align: center; max-width: 240px; line-height: 1.6;">
                         The circle grows as you inhale and shrinks as you exhale. Follow its lead.
                     </p>
                 </div>
@@ -1006,7 +1455,8 @@
                 <button class="diff-btn active" onclick="setMemDifficulty('easy', this)">Easy (4×4)</button>
                 <button class="diff-btn" onclick="setMemDifficulty('medium', this)">Medium (5×4)</button>
                 <button class="diff-btn" onclick="setMemDifficulty('hard', this)">Hard (6×4)</button>
-                <button class="btn-game btn-outline-sage" onclick="resetMemory()" style="margin-left: auto;">🔄 New Game</button>
+                <button class="btn-game btn-outline-sage" onclick="resetMemory()" style="margin-left: auto;">🔄 New
+                    Game</button>
             </div>
 
             <div class="card-grid grid-4x4" id="card-grid" role="list" aria-label="Memory card grid"></div>
@@ -1028,7 +1478,8 @@
             <div class="sequence-game-wrap">
                 <div class="seq-header">
                     <h2>Pattern Recall</h2>
-                    <p>Watch the tile sequence carefully, then repeat it in the exact same order. Each round adds one more step.</p>
+                    <p>Watch the tile sequence carefully, then repeat it in the exact same order. Each round adds one
+                        more step.</p>
                 </div>
 
                 <div class="seq-scoreboard">
@@ -1073,7 +1524,8 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <div class="f-logo">
-                    <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy" style="filter:brightness(0) invert(1);opacity:0.85;" />
+                    <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy"
+                        style="filter:brightness(0) invert(1);opacity:0.85;" />
                 </div>
                 <p>A calm mental health platform with free educational content and a directory of verified experts.</p>
             </div>
@@ -1082,13 +1534,14 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="experts.html">Find an Expert</a></li>
                     <li><a href="games.html">Mind Games</a></li>
+                    <li><a href="sounds.html">Soothing Sounds</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Support</h5>
                 <ul>
+                    <li><a href="experts.html">Speak to Expert</a></li>
                     <li><a href="crisis.html">Crisis Resources</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="login.html">Sign In</a></li>
@@ -1104,7 +1557,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or treatment.
+            © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or
+            treatment.
         </div>
     </footer>
 
@@ -1115,207 +1569,207 @@
         <button class="bar-close" id="bar-close" aria-label="Dismiss">✕</button>
     </aside>
 
-<script>
-// ══════════════════════════════════════
-// TAB SWITCHING
-// ══════════════════════════════════════
-function switchTab(name) {
-    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    document.getElementById('tab-' + name).setAttribute('aria-selected', 'true');
-    document.getElementById('panel-' + name).classList.add('active');
-    // Init memory on first open
-    if (name === 'memory' && !memInitialized) { initMemory(); memInitialized = true; }
-    if (name === 'sequence' && !seqInitialized) { buildSeqGrid(); seqInitialized = true; }
-}
-
-// ══════════════════════════════════════
-// BREATHING GAME
-// ══════════════════════════════════════
-const PATTERNS = {
-    box:       { phases: ['inhale','hold-in','exhale','hold-out'], durations: [4,4,4,4], labels: ['Breathe In','Hold','Breathe Out','Hold'] },
-    '478':     { phases: ['inhale','hold-in','exhale'],            durations: [4,7,8],   labels: ['Breathe In','Hold','Breathe Out'] },
-    calm:      { phases: ['inhale','hold-in','exhale'],            durations: [5,2,6],   labels: ['Breathe In','Hold','Breathe Out'] },
-    energize:  { phases: ['inhale','exhale'],                      durations: [3,3],     labels: ['Breathe In','Breathe Out'] }
-};
-
-let currentPattern = 'box';
-let breathRunning = false;
-let breathPhaseIdx = 0;
-let breathCountdown = null;
-let breathTick = null;
-let breathCycles = 0;
-let breathSeconds = 0;
-let breathTimer = null;
-let bestCycles = 0;
-let breathCount = 0;
-
-function selectPattern(el) {
-    document.querySelectorAll('.pattern-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    currentPattern = el.dataset.pattern;
-    if (breathRunning) stopBreathing();
-    resetBreathDisplay();
-}
-
-function resetBreathDisplay() {
-    document.getElementById('phase-label').textContent = 'Press Start';
-    document.getElementById('phase-count').textContent = '';
-    document.getElementById('phase-tap').textContent = PATTERNS[currentPattern].labels[0] + ' → ' + PATTERNS[currentPattern].labels.slice(-1)[0];
-    document.getElementById('breath-circle').className = 'breath-circle';
-    document.getElementById('breath-progress').style.width = '0%';
-    document.getElementById('breath-ring').classList.remove('visible');
-}
-
-function startBreathing() {
-    if (breathRunning) return;
-    breathRunning = true;
-    breathCycles = 0;
-    breathSeconds = 0;
-    breathPhaseIdx = 0;
-    document.getElementById('cycle-count').textContent = 0;
-    document.getElementById('total-time').textContent = '0:00';
-    document.getElementById('breath-start-btn').style.display = 'none';
-    document.getElementById('breath-stop-btn').style.display = '';
-    document.getElementById('breath-ring').classList.add('visible');
-    breathTimer = setInterval(() => {
-        breathSeconds++;
-        const m = Math.floor(breathSeconds / 60);
-        const s = breathSeconds % 60;
-        document.getElementById('total-time').textContent = m + ':' + String(s).padStart(2, '0');
-    }, 1000);
-    runBreathPhase();
-}
-
-function runBreathPhase() {
-    if (!breathRunning) return;
-    const pat = PATTERNS[currentPattern];
-    const phase = pat.phases[breathPhaseIdx];
-    const dur = pat.durations[breathPhaseIdx];
-    const label = pat.labels[breathPhaseIdx];
-
-    // Update circle class
-    const circle = document.getElementById('breath-circle');
-    circle.className = 'breath-circle ' + phase;
-    circle.style.setProperty('--inhale-dur', dur + 's');
-    circle.style.setProperty('--hold-in-dur', dur + 's');
-    circle.style.setProperty('--exhale-dur', dur + 's');
-    circle.style.setProperty('--hold-out-dur', dur + 's');
-
-    document.getElementById('phase-label').textContent = label;
-    document.getElementById('phase-tap').textContent = '';
-
-    // Countdown
-    breathCount = dur;
-    document.getElementById('phase-count').textContent = breathCount;
-    document.getElementById('breath-progress').style.width = '0%';
-
-    let elapsed = 0;
-    clearInterval(breathCountdown);
-    breathCountdown = setInterval(() => {
-        elapsed++;
-        breathCount--;
-        const pct = (elapsed / dur) * 100;
-        document.getElementById('breath-progress').style.width = pct + '%';
-        if (breathCount > 0) {
-            document.getElementById('phase-count').textContent = breathCount;
-        } else {
-            document.getElementById('phase-count').textContent = '';
-            clearInterval(breathCountdown);
-            // Advance phase
-            breathPhaseIdx = (breathPhaseIdx + 1) % pat.phases.length;
-            if (breathPhaseIdx === 0) {
-                breathCycles++;
-                document.getElementById('cycle-count').textContent = breathCycles;
-                if (breathCycles > bestCycles) {
-                    bestCycles = breathCycles;
-                    document.getElementById('session-best').textContent = bestCycles;
-                }
-            }
-            setTimeout(() => { if (breathRunning) runBreathPhase(); }, 120);
+    <script>
+        // ══════════════════════════════════════
+        // TAB SWITCHING
+        // ══════════════════════════════════════
+        function switchTab(name) {
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            document.getElementById('tab-' + name).setAttribute('aria-selected', 'true');
+            document.getElementById('panel-' + name).classList.add('active');
+            // Init memory on first open
+            if (name === 'memory' && !memInitialized) { initMemory(); memInitialized = true; }
+            if (name === 'sequence' && !seqInitialized) { buildSeqGrid(); seqInitialized = true; }
         }
-    }, 1000);
-}
 
-function stopBreathing() {
-    breathRunning = false;
-    clearInterval(breathCountdown);
-    clearInterval(breathTimer);
-    document.getElementById('breath-start-btn').style.display = '';
-    document.getElementById('breath-stop-btn').style.display = 'none';
-    document.getElementById('breath-ring').classList.remove('visible');
-    const circle = document.getElementById('breath-circle');
-    circle.className = 'breath-circle';
-    document.getElementById('phase-label').textContent = 'Paused';
-    document.getElementById('phase-count').textContent = '';
-    document.getElementById('phase-tap').textContent = 'Press Start to continue';
-    document.getElementById('breath-progress').style.width = '0%';
-}
+        // ══════════════════════════════════════
+        // BREATHING GAME
+        // ══════════════════════════════════════
+        const PATTERNS = {
+            box: { phases: ['inhale', 'hold-in', 'exhale', 'hold-out'], durations: [4, 4, 4, 4], labels: ['Breathe In', 'Hold', 'Breathe Out', 'Hold'] },
+            '478': { phases: ['inhale', 'hold-in', 'exhale'], durations: [4, 7, 8], labels: ['Breathe In', 'Hold', 'Breathe Out'] },
+            calm: { phases: ['inhale', 'hold-in', 'exhale'], durations: [5, 2, 6], labels: ['Breathe In', 'Hold', 'Breathe Out'] },
+            energize: { phases: ['inhale', 'exhale'], durations: [3, 3], labels: ['Breathe In', 'Breathe Out'] }
+        };
 
-// ══════════════════════════════════════
-// MEMORY MATCH
-// ══════════════════════════════════════
-const EMOJI_POOL = ['🌿','🌸','🦋','🌊','🍃','☀️','🌙','🦉','🌺','🐝','🍀','🌻','🌈','❄️','🌾','🦚','🐬','🌴','🦋','🌷','🐠','🍁','🌟','🐉'];
-let memDifficulty = 'easy';
-let memCards = [];
-let flippedCards = [];
-let memMoves = 0;
-let memPairs = 0;
-let memTotalPairs = 0;
-let memTimerInterval = null;
-let memSeconds = 0;
-let memLocked = false;
-let memInitialized = false;
+        let currentPattern = 'box';
+        let breathRunning = false;
+        let breathPhaseIdx = 0;
+        let breathCountdown = null;
+        let breathTick = null;
+        let breathCycles = 0;
+        let breathSeconds = 0;
+        let breathTimer = null;
+        let bestCycles = 0;
+        let breathCount = 0;
 
-function setMemDifficulty(diff, btn) {
-    memDifficulty = diff;
-    document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const grid = document.getElementById('card-grid');
-    grid.className = 'card-grid';
-    if (diff === 'easy') grid.classList.add('grid-4x4');
-    else if (diff === 'medium') grid.classList.add('grid-5x4');
-    else grid.classList.add('grid-6x4');
-    resetMemory();
-}
+        function selectPattern(el) {
+            document.querySelectorAll('.pattern-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            currentPattern = el.dataset.pattern;
+            if (breathRunning) stopBreathing();
+            resetBreathDisplay();
+        }
 
-function initMemory() {
-    resetMemory();
-}
+        function resetBreathDisplay() {
+            document.getElementById('phase-label').textContent = 'Press Start';
+            document.getElementById('phase-count').textContent = '';
+            document.getElementById('phase-tap').textContent = PATTERNS[currentPattern].labels[0] + ' → ' + PATTERNS[currentPattern].labels.slice(-1)[0];
+            document.getElementById('breath-circle').className = 'breath-circle';
+            document.getElementById('breath-progress').style.width = '0%';
+            document.getElementById('breath-ring').classList.remove('visible');
+        }
 
-function resetMemory() {
-    clearInterval(memTimerInterval);
-    memMoves = 0; memPairs = 0; memSeconds = 0; memLocked = false;
-    flippedCards = [];
-    document.getElementById('mem-moves').textContent = 0;
-    document.getElementById('mem-pairs').textContent = 0;
-    document.getElementById('mem-timer').textContent = '0:00';
-    document.getElementById('mem-win').classList.remove('show');
+        function startBreathing() {
+            if (breathRunning) return;
+            breathRunning = true;
+            breathCycles = 0;
+            breathSeconds = 0;
+            breathPhaseIdx = 0;
+            document.getElementById('cycle-count').textContent = 0;
+            document.getElementById('total-time').textContent = '0:00';
+            document.getElementById('breath-start-btn').style.display = 'none';
+            document.getElementById('breath-stop-btn').style.display = '';
+            document.getElementById('breath-ring').classList.add('visible');
+            breathTimer = setInterval(() => {
+                breathSeconds++;
+                const m = Math.floor(breathSeconds / 60);
+                const s = breathSeconds % 60;
+                document.getElementById('total-time').textContent = m + ':' + String(s).padStart(2, '0');
+            }, 1000);
+            runBreathPhase();
+        }
 
-    let pairCount = memDifficulty === 'easy' ? 8 : memDifficulty === 'medium' ? 10 : 12;
-    memTotalPairs = pairCount;
+        function runBreathPhase() {
+            if (!breathRunning) return;
+            const pat = PATTERNS[currentPattern];
+            const phase = pat.phases[breathPhaseIdx];
+            const dur = pat.durations[breathPhaseIdx];
+            const label = pat.labels[breathPhaseIdx];
 
-    let chosen = EMOJI_POOL.slice(0, pairCount);
-    let deck = [...chosen, ...chosen];
-    // Shuffle
-    for (let i = deck.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
+            // Update circle class
+            const circle = document.getElementById('breath-circle');
+            circle.className = 'breath-circle ' + phase;
+            circle.style.setProperty('--inhale-dur', dur + 's');
+            circle.style.setProperty('--hold-in-dur', dur + 's');
+            circle.style.setProperty('--exhale-dur', dur + 's');
+            circle.style.setProperty('--hold-out-dur', dur + 's');
 
-    const grid = document.getElementById('card-grid');
-    grid.innerHTML = '';
-    memCards = deck.map((emoji, i) => ({ emoji, id: i, matched: false }));
+            document.getElementById('phase-label').textContent = label;
+            document.getElementById('phase-tap').textContent = '';
 
-    deck.forEach((emoji, idx) => {
-        const card = document.createElement('div');
-        card.className = 'mem-card';
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', 'Card ' + (idx + 1) + ', face down');
-        card.setAttribute('tabindex', '0');
-        card.dataset.idx = idx;
-        card.innerHTML = `
+            // Countdown
+            breathCount = dur;
+            document.getElementById('phase-count').textContent = breathCount;
+            document.getElementById('breath-progress').style.width = '0%';
+
+            let elapsed = 0;
+            clearInterval(breathCountdown);
+            breathCountdown = setInterval(() => {
+                elapsed++;
+                breathCount--;
+                const pct = (elapsed / dur) * 100;
+                document.getElementById('breath-progress').style.width = pct + '%';
+                if (breathCount > 0) {
+                    document.getElementById('phase-count').textContent = breathCount;
+                } else {
+                    document.getElementById('phase-count').textContent = '';
+                    clearInterval(breathCountdown);
+                    // Advance phase
+                    breathPhaseIdx = (breathPhaseIdx + 1) % pat.phases.length;
+                    if (breathPhaseIdx === 0) {
+                        breathCycles++;
+                        document.getElementById('cycle-count').textContent = breathCycles;
+                        if (breathCycles > bestCycles) {
+                            bestCycles = breathCycles;
+                            document.getElementById('session-best').textContent = bestCycles;
+                        }
+                    }
+                    setTimeout(() => { if (breathRunning) runBreathPhase(); }, 120);
+                }
+            }, 1000);
+        }
+
+        function stopBreathing() {
+            breathRunning = false;
+            clearInterval(breathCountdown);
+            clearInterval(breathTimer);
+            document.getElementById('breath-start-btn').style.display = '';
+            document.getElementById('breath-stop-btn').style.display = 'none';
+            document.getElementById('breath-ring').classList.remove('visible');
+            const circle = document.getElementById('breath-circle');
+            circle.className = 'breath-circle';
+            document.getElementById('phase-label').textContent = 'Paused';
+            document.getElementById('phase-count').textContent = '';
+            document.getElementById('phase-tap').textContent = 'Press Start to continue';
+            document.getElementById('breath-progress').style.width = '0%';
+        }
+
+        // ══════════════════════════════════════
+        // MEMORY MATCH
+        // ══════════════════════════════════════
+        const EMOJI_POOL = ['🌿', '🌸', '🦋', '🌊', '🍃', '☀️', '🌙', '🦉', '🌺', '🐝', '🍀', '🌻', '🌈', '❄️', '🌾', '🦚', '🐬', '🌴', '🦋', '🌷', '🐠', '🍁', '🌟', '🐉'];
+        let memDifficulty = 'easy';
+        let memCards = [];
+        let flippedCards = [];
+        let memMoves = 0;
+        let memPairs = 0;
+        let memTotalPairs = 0;
+        let memTimerInterval = null;
+        let memSeconds = 0;
+        let memLocked = false;
+        let memInitialized = false;
+
+        function setMemDifficulty(diff, btn) {
+            memDifficulty = diff;
+            document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const grid = document.getElementById('card-grid');
+            grid.className = 'card-grid';
+            if (diff === 'easy') grid.classList.add('grid-4x4');
+            else if (diff === 'medium') grid.classList.add('grid-5x4');
+            else grid.classList.add('grid-6x4');
+            resetMemory();
+        }
+
+        function initMemory() {
+            resetMemory();
+        }
+
+        function resetMemory() {
+            clearInterval(memTimerInterval);
+            memMoves = 0; memPairs = 0; memSeconds = 0; memLocked = false;
+            flippedCards = [];
+            document.getElementById('mem-moves').textContent = 0;
+            document.getElementById('mem-pairs').textContent = 0;
+            document.getElementById('mem-timer').textContent = '0:00';
+            document.getElementById('mem-win').classList.remove('show');
+
+            let pairCount = memDifficulty === 'easy' ? 8 : memDifficulty === 'medium' ? 10 : 12;
+            memTotalPairs = pairCount;
+
+            let chosen = EMOJI_POOL.slice(0, pairCount);
+            let deck = [...chosen, ...chosen];
+            // Shuffle
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+
+            const grid = document.getElementById('card-grid');
+            grid.innerHTML = '';
+            memCards = deck.map((emoji, i) => ({ emoji, id: i, matched: false }));
+
+            deck.forEach((emoji, idx) => {
+                const card = document.createElement('div');
+                card.className = 'mem-card';
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', 'Card ' + (idx + 1) + ', face down');
+                card.setAttribute('tabindex', '0');
+                card.dataset.idx = idx;
+                card.innerHTML = `
             <div class="mem-card-inner">
                 <div class="mem-card-face mem-card-front">
                     <div class="card-pattern">
@@ -1326,209 +1780,210 @@ function resetMemory() {
                     <span class="card-emoji">${emoji}</span>
                 </div>
             </div>`;
-        card.addEventListener('click', () => flipCard(card, idx, emoji));
-        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') flipCard(card, idx, emoji); });
-        grid.appendChild(card);
-    });
+                card.addEventListener('click', () => flipCard(card, idx, emoji));
+                card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') flipCard(card, idx, emoji); });
+                grid.appendChild(card);
+            });
 
-    // Start timer on first flip (handled in flipCard)
-}
+            // Start timer on first flip (handled in flipCard)
+        }
 
-function flipCard(cardEl, idx, emoji) {
-    if (memLocked || cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
-    if (flippedCards.length === 2) return;
+        function flipCard(cardEl, idx, emoji) {
+            if (memLocked || cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+            if (flippedCards.length === 2) return;
 
-    // Start timer on first flip
-    if (memMoves === 0 && flippedCards.length === 0 && !memTimerInterval) {
-        memTimerInterval = setInterval(() => {
-            memSeconds++;
+            // Start timer on first flip
+            if (memMoves === 0 && flippedCards.length === 0 && !memTimerInterval) {
+                memTimerInterval = setInterval(() => {
+                    memSeconds++;
+                    const m = Math.floor(memSeconds / 60);
+                    const s = memSeconds % 60;
+                    document.getElementById('mem-timer').textContent = m + ':' + String(s).padStart(2, '0');
+                }, 1000);
+            }
+
+            cardEl.classList.add('flipped');
+            cardEl.setAttribute('aria-label', 'Card ' + (idx + 1) + ': ' + emoji);
+            flippedCards.push({ el: cardEl, emoji, idx });
+
+            if (flippedCards.length === 2) {
+                memMoves++;
+                document.getElementById('mem-moves').textContent = memMoves;
+                memLocked = true;
+
+                if (flippedCards[0].emoji === flippedCards[1].emoji) {
+                    // Match!
+                    memPairs++;
+                    document.getElementById('mem-pairs').textContent = memPairs;
+                    setTimeout(() => {
+                        flippedCards.forEach(c => {
+                            c.el.classList.add('matched');
+                            c.el.setAttribute('aria-label', c.emoji + ' — matched');
+                        });
+                        flippedCards = [];
+                        memLocked = false;
+                        if (memPairs === memTotalPairs) showMemWin();
+                    }, 400);
+                } else {
+                    // No match
+                    setTimeout(() => {
+                        flippedCards.forEach(c => {
+                            c.el.classList.add('shake');
+                            setTimeout(() => c.el.classList.remove('shake'), 400);
+                            c.el.classList.remove('flipped');
+                            c.el.setAttribute('aria-label', 'Card face down');
+                        });
+                        flippedCards = [];
+                        memLocked = false;
+                    }, 900);
+                }
+            }
+        }
+
+        function showMemWin() {
+            clearInterval(memTimerInterval);
+            memTimerInterval = null;
             const m = Math.floor(memSeconds / 60);
             const s = memSeconds % 60;
-            document.getElementById('mem-timer').textContent = m + ':' + String(s).padStart(2, '0');
-        }, 1000);
-    }
-
-    cardEl.classList.add('flipped');
-    cardEl.setAttribute('aria-label', 'Card ' + (idx + 1) + ': ' + emoji);
-    flippedCards.push({ el: cardEl, emoji, idx });
-
-    if (flippedCards.length === 2) {
-        memMoves++;
-        document.getElementById('mem-moves').textContent = memMoves;
-        memLocked = true;
-
-        if (flippedCards[0].emoji === flippedCards[1].emoji) {
-            // Match!
-            memPairs++;
-            document.getElementById('mem-pairs').textContent = memPairs;
-            setTimeout(() => {
-                flippedCards.forEach(c => {
-                    c.el.classList.add('matched');
-                    c.el.setAttribute('aria-label', c.emoji + ' — matched');
-                });
-                flippedCards = [];
-                memLocked = false;
-                if (memPairs === memTotalPairs) showMemWin();
-            }, 400);
-        } else {
-            // No match
-            setTimeout(() => {
-                flippedCards.forEach(c => {
-                    c.el.classList.add('shake');
-                    setTimeout(() => c.el.classList.remove('shake'), 400);
-                    c.el.classList.remove('flipped');
-                    c.el.setAttribute('aria-label', 'Card face down');
-                });
-                flippedCards = [];
-                memLocked = false;
-            }, 900);
+            const timeStr = m + ':' + String(s).padStart(2, '0');
+            document.getElementById('win-message').textContent =
+                `Solved in ${memMoves} moves and ${timeStr}. ${memMoves < memTotalPairs * 2 + 4 ? 'Outstanding memory!' : 'Well done!'} `;
+            document.getElementById('mem-win').classList.add('show');
         }
-    }
-}
 
-function showMemWin() {
-    clearInterval(memTimerInterval);
-    memTimerInterval = null;
-    const m = Math.floor(memSeconds / 60);
-    const s = memSeconds % 60;
-    const timeStr = m + ':' + String(s).padStart(2, '0');
-    document.getElementById('win-message').textContent =
-        `Solved in ${memMoves} moves and ${timeStr}. ${memMoves < memTotalPairs * 2 + 4 ? 'Outstanding memory!' : 'Well done!'} `;
-    document.getElementById('mem-win').classList.add('show');
-}
+        // ══════════════════════════════════════
+        // SEQUENCE / PATTERN RECALL
+        // ══════════════════════════════════════
+        let seqSequence = [];
+        let seqPlayerIdx = 0;
+        let seqLevel = 1;
+        let seqBest = 0;
+        let seqStreak = 0;
+        let seqPlaying = false;
+        let seqCanClick = false;
+        let seqInitialized = false;
 
-// ══════════════════════════════════════
-// SEQUENCE / PATTERN RECALL
-// ══════════════════════════════════════
-let seqSequence = [];
-let seqPlayerIdx = 0;
-let seqLevel = 1;
-let seqBest = 0;
-let seqStreak = 0;
-let seqPlaying = false;
-let seqCanClick = false;
-let seqInitialized = false;
+        function buildSeqGrid() {
+            // already built in HTML
+        }
 
-function buildSeqGrid() {
-    // already built in HTML
-}
-
-function startSequence() {
-    seqLevel = 1;
-    seqSequence = [];
-    seqStreak = 0;
-    updateSeqDisplay();
-    document.getElementById('seq-start-btn').disabled = true;
-    addAndPlay();
-}
-
-function resetSequence() {
-    seqSequence = [];
-    seqLevel = 1;
-    seqPlayerIdx = 0;
-    seqCanClick = false;
-    seqStreak = 0;
-    updateSeqDisplay();
-    document.getElementById('seq-status').textContent = 'Press Start to play';
-    document.getElementById('seq-status').className = 'seq-status';
-    document.getElementById('seq-start-btn').disabled = false;
-    document.getElementById('seq-start-btn').textContent = '▶ Start Game';
-}
-
-function addAndPlay() {
-    const newTile = Math.floor(Math.random() * 9);
-    seqSequence.push(newTile);
-    seqPlayerIdx = 0;
-    seqCanClick = false;
-
-    const status = document.getElementById('seq-status');
-    status.textContent = 'Watch the pattern…';
-    status.className = 'seq-status';
-
-    playSequence(0);
-}
-
-function playSequence(step) {
-    if (step >= seqSequence.length) {
-        setTimeout(() => {
-            seqCanClick = true;
-            document.getElementById('seq-status').textContent = 'Your turn! Repeat the pattern.';
-        }, 400);
-        return;
-    }
-    const tileIdx = seqSequence[step];
-    setTimeout(() => {
-        flashTile(tileIdx, () => { playSequence(step + 1); });
-    }, step === 0 ? 600 : 0);
-}
-
-function flashTile(idx, cb) {
-    const tile = document.querySelectorAll('.seq-tile')[idx];
-    tile.classList.add('lit');
-    setTimeout(() => {
-        tile.classList.remove('lit');
-        setTimeout(cb, 300);
-    }, 550);
-}
-
-function seqTileClick(idx) {
-    if (!seqCanClick) return;
-    const tile = document.querySelectorAll('.seq-tile')[idx];
-    tile.classList.add('player-press');
-    setTimeout(() => tile.classList.remove('player-press'), 150);
-
-    if (seqSequence[seqPlayerIdx] === idx) {
-        seqPlayerIdx++;
-        if (seqPlayerIdx === seqSequence.length) {
-            // Round complete
-            seqCanClick = false;
-            seqStreak++;
-            seqLevel++;
-            if (seqLevel - 1 > seqBest) {
-                seqBest = seqLevel - 1;
-                document.getElementById('seq-best').textContent = seqBest;
-            }
-            document.getElementById('seq-streak').textContent = seqStreak;
-            const status = document.getElementById('seq-status');
-            status.textContent = '✓ Correct! Get ready for level ' + seqLevel + '…';
-            status.className = 'seq-status success';
+        function startSequence() {
+            seqLevel = 1;
+            seqSequence = [];
+            seqStreak = 0;
             updateSeqDisplay();
-            setTimeout(addAndPlay, 1200);
+            document.getElementById('seq-start-btn').disabled = true;
+            addAndPlay();
         }
-    } else {
-        // Wrong tile
-        seqCanClick = false;
-        seqStreak = 0;
-        document.getElementById('seq-streak').textContent = 0;
-        const status = document.getElementById('seq-status');
-        status.textContent = '✗ Wrong! You reached level ' + (seqLevel) + '. Press Start to try again.';
-        status.className = 'seq-status fail';
-        tile.classList.add('wrong');
-        setTimeout(() => tile.classList.remove('wrong'), 500);
-        document.getElementById('seq-start-btn').disabled = false;
-        document.getElementById('seq-start-btn').textContent = '▶ Try Again';
-    }
-}
 
-function updateSeqDisplay() {
-    document.getElementById('seq-level').textContent = seqLevel;
-    if (seqBest > 0) document.getElementById('seq-best').textContent = seqBest;
-}
+        function resetSequence() {
+            seqSequence = [];
+            seqLevel = 1;
+            seqPlayerIdx = 0;
+            seqCanClick = false;
+            seqStreak = 0;
+            updateSeqDisplay();
+            document.getElementById('seq-status').textContent = 'Press Start to play';
+            document.getElementById('seq-status').className = 'seq-status';
+            document.getElementById('seq-start-btn').disabled = false;
+            document.getElementById('seq-start-btn').textContent = '▶ Start Game';
+        }
 
-// ══════════════════════════════════════
-// NAV + MISC
-// ══════════════════════════════════════
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open);
-});
+        function addAndPlay() {
+            const newTile = Math.floor(Math.random() * 9);
+            seqSequence.push(newTile);
+            seqPlayerIdx = 0;
+            seqCanClick = false;
 
-document.getElementById('bar-close').addEventListener('click', () => {
-    document.getElementById('crisis-bar').style.display = 'none';
-    document.body.style.paddingBottom = '0';
-});
-</script>
+            const status = document.getElementById('seq-status');
+            status.textContent = 'Watch the pattern…';
+            status.className = 'seq-status';
+
+            playSequence(0);
+        }
+
+        function playSequence(step) {
+            if (step >= seqSequence.length) {
+                setTimeout(() => {
+                    seqCanClick = true;
+                    document.getElementById('seq-status').textContent = 'Your turn! Repeat the pattern.';
+                }, 400);
+                return;
+            }
+            const tileIdx = seqSequence[step];
+            setTimeout(() => {
+                flashTile(tileIdx, () => { playSequence(step + 1); });
+            }, step === 0 ? 600 : 0);
+        }
+
+        function flashTile(idx, cb) {
+            const tile = document.querySelectorAll('.seq-tile')[idx];
+            tile.classList.add('lit');
+            setTimeout(() => {
+                tile.classList.remove('lit');
+                setTimeout(cb, 300);
+            }, 550);
+        }
+
+        function seqTileClick(idx) {
+            if (!seqCanClick) return;
+            const tile = document.querySelectorAll('.seq-tile')[idx];
+            tile.classList.add('player-press');
+            setTimeout(() => tile.classList.remove('player-press'), 150);
+
+            if (seqSequence[seqPlayerIdx] === idx) {
+                seqPlayerIdx++;
+                if (seqPlayerIdx === seqSequence.length) {
+                    // Round complete
+                    seqCanClick = false;
+                    seqStreak++;
+                    seqLevel++;
+                    if (seqLevel - 1 > seqBest) {
+                        seqBest = seqLevel - 1;
+                        document.getElementById('seq-best').textContent = seqBest;
+                    }
+                    document.getElementById('seq-streak').textContent = seqStreak;
+                    const status = document.getElementById('seq-status');
+                    status.textContent = '✓ Correct! Get ready for level ' + seqLevel + '…';
+                    status.className = 'seq-status success';
+                    updateSeqDisplay();
+                    setTimeout(addAndPlay, 1200);
+                }
+            } else {
+                // Wrong tile
+                seqCanClick = false;
+                seqStreak = 0;
+                document.getElementById('seq-streak').textContent = 0;
+                const status = document.getElementById('seq-status');
+                status.textContent = '✗ Wrong! You reached level ' + (seqLevel) + '. Press Start to try again.';
+                status.className = 'seq-status fail';
+                tile.classList.add('wrong');
+                setTimeout(() => tile.classList.remove('wrong'), 500);
+                document.getElementById('seq-start-btn').disabled = false;
+                document.getElementById('seq-start-btn').textContent = '▶ Try Again';
+            }
+        }
+
+        function updateSeqDisplay() {
+            document.getElementById('seq-level').textContent = seqLevel;
+            if (seqBest > 0) document.getElementById('seq-best').textContent = seqBest;
+        }
+
+        // ══════════════════════════════════════
+        // NAV + MISC
+        // ══════════════════════════════════════
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', open);
+        });
+
+        document.getElementById('bar-close').addEventListener('click', () => {
+            document.getElementById('crisis-bar').style.display = 'none';
+            document.body.style.paddingBottom = '0';
+        });
+    </script>
 </body>
+
 </html>

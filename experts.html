@@ -4,513 +4,617 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find an Expert — MindQuilt</title>
-    <meta name="description" content="Browse MindQuilt's curated directory of licensed therapists, counselors, and coaches. Filter by specialty, read profiles, and book a session at your own pace." />
+    <title>Speak to an Expert — MindQuilt</title>
+    <meta name="description"
+        content="Find a verified mental health professional you trust. Browse clinical psychologists, career counselors, and life coaches." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
-            --sage: #8FAF8F;
-            --sage-dark: #5e8a5e;
-            --sage-mid: #6e936e;
-            --sage-light: #C8DCC8;
-            --sage-bg: #EDF4ED;
-            --sage-pale: #f4f9f4;
-            --off-white: #F9F7F4;
-            --charcoal: #2D2D2D;
+            --white: #ffffff;
+            --off-white: #f7f9f6;
+            --charcoal: #2c2c2c;
+            --muted: #7a7a7a;
+            --sage: #8faf8f;
+            --sage-mid: #6d926d;
+            --sage-dark: #4a6b4a;
+            --sage-light: #b5d3b5;
+            --sage-bg: #eaf2ea;
             --clay: #C4826A;
-            --clay-dark: #b3735b;
-            --white: #FFFFFF;
-            --muted: #6b7b6b;
-            --radius: 12px;
-            --max-w: 1100px;
+            --clay-dark: #A66B55;
             --font-head: 'DM Serif Display', serif;
             --font-body: 'DM Sans', sans-serif;
+            --max-w: 1100px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 36px rgba(143, 175, 143, 0.18);
         }
 
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--off-white); color: var(--charcoal); line-height: 1.7; min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 56px; }
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; display: block; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding-bottom: 52px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         /* ── Nav ── */
-        .nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e4ece4; position: sticky; top: 0; z-index: 100; }
-        .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 66px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { font-family: var(--font-head); font-size: 1.35rem; color: var(--charcoal); display: flex; align-items: center; gap: 10px; }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--charcoal); opacity: 0.65; transition: opacity 0.2s, color 0.2s; }
-        .nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; color: var(--sage-dark); }
-        .nav-cta-btn { background: var(--sage) !important; color: var(--white) !important; opacity: 1 !important; padding: 8px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 600; }
-        .nav-cta-btn:hover { background: var(--sage-mid) !important; }
-        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; }
-
-        /* ── Page Hero ── */
-        .page-hero {
-            background: linear-gradient(155deg, #d3e8d3 0%, #edf4ed 50%, var(--off-white) 100%);
-            padding: 60px 24px 52px;
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid #e6ede6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .page-hero-inner {
+        .nav-inner {
             max-width: var(--max-w);
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
-        .page-hero-label {
-            font-size: 0.73rem;
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: var(--sage);
+        }
+
+        .nav-cta-btn {
+            background: var(--sage) !important;
+            color: var(--white) !important;
+            opacity: 1 !important;
+            padding: 8px 20px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta-btn:hover {
+            background: var(--sage-mid) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ── Hero ── */
+        .page-hero {
+            text-align: center;
+            padding: 64px 24px 48px;
+            background: linear-gradient(160deg, #daeada 0%, var(--sage-bg) 60%);
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--sage-dark);
-            margin-bottom: 10px;
+            color: var(--sage);
+            background: rgba(143, 175, 143, 0.12);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
 
         .page-hero h1 {
             font-family: var(--font-head);
-            font-size: clamp(1.9rem, 4vw, 2.8rem);
-            line-height: 1.15;
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
+            line-height: 1.25;
             color: var(--charcoal);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .page-hero h1 em { font-style: italic; color: var(--sage-dark); }
-        .page-hero p { font-size: 1rem; color: var(--muted); max-width: 480px; line-height: 1.8; }
-
-        .hero-trust-pills {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--sage-dark);
         }
 
-        .trust-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--white);
-            border: 1px solid #e4ece4;
-            border-radius: 100px;
-            padding: 6px 14px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--charcoal);
-        }
-
-        .trust-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); }
-
-        .hero-stat-box {
-            background: var(--white);
-            border: 1px solid #e4ece4;
-            border-radius: 16px;
-            padding: 28px 32px;
-            text-align: center;
-            min-width: 160px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .hero-stat-num { font-family: var(--font-head); font-size: 2.2rem; color: var(--sage-dark); display: block; line-height: 1; }
-        .hero-stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; display: block; }
-
-        /* ── Search + Filter Bar ── */
-        .filter-bar {
-            background: var(--white);
-            border-bottom: 1px solid #e4ece4;
-            padding: 20px 0;
-            position: sticky;
-            top: 66px;
-            z-index: 90;
-        }
-
-        .filter-bar-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Search */
-        .search-wrap {
-            position: relative;
-            flex: 1;
-            min-width: 220px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--muted);
+        .page-hero p {
             font-size: 1rem;
-            pointer-events: none;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── Search Bar ── */
+        .search-wrap {
+            max-width: 520px;
+            margin: 28px auto 0;
+            position: relative;
         }
 
         .search-input {
             width: 100%;
-            padding: 11px 16px 11px 42px;
-            border: 2px solid #e4ece4;
-            border-radius: 10px;
+            padding: 14px 48px 14px 20px;
+            border: 1px solid #dce5dc;
+            border-radius: 14px;
+            font-size: 0.95rem;
             font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--charcoal);
-            background: var(--off-white);
-            outline: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .search-input:focus { border-color: var(--sage); background: var(--white); }
-        .search-input::placeholder { color: var(--muted); }
-
-        /* Filter selects */
-        .filter-select {
-            padding: 11px 36px 11px 14px;
-            border: 2px solid #e4ece4;
-            border-radius: 10px;
-            font-family: var(--font-body);
-            font-size: 0.88rem;
-            color: var(--charcoal);
-            background: var(--off-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7b6b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
-            appearance: none;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-        .filter-select:focus { border-color: var(--sage); }
-
-        .results-count { font-size: 0.85rem; color: var(--muted); white-space: nowrap; margin-left: auto; }
-        .results-count strong { color: var(--sage-dark); }
-
-        /* ── Specialty Pills (horizontal scroll) ── */
-        .specialty-bar {
             background: var(--white);
-            border-bottom: 1px solid #e4ece4;
-            padding: 0;
+            color: var(--charcoal);
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .specialty-bar-inner {
+        .search-input:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(143, 175, 143, 0.15);
+        }
+
+        .search-input::placeholder {
+            color: #b0b0b0;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: var(--muted);
+            pointer-events: none;
+        }
+
+        /* ── Filter Pills ── */
+        .filters {
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 14px 24px;
+            padding: 32px 24px 0;
             display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            scrollbar-width: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .specialty-bar-inner::-webkit-scrollbar { display: none; }
 
-        .spec-pill {
-            flex-shrink: 0;
-            padding: 7px 16px;
+        .filter-pill {
+            padding: 8px 20px;
             border-radius: 100px;
-            border: 2px solid #e4ece4;
+            border: 1px solid #dce5dc;
             background: var(--white);
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
             color: var(--muted);
             cursor: pointer;
-            transition: all 0.18s;
-            white-space: nowrap;
+            transition: all 0.2s;
+            font-family: var(--font-body);
         }
-        .spec-pill:hover { border-color: var(--sage-light); color: var(--sage-dark); }
-        .spec-pill.active { border-color: var(--sage); background: var(--sage-bg); color: var(--sage-dark); }
 
-        /* ── Main Layout ── */
-        .experts-main {
+        .filter-pill:hover {
+            border-color: var(--sage);
+            color: var(--sage);
+        }
+
+        .filter-pill.active {
+            background: var(--sage);
+            color: var(--white);
+            border-color: var(--sage);
+        }
+
+        /* ── Expert Cards Grid ── */
+        .experts-section {
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 40px 24px 64px;
-            flex: 1;
+            padding: 40px 24px 60px;
         }
 
-        /* ── Expert Grid ── */
-        .expert-grid {
+        .experts-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
         }
 
-        /* ── Expert Card ── */
         .expert-card {
             background: var(--white);
             border-radius: 18px;
             border: 1px solid #e4ece4;
-            overflow: hidden;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
-            transition: transform 0.25s, box-shadow 0.25s;
+            gap: 18px;
         }
 
         .expert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 48px rgba(143,175,143,0.18), 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .expert-card.hidden { display: none; }
-
-        /* Photo area */
-        .expert-photo-wrap {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-            background: var(--sage-bg);
-        }
-
-        .expert-photo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            transition: transform 0.4s ease;
-        }
-
-        .expert-card:hover .expert-photo-wrap img { transform: scale(1.04); }
-
-        .expert-photo-badges {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
+        /* Card header: photo + info */
+        .expert-top {
             display: flex;
-            justify-content: space-between;
+            gap: 16px;
             align-items: flex-start;
         }
 
-        .avail-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(6px);
-            border-radius: 100px;
-            padding: 4px 10px;
-            font-size: 0.72rem;
-            font-weight: 600;
+        .expert-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--sage-bg);
+            flex-shrink: 0;
         }
 
-        .avail-dot { width: 7px; height: 7px; border-radius: 50%; }
-        .avail-dot.green { background: #4caf50; }
-        .avail-dot.yellow { background: #fbc02d; }
-
-        .avail-badge.open { color: #2e7d32; }
-        .avail-badge.limited { color: #e65100; }
-
-        .session-type-badge {
-            background: rgba(255,255,255,0.88);
-            backdrop-filter: blur(6px);
-            border-radius: 100px;
-            padding: 4px 10px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--charcoal);
-        }
-
-        /* Card body */
-        .expert-body {
-            padding: 22px 22px 0;
+        .expert-info {
             flex: 1;
+        }
+
+        .expert-name-row {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2px;
         }
 
         .expert-name {
             font-family: var(--font-head);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--charcoal);
-            margin-bottom: 1px;
         }
 
-        .expert-title {
-            font-size: 0.82rem;
-            color: var(--muted);
-            font-weight: 500;
-        }
-
-        .expert-specialties {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .spec-tag {
-            font-size: 0.69rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: rgba(143, 175, 143, 0.12);
             color: var(--sage-dark);
-            background: var(--sage-bg);
-            padding: 3px 9px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 8px;
             border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
         }
 
-        .expert-bio {
-            font-size: 0.87rem;
+        .verified-badge::before {
+            content: '✓';
+            font-weight: 700;
+        }
+
+        .expert-specialty {
+            font-size: 0.82rem;
+            color: var(--sage-mid);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .expert-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.75rem;
             color: var(--muted);
-            line-height: 1.7;
+        }
+
+        .expert-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Card body */
+        .expert-bio {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .expert-meta {
+        /* Specialties chips */
+        .expert-tags {
             display: flex;
-            gap: 16px;
-            font-size: 0.78rem;
-            color: var(--muted);
-            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
-        .meta-item { display: flex; align-items: center; gap: 4px; }
-
-        /* Card footer */
-        .expert-footer {
-            padding: 16px 22px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid #f0f4f0;
-            margin-top: 14px;
+        .expert-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 100px;
+            background: var(--sage-bg);
+            color: var(--sage-dark);
         }
 
-        .expert-price {
+        /* Card actions */
+        .expert-actions {
             display: flex;
-            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
         }
 
-        .price-num {
-            font-family: var(--font-head);
-            font-size: 1.25rem;
+        .btn-view {
+            flex: 1;
+            padding: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #dce5dc;
+            background: var(--white);
             color: var(--charcoal);
-            line-height: 1;
-        }
-
-        .price-label { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
-
-        .expert-card-btns {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-card {
-            padding: 9px 18px;
-            border-radius: 9px;
-            font-family: var(--font-body);
-            font-size: 0.83rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            border: none;
-            transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-        }
-        .btn-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
-
-        .btn-primary { background: var(--sage); color: var(--white); }
-        .btn-primary:hover { background: var(--sage-mid); }
-
-        .btn-ghost { background: var(--sage-bg); color: var(--sage-dark); }
-        .btn-ghost:hover { background: var(--sage-light); }
-
-        /* ── No results ── */
-        .no-results {
-            display: none;
             text-align: center;
-            padding: 80px 24px;
-            grid-column: 1 / -1;
-        }
-
-        .no-results.show { display: block; }
-
-        .no-results h3 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 8px; color: var(--charcoal); }
-        .no-results p { color: var(--muted); }
-
-        /* ── Apply CTA ── */
-        .apply-cta {
-            background: linear-gradient(135deg, #6e936e 0%, #8FAF8F 100%);
-            padding: 64px 24px;
-            text-align: center;
-        }
-
-        .apply-cta h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 3.5vw, 2.2rem); color: var(--white); margin-bottom: 12px; }
-        .apply-cta p { color: rgba(255,255,255,0.85); max-width: 480px; margin: 0 auto 28px; font-size: 0.95rem; line-height: 1.8; }
-
-        .btn-apply {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            color: var(--sage-dark);
+            transition: all 0.2s;
             font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 14px 32px;
+        }
+
+        .btn-view:hover {
+            border-color: var(--sage);
+            color: var(--sage);
+        }
+
+        .btn-book {
+            flex: 1;
+            padding: 10px 0;
             border-radius: 10px;
             border: none;
+            background: var(--sage);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.18s, box-shadow 0.18s;
-            text-decoration: none;
+            text-align: center;
+            transition: background 0.2s;
+            font-family: var(--font-body);
         }
-        .btn-apply:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+        .btn-book:hover {
+            background: var(--sage-mid);
+        }
+
+        /* ── No Results ── */
+        .no-results {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--muted);
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        .no-results p {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .no-results span {
+            font-size: 0.85rem;
+        }
 
         /* ── Footer ── */
-        footer { background: #1e2b1e; color: rgba(255,255,255,0.6); }
-        .footer-top { max-width: var(--max-w); margin: 0 auto; padding: 60px 24px 40px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; }
-        .footer-brand .f-logo { font-family: var(--font-head); font-size: 1.25rem; color: var(--white); display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 220px; }
-        .footer-col h5 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .footer-col a { font-size: 0.88rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
-        .footer-col a:hover { color: var(--sage-light); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 24px; max-width: var(--max-w); margin: 0 auto; font-size: 0.78rem; opacity: 0.4; }
-
-        /* ── Crisis Bar ── */
-        .crisis-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: #1e2b1e; color: var(--white); text-align: center; padding: 11px 48px; font-size: 0.86rem; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .crisis-bar a { color: var(--sage-light); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-        .crisis-bar a:hover { color: var(--white); }
-        .crisis-bar .bar-close { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1rem; cursor: pointer; padding: 4px; display: none; }
-
-        /* ── Animations ── */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        .anim { opacity: 0; }
-        .anim.visible { animation: fadeUp 0.5s ease both; }
-        .anim-d1 { animation-delay: 0.06s; }
-        .anim-d2 { animation-delay: 0.12s; }
-        .anim-d3 { animation-delay: 0.18s; }
-        .anim-d4 { animation-delay: 0.24s; }
-        .anim-d5 { animation-delay: 0.30s; }
-
-        /* ── Responsive ── */
-        @media (max-width: 900px) {
-            .expert-grid { grid-template-columns: repeat(2, 1fr); }
-            .page-hero-inner { grid-template-columns: 1fr; }
-            .hero-stat-box { display: none; }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+        footer {
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        @media (max-width: 640px) {
-            .hamburger { display: flex; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0; background: var(--white); padding: 20px 24px; border-bottom: 1px solid #e4ece4; box-shadow: 0 8px 24px rgba(0,0,0,0.06); gap: 16px; align-items: flex-start; }
-            .nav-links.open { display: flex; }
-            .nav { position: relative; }
-            .filter-bar { top: 66px; }
-            .expert-grid { grid-template-columns: 1fr; }
-            .filter-bar-inner { flex-wrap: wrap; }
-            .results-count { margin-left: 0; }
-            .crisis-bar { font-size: 0.78rem; padding: 10px 44px 10px 16px; }
-            .crisis-bar .bar-close { display: block; }
-            .footer-top { grid-template-columns: 1fr; }
+        .footer-top {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 60px 24px 40px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .f-logo {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 220px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-col a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--sage-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 20px 24px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            font-size: 0.78rem;
+            opacity: 0.4;
+        }
+
+        /* ── Crisis Bar ── */
+        .crisis-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: #1e2b1e;
+            color: var(--white);
+            text-align: center;
+            padding: 11px 48px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .crisis-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .crisis-bar a:hover {
+            color: var(--white);
+        }
+
+        /* ── Animations ── */
+        .anim {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .anim.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-d1 {
+            transition-delay: 0.08s;
+        }
+
+        .anim-d2 {
+            transition-delay: 0.16s;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px 24px;
+                border-bottom: 1px solid #e4ece4;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav {
+                position: relative;
+            }
+
+            .experts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .expert-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -529,9 +633,11 @@
             <ul class="nav-links" id="nav-links" role="list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="experts.html" aria-current="page">Find an Expert</a></li>
                 <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html" class="active" aria-current="page">Speak to Expert</a></li>
                 <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
             </ul>
         </div>
@@ -539,411 +645,254 @@
 
     <!-- ── Page Hero ── -->
     <div class="page-hero">
-        <div class="page-hero-inner">
-            <div>
-                <p class="page-hero-label">Verified Professionals</p>
-                <h1>Find the right expert<br /><em>for where you are.</em></h1>
-                <p>Every professional is independently licensed and verified. Browse at your own pace — no account needed to explore.</p>
-                <div class="hero-trust-pills">
-                    <span class="trust-pill"><span class="trust-pill-dot"></span>License verified</span>
-                    <span class="trust-pill"><span class="trust-pill-dot"></span>No hidden fees</span>
-                    <span class="trust-pill"><span class="trust-pill-dot"></span>Book or message first</span>
-                </div>
-            </div>
-            <div class="hero-stat-box" aria-label="Platform stats">
-                <span class="hero-stat-num">50+</span>
-                <span class="hero-stat-label">Verified experts</span>
-                <div style="margin: 16px 0; width: 100%; height: 1px; background: #f0f0f0;"></div>
-                <span class="hero-stat-num" style="font-size: 1.5rem;">12</span>
-                <span class="hero-stat-label">Specialties covered</span>
-            </div>
+        <p class="label">🩺 Speak to an Expert</p>
+        <h1>Find a professional<br /><em>you trust.</em></h1>
+        <p>Browse our verified directory of licensed psychologists, counselors, and coaches. Book a session at your own
+            pace.</p>
+        <div class="search-wrap">
+            <input type="text" class="search-input" id="search-input" placeholder="Search by name or specialty..."
+                aria-label="Search experts" />
+            <span class="search-icon">🔍</span>
         </div>
     </div>
 
-    <!-- ── Filter Bar ── -->
-    <div class="filter-bar">
-        <div class="filter-bar-inner">
-            <div class="search-wrap">
-                <span class="search-icon" aria-hidden="true">🔍</span>
-                <input
-                    type="search"
-                    class="search-input"
-                    id="search-input"
-                    placeholder="Search by name or specialty…"
-                    aria-label="Search experts"
-                    oninput="filterExperts()"
-                />
+    <!-- ── Filter Pills ── -->
+    <div class="filters" role="tablist" aria-label="Filter by specialty">
+        <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All Experts</button>
+        <button class="filter-pill" data-filter="psychologist" role="tab">Clinical Psychologist</button>
+        <button class="filter-pill" data-filter="counselor" role="tab">Career Counselor</button>
+        <button class="filter-pill" data-filter="coach" role="tab">Life Coach</button>
+    </div>
+
+    <!-- ── Expert Cards Grid ── -->
+    <div class="experts-section">
+        <div class="experts-grid" id="experts-grid">
+
+            <!-- Expert 1 -->
+            <div class="expert-card anim" data-category="psychologist" data-name="Dr. Ananya Sharma">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&q=80"
+                        alt="Dr. Ananya Sharma" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Dr. Ananya Sharma</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Clinical Psychologist</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.9</span>
+                            <span>12 yrs exp.</span>
+                            <span>₹1,200/session</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="expert-bio">Specializes in anxiety disorders, OCD, and trauma-informed therapy. Uses a
+                    combination of CBT and mindfulness-based approaches.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Anxiety</span>
+                    <span class="expert-tag">OCD</span>
+                    <span class="expert-tag">Trauma</span>
+                </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=1" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=1" class="btn-book">Book a Session</a>
+                </div>
             </div>
-            <select class="filter-select" id="session-filter" aria-label="Filter by session type" onchange="filterExperts()">
-                <option value="all">All session types</option>
-                <option value="online">Online only</option>
-                <option value="in-person">In-person</option>
-                <option value="both">Online & in-person</option>
-            </select>
-            <select class="filter-select" id="price-filter" aria-label="Filter by price" onchange="filterExperts()">
-                <option value="all">Any price</option>
-                <option value="low">Under $80/session</option>
-                <option value="mid">$80–$120/session</option>
-                <option value="high">$120+/session</option>
-            </select>
-            <select class="filter-select" id="sort-filter" aria-label="Sort results" onchange="filterExperts()">
-                <option value="default">Sort: Featured</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="exp">Most experienced</option>
-            </select>
-            <span class="results-count" id="results-count"><strong>6</strong> experts found</span>
-        </div>
-    </div>
 
-    <!-- ── Specialty Pills ── -->
-    <div class="specialty-bar">
-        <div class="specialty-bar-inner" role="group" aria-label="Filter by specialty">
-            <button class="spec-pill active" data-spec="all" onclick="setSpec(this)">All specialties</button>
-            <button class="spec-pill" data-spec="anxiety" onclick="setSpec(this)">😰 Anxiety &amp; Stress</button>
-            <button class="spec-pill" data-spec="depression" onclick="setSpec(this)">💙 Depression</button>
-            <button class="spec-pill" data-spec="trauma" onclick="setSpec(this)">🌱 Trauma &amp; PTSD</button>
-            <button class="spec-pill" data-spec="relationships" onclick="setSpec(this)">💑 Relationships</button>
-            <button class="spec-pill" data-spec="burnout" onclick="setSpec(this)">🔥 Burnout</button>
-            <button class="spec-pill" data-spec="lgbtq" onclick="setSpec(this)">🌈 LGBTQ+</button>
-            <button class="spec-pill" data-spec="grief" onclick="setSpec(this)">🕊️ Grief &amp; Loss</button>
-            <button class="spec-pill" data-spec="adhd" onclick="setSpec(this)">⚡ ADHD &amp; Focus</button>
-        </div>
-    </div>
+            <!-- Expert 2 -->
+            <div class="expert-card anim anim-d1" data-category="counselor" data-name="Rajesh Kapoor">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80"
+                        alt="Rajesh Kapoor" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Rajesh Kapoor</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Career Counselor</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.8</span>
+                            <span>8 yrs exp.</span>
+                            <span>₹900/session</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="expert-bio">Helps professionals navigate career transitions, burnout recovery, and work-life
+                    balance through evidence-based coaching techniques.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Career Change</span>
+                    <span class="expert-tag">Burnout</span>
+                    <span class="expert-tag">Work-Life Balance</span>
+                </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=2" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=2" class="btn-book">Book a Session</a>
+                </div>
+            </div>
 
-    <!-- ── Experts Main ── -->
-    <main class="experts-main">
-        <div class="expert-grid" id="expert-grid" role="list" aria-label="Expert directory">
+            <!-- Expert 3 -->
+            <div class="expert-card anim anim-d2" data-category="coach" data-name="Priya Menon">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80"
+                        alt="Priya Menon" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Priya Menon</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Life Coach</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.9</span>
+                            <span>6 yrs exp.</span>
+                            <span>₹800/session</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="expert-bio">Certified ICF life coach specializing in personal growth, confidence building, and
+                    mindfulness. Warm, empathetic, and results-driven.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Personal Growth</span>
+                    <span class="expert-tag">Confidence</span>
+                    <span class="expert-tag">Mindfulness</span>
+                </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=3" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=3" class="btn-book">Book a Session</a>
+                </div>
+            </div>
 
-            <!-- EXPERT 1 -->
-            <article class="expert-card anim" role="listitem"
-                data-name="dr sarah kim"
-                data-specialties="anxiety depression stress"
-                data-session="online"
-                data-price="95"
-                data-exp="12">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=440&fit=crop&q=80"
-                        alt="Dr. Sarah Kim"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge open"><span class="avail-dot green"></span>Accepting clients</span>
-                        <span class="session-type-badge">🌐 Online</span>
+            <!-- Expert 4 -->
+            <div class="expert-card anim" data-category="psychologist" data-name="Dr. Vikram Rao">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&q=80"
+                        alt="Dr. Vikram Rao" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Dr. Vikram Rao</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Clinical Psychologist</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.7</span>
+                            <span>15 yrs exp.</span>
+                            <span>₹1,500/session</span>
+                        </div>
                     </div>
                 </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">Dr. Sarah Kim</h2>
-                        <p class="expert-title">Licensed Clinical Psychologist · PhD · 12 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">Anxiety</span>
-                        <span class="spec-tag">Depression</span>
-                        <span class="spec-tag">Stress</span>
-                    </div>
-                    <p class="expert-bio">Dr. Kim specialises in cognitive-behavioural therapy for anxiety and depression. She brings a warm, practical approach — helping clients build tools that work in real life, not just the therapy room.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 4.9 (84 reviews)</span>
-                        <span class="meta-item">📅 Usually replies in 1 day</span>
-                    </div>
+                <p class="expert-bio">Expert in depression, relationship counseling, and grief therapy. Known for his
+                    compassionate, non-judgmental approach to therapy.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Depression</span>
+                    <span class="expert-tag">Relationships</span>
+                    <span class="expert-tag">Grief</span>
                 </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$95</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=4" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=4" class="btn-book">Book a Session</a>
                 </div>
-            </article>
+            </div>
 
-            <!-- EXPERT 2 -->
-            <article class="expert-card anim anim-d1" role="listitem"
-                data-name="marcus osei"
-                data-specialties="burnout relationships stress depression"
-                data-session="both"
-                data-price="80"
-                data-exp="8">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&h=440&fit=crop&q=80"
-                        alt="Marcus Osei, LPC"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge open"><span class="avail-dot green"></span>Accepting clients</span>
-                        <span class="session-type-badge">🌐 + 🏢 Both</span>
+            <!-- Expert 5 -->
+            <div class="expert-card anim anim-d1" data-category="counselor" data-name="Meera Iyer">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&q=80"
+                        alt="Meera Iyer" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Meera Iyer</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Career Counselor</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.8</span>
+                            <span>10 yrs exp.</span>
+                            <span>₹1,000/session</span>
+                        </div>
                     </div>
                 </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">Marcus Osei</h2>
-                        <p class="expert-title">Licensed Professional Counselor · LPC · 8 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">Burnout</span>
-                        <span class="spec-tag">Relationships</span>
-                        <span class="spec-tag">Depression</span>
-                    </div>
-                    <p class="expert-bio">Marcus works with professionals experiencing burnout, career identity challenges, and difficult relationship patterns. His approach is grounded, direct, and focused on sustainable change.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 4.8 (61 reviews)</span>
-                        <span class="meta-item">📅 Replies same day</span>
-                    </div>
+                <p class="expert-bio">Specializes in helping students and early-career professionals find direction,
+                    build resumes, and ace interviews with structured guidance.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Students</span>
+                    <span class="expert-tag">Interviews</span>
+                    <span class="expert-tag">Career Planning</span>
                 </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$80</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=5" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=5" class="btn-book">Book a Session</a>
                 </div>
-            </article>
+            </div>
 
-            <!-- EXPERT 3 -->
-            <article class="expert-card anim anim-d2" role="listitem"
-                data-name="priya nair"
-                data-specialties="trauma ptsd grief anxiety relationships"
-                data-session="online"
-                data-price="110"
-                data-exp="15">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&h=440&fit=crop&q=80"
-                        alt="Priya Nair, LCSW"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge limited"><span class="avail-dot yellow"></span>Limited spots</span>
-                        <span class="session-type-badge">🌐 Online</span>
+            <!-- Expert 6 -->
+            <div class="expert-card anim anim-d2" data-category="coach" data-name="Arjun Desai">
+                <div class="expert-top">
+                    <img class="expert-photo"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&q=80"
+                        alt="Arjun Desai" />
+                    <div class="expert-info">
+                        <div class="expert-name-row">
+                            <h3 class="expert-name">Arjun Desai</h3>
+                            <span class="verified-badge"> Verified</span>
+                        </div>
+                        <p class="expert-specialty">Life Coach</p>
+                        <div class="expert-meta">
+                            <span>⭐ 4.9</span>
+                            <span>9 yrs exp.</span>
+                            <span>₹1,100/session</span>
+                        </div>
                     </div>
                 </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">Priya Nair</h2>
-                        <p class="expert-title">Licensed Clinical Social Worker · LCSW · 15 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">Trauma</span>
-                        <span class="spec-tag">Grief</span>
-                        <span class="spec-tag">Anxiety</span>
-                    </div>
-                    <p class="expert-bio">Priya specialises in trauma-informed care and grief therapy. Using EMDR and somatic approaches, she helps clients process difficult experiences and reconnect with a sense of safety in their bodies.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 5.0 (112 reviews)</span>
-                        <span class="meta-item">📅 Usually replies in 2 days</span>
-                    </div>
+                <p class="expert-bio">Focuses on executive wellness, stress management, and leadership development.
+                    Trusted by 200+ professionals across industries.</p>
+                <div class="expert-tags">
+                    <span class="expert-tag">Stress</span>
+                    <span class="expert-tag">Leadership</span>
+                    <span class="expert-tag">Executive Wellness</span>
                 </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$110</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
+                <div class="expert-actions">
+                    <a href="expert-profile.html?id=6" class="btn-view">View Profile</a>
+                    <a href="booking.html?expert=6" class="btn-book">Book a Session</a>
                 </div>
-            </article>
-
-            <!-- EXPERT 4 -->
-            <article class="expert-card anim anim-d3" role="listitem"
-                data-name="james rutherford"
-                data-specialties="lgbtq anxiety depression relationships identity"
-                data-session="both"
-                data-price="90"
-                data-exp="10">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=440&fit=crop&q=80"
-                        alt="James Rutherford, MFT"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge open"><span class="avail-dot green"></span>Accepting clients</span>
-                        <span class="session-type-badge">🌐 + 🏢 Both</span>
-                    </div>
-                </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">James Rutherford</h2>
-                        <p class="expert-title">Marriage &amp; Family Therapist · MFT · 10 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">LGBTQ+</span>
-                        <span class="spec-tag">Identity</span>
-                        <span class="spec-tag">Anxiety</span>
-                    </div>
-                    <p class="expert-bio">James is an affirming therapist with a deep focus on LGBTQ+ mental health, identity exploration, and relationship dynamics. He creates a safe, judgment-free space for every client.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 4.9 (77 reviews)</span>
-                        <span class="meta-item">📅 Replies same day</span>
-                    </div>
-                </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$90</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- EXPERT 5 -->
-            <article class="expert-card anim anim-d4" role="listitem"
-                data-name="dr amara okonkwo"
-                data-specialties="adhd focus depression anxiety adhd"
-                data-session="online"
-                data-price="130"
-                data-exp="18">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=440&fit=crop&q=80"
-                        alt="Dr. Amara Okonkwo"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge open"><span class="avail-dot green"></span>Accepting clients</span>
-                        <span class="session-type-badge">🌐 Online</span>
-                    </div>
-                </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">Dr. Amara Okonkwo</h2>
-                        <p class="expert-title">Psychiatrist &amp; Therapist · MD · 18 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">ADHD</span>
-                        <span class="spec-tag">Depression</span>
-                        <span class="spec-tag">Focus</span>
-                    </div>
-                    <p class="expert-bio">Dr. Okonkwo combines psychiatric expertise with therapy to support adults with ADHD, executive functioning challenges, and co-occurring depression. She takes a holistic, strengths-based view of every patient.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 4.9 (139 reviews)</span>
-                        <span class="meta-item">📅 Usually replies in 1 day</span>
-                    </div>
-                </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$130</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- EXPERT 6 -->
-            <article class="expert-card anim anim-d5" role="listitem"
-                data-name="elena vasquez"
-                data-specialties="grief relationships burnout stress anxiety"
-                data-session="in-person"
-                data-price="75"
-                data-exp="6">
-                <div class="expert-photo-wrap">
-                    <img
-                        src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&h=440&fit=crop&q=80"
-                        alt="Elena Vasquez, LPC"
-                        loading="lazy"
-                        onerror="this.style.display='none'"
-                    />
-                    <div class="expert-photo-badges">
-                        <span class="avail-badge open"><span class="avail-dot green"></span>Accepting clients</span>
-                        <span class="session-type-badge">🏢 In-person</span>
-                    </div>
-                </div>
-                <div class="expert-body">
-                    <div>
-                        <h2 class="expert-name">Elena Vasquez</h2>
-                        <p class="expert-title">Licensed Professional Counselor · LPC · 6 years exp.</p>
-                    </div>
-                    <div class="expert-specialties">
-                        <span class="spec-tag">Grief</span>
-                        <span class="spec-tag">Burnout</span>
-                        <span class="spec-tag">Anxiety</span>
-                    </div>
-                    <p class="expert-bio">Elena works with clients navigating loss, major life transitions, and chronic work stress. She uses narrative therapy and mindfulness techniques to help people find meaning and move forward.</p>
-                    <div class="expert-meta">
-                        <span class="meta-item">⭐ 4.8 (43 reviews)</span>
-                        <span class="meta-item">📅 Replies same day</span>
-                    </div>
-                </div>
-                <div class="expert-footer">
-                    <div class="expert-price">
-                        <span class="price-num">$75</span>
-                        <span class="price-label">per 50-min session</span>
-                    </div>
-                    <div class="expert-card-btns">
-                        <a href="#" class="btn-card btn-ghost" onclick="return false;">View Profile</a>
-                        <a href="#" class="btn-card btn-primary" onclick="return false;">Book Session</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- No results message -->
-            <div class="no-results" id="no-results">
-                <div style="font-size: 2.5rem; margin-bottom: 12px;">🔍</div>
-                <h3>No experts match your filters</h3>
-                <p>Try adjusting your search or filters to find the right fit.</p>
             </div>
 
         </div>
 
-        <!-- Disclaimer -->
-        <p style="font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 48px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-            All experts on MindQuilt are independent licensed professionals, not employees of MindQuilt. MindQuilt verifies credentials but is not responsible for the content of sessions. Session prices are set by each professional and may vary.
-        </p>
-    </main>
-
-    <!-- ── Apply as Expert CTA ── -->
-    <section class="apply-cta" aria-labelledby="apply-heading">
-        <h2 id="apply-heading">Are you a licensed mental health professional?</h2>
-        <p>Join MindQuilt's directory and connect with clients who are actively looking for support. Free to apply — you keep 80% of every session.</p>
-        <a href="expert-apply.html" class="btn-apply">Apply to Join →</a>
-    </section>
+        <div class="no-results" id="no-results">
+            <p>No experts found</p>
+            <span>Try a different search term or filter.</span>
+        </div>
+    </div>
 
     <!-- ── Footer ── -->
-    <footer role="contentinfo">
+    <footer>
         <div class="footer-top">
             <div class="footer-brand">
                 <div class="f-logo">
-                    <img src="logo.svg" alt="MindQuilt" height="30" width="auto" loading="lazy" style="filter:brightness(0) invert(1);opacity:0.85;" />
+                    <img src="logo.svg" alt="MindQuilt" height="28" />
                 </div>
-                <p>A calm mental health platform with free educational content and a directory of verified experts.</p>
+                <p>A calm place to understand your mind — free articles, expert support, and crisis resources.</p>
             </div>
             <div class="footer-col">
                 <h5>Explore</h5>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="experts.html">Find an Expert</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="games.html">Mind Games</a></li>
+                    <li><a href="sounds.html">Soothing Sounds</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Support</h5>
                 <ul>
+                    <li><a href="experts.html">Speak to Expert</a></li>
                     <li><a href="crisis.html">Crisis Resources</a></li>
-                    <li><a href="expert-apply.html">Apply as Expert</a></li>
-                    <li><a href="login.html">Sign In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="booking.html">Book a Session</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -954,112 +903,74 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 MindQuilt. Educational content only — not a substitute for professional medical advice, diagnosis, or treatment.
-        </div>
+        <p class="footer-bottom">© 2026 MindQuilt. Educational content only — not a substitute for professional medical
+            advice.</p>
     </footer>
 
     <!-- ── Crisis Bar ── -->
-    <aside class="crisis-bar" id="crisis-bar" role="complementary">
-        🫂 If you are in crisis, <a href="tel:988">call or text <strong>988</strong></a> (US)
-        or text <strong>HOME</strong> to <a href="sms:741741?body=HOME"><strong>741741</strong></a>
-        <button class="bar-close" id="bar-close" aria-label="Dismiss">✕</button>
-    </aside>
+    <div class="crisis-bar" id="crisis-bar">
+        🧑‍⚕️ If you are in crisis, &nbsp;<a href="https://988lifeline.org" target="_blank" rel="noopener">call or text
+            988</a>&nbsp; (US) or text &nbsp;HOME&nbsp; to &nbsp;<a href="sms:741741" target="_blank"
+            rel="noopener">741741</a>
+    </div>
 
-<script>
-// ── State ──
-let activeSpec = 'all';
-
-function setSpec(btn) {
-    document.querySelectorAll('.spec-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    activeSpec = btn.dataset.spec;
-    filterExperts();
-}
-
-function filterExperts() {
-    const search = document.getElementById('search-input').value.toLowerCase().trim();
-    const sessionFilter = document.getElementById('session-filter').value;
-    const priceFilter = document.getElementById('price-filter').value;
-    const sortFilter = document.getElementById('sort-filter').value;
-
-    const cards = Array.from(document.querySelectorAll('.expert-card'));
-    let visible = [];
-
-    cards.forEach(card => {
-        const name = card.dataset.name || '';
-        const specialties = card.dataset.specialties || '';
-        const session = card.dataset.session || '';
-        const price = parseInt(card.dataset.price || '0');
-
-        let show = true;
-
-        // Search
-        if (search && !name.includes(search) && !specialties.includes(search)) show = false;
-
-        // Specialty pill
-        if (activeSpec !== 'all' && !specialties.includes(activeSpec)) show = false;
-
-        // Session type
-        if (sessionFilter !== 'all') {
-            if (sessionFilter === 'online' && session !== 'online' && session !== 'both') show = false;
-            if (sessionFilter === 'in-person' && session !== 'in-person' && session !== 'both') show = false;
-            if (sessionFilter === 'both' && session !== 'both') show = false;
-        }
-
-        // Price
-        if (priceFilter === 'low' && price >= 80) show = false;
-        if (priceFilter === 'mid' && (price < 80 || price > 120)) show = false;
-        if (priceFilter === 'high' && price <= 120) show = false;
-
-        if (show) {
-            card.classList.remove('hidden');
-            visible.push(card);
-        } else {
-            card.classList.add('hidden');
-        }
-    });
-
-    // Sort visible cards
-    const grid = document.getElementById('expert-grid');
-    if (sortFilter !== 'default') {
-        visible.sort((a, b) => {
-            if (sortFilter === 'price-asc') return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-            if (sortFilter === 'price-desc') return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-            if (sortFilter === 'exp') return parseInt(b.dataset.exp) - parseInt(a.dataset.exp);
-            return 0;
+    <script>
+        // Hamburger toggle
+        document.getElementById('hamburger').addEventListener('click', function () {
+            const nav = document.getElementById('nav-links');
+            const open = nav.classList.toggle('open');
+            this.setAttribute('aria-expanded', open);
         });
-        visible.forEach(card => grid.insertBefore(card, document.getElementById('no-results')));
-    }
 
-    // No results
-    const noRes = document.getElementById('no-results');
-    if (visible.length === 0) { noRes.classList.add('show'); } else { noRes.classList.remove('show'); }
+        // Filter pills
+        const pills = document.querySelectorAll('.filter-pill');
+        const cards = document.querySelectorAll('.expert-card');
+        const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('search-input');
 
-    // Count
-    const countEl = document.getElementById('results-count');
-    countEl.innerHTML = `<strong>${visible.length}</strong> expert${visible.length !== 1 ? 's' : ''} found`;
-}
+        function filterAndSearch() {
+            const activeFilter = document.querySelector('.filter-pill.active').dataset.filter;
+            const query = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
 
-// ── Nav ──
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open);
-});
+            cards.forEach(card => {
+                const category = card.dataset.category;
+                const name = card.dataset.name.toLowerCase();
+                const bio = card.querySelector('.expert-bio').textContent.toLowerCase();
+                const specialty = card.querySelector('.expert-specialty').textContent.toLowerCase();
 
-document.getElementById('bar-close').addEventListener('click', () => {
-    document.getElementById('crisis-bar').style.display = 'none';
-    document.body.style.paddingBottom = '0';
-});
+                const matchesFilter = activeFilter === 'all' || category === activeFilter;
+                const matchesSearch = !query || name.includes(query) || bio.includes(query) || specialty.includes(query);
 
-// ── Scroll animations ──
-const animEls = document.querySelectorAll('.anim');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.08 });
-animEls.forEach(el => observer.observe(el));
-</script>
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('show', visibleCount === 0);
+        }
+
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
+                pill.classList.add('active');
+                pill.setAttribute('aria-selected', 'true');
+                filterAndSearch();
+            });
+        });
+
+        searchInput.addEventListener('input', filterAndSearch);
+
+        // Scroll animations
+        const animObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); animObserver.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.anim').forEach(el => animObserver.observe(el));
+    </script>
+
 </body>
+
 </html>

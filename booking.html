@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Session — MindQuilt</title>
+    <meta name="description" content="Book an appointment with a verified MindQuilt mental health professional." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --white: #ffffff;
+            --off-white: #f7f9f6;
+            --charcoal: #2c2c2c;
+            --muted: #7a7a7a;
+            --sage: #8faf8f;
+            --sage-mid: #6d926d;
+            --sage-dark: #4a6b4a;
+            --sage-light: #b5d3b5;
+            --sage-bg: #eaf2ea;
+            --clay: #C4826A;
+            --clay-dark: #A66B55;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --max-w: 1100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding-bottom: 52px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Nav */
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid #e6ede6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: var(--sage);
+        }
+
+        .nav-cta-btn {
+            background: var(--sage) !important;
+            color: var(--white) !important;
+            opacity: 1 !important;
+            padding: 8px 20px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta-btn:hover {
+            background: var(--sage-mid) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            text-align: center;
+            padding: 64px 24px 32px;
+            background: linear-gradient(160deg, #daeada 0%, var(--sage-bg) 60%);
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            background: rgba(143, 175, 143, 0.12);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--sage-dark);
+        }
+
+        .page-hero p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Expert Preview Card */
+        .expert-preview {
+            max-width: 560px;
+            margin: 28px auto 0;
+            background: var(--white);
+            border-radius: 14px;
+            border: 1px solid #e4ece4;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .expert-preview img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .expert-preview-info {
+            flex: 1;
+        }
+
+        .expert-preview-name {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+        }
+
+        .expert-preview-spec {
+            font-size: 0.78rem;
+            color: var(--sage-mid);
+        }
+
+        .expert-preview-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: rgba(143, 175, 143, 0.12);
+            color: var(--sage-dark);
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+        }
+
+        .expert-preview-badge::before {
+            content: '✓';
+        }
+
+        /* Form Section */
+        .booking-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid #e4ece4;
+            padding: 36px 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-title {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required {
+            color: var(--clay);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #dce5dc;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(143, 175, 143, 0.12);
+            background: var(--white);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #b8b8b8;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237a7a7a' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        /* Urgency Radios */
+        .urgency-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .urgency-opt {
+            flex: 1;
+            min-width: 100px;
+            position: relative;
+        }
+
+        .urgency-opt input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .urgency-opt label {
+            display: block;
+            padding: 10px 14px;
+            border: 1px solid #dce5dc;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--off-white);
+            margin-bottom: 0;
+        }
+
+        .urgency-opt input:checked+label {
+            border-color: var(--sage);
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+            font-weight: 600;
+        }
+
+        .urgency-opt label:hover {
+            border-color: var(--sage);
+        }
+
+        /* Row layout */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Submit */
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: var(--sage);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: var(--sage-mid);
+        }
+
+        .form-submit:active {
+            transform: scale(0.98);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-disclaimer {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* ── Success Modal ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 43, 30, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px 36px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.show .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-checkmark {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--sage-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+        }
+
+        .modal-checkmark .checkmark-circle {
+            width: 72px;
+            height: 72px;
+            position: relative;
+        }
+
+        .modal-checkmark svg {
+            width: 72px;
+            height: 72px;
+        }
+
+        .modal-checkmark .circle {
+            stroke: var(--sage);
+            stroke-width: 2;
+            fill: var(--sage-bg);
+        }
+
+        .modal-checkmark .check {
+            stroke: var(--sage-dark);
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 40;
+            stroke-dashoffset: 40;
+            animation: drawCheck 0.5s ease 0.3s forwards;
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .modal-title {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .modal-text {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .modal-expert-name {
+            font-weight: 700;
+            color: var(--sage-dark);
+        }
+
+        .modal-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 10px;
+            background: var(--sage);
+            color: var(--white);
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background 0.2s;
+            margin: 0 6px;
+        }
+
+        .modal-btn:hover {
+            background: var(--sage-mid);
+        }
+
+        .modal-btn.secondary {
+            background: transparent;
+            color: var(--sage);
+            border: 1px solid var(--sage);
+        }
+
+        .modal-btn.secondary:hover {
+            background: var(--sage-bg);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-top {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 60px 24px 40px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .f-logo {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 220px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-col a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--sage-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 20px 24px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            font-size: 0.78rem;
+            opacity: 0.4;
+        }
+
+        /* Crisis Bar */
+        .crisis-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: #1e2b1e;
+            color: var(--white);
+            text-align: center;
+            padding: 11px 48px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .crisis-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px 24px;
+                border-bottom: 1px solid #e4ece4;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav {
+                position: relative;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                padding: 28px 20px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
+                <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html" class="active" aria-current="page">Speak to Expert</a></li>
+                <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <p class="label">📅 Book a Session</p>
+        <h1>Request an <em>Appointment</em></h1>
+        <p>Fill out the form below and our team will confirm your booking within 24 hours.</p>
+        <div class="expert-preview" id="expert-preview" style="display: none;">
+            <img id="preview-photo" src="" alt="" />
+            <div class="expert-preview-info">
+                <p class="expert-preview-name" id="preview-name"></p>
+                <p class="expert-preview-spec" id="preview-spec"></p>
+            </div>
+            <span class="expert-preview-badge"> Verified</span>
+        </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="booking-section">
+        <div class="form-card">
+            <h2 class="form-title">Appointment Request</h2>
+            <p class="form-subtitle">All fields marked with <span style="color: var(--clay);">*</span> are required.</p>
+
+            <form id="booking-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="full-name" class="form-input" placeholder="Your full name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" class="form-input" placeholder="you@example.com" required />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" />
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred-date">Preferred Date <span class="required">*</span></label>
+                        <input type="date" id="preferred-date" class="form-input" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="concern">Area of Concern <span class="required">*</span></label>
+                    <select id="concern" class="form-select" required>
+                        <option value="" disabled selected>Select your primary concern</option>
+                        <option value="anxiety">Anxiety & Stress</option>
+                        <option value="depression">Depression</option>
+                        <option value="relationships">Relationship Issues</option>
+                        <option value="career">Career & Work</option>
+                        <option value="grief">Grief & Loss</option>
+                        <option value="self-esteem">Self-Esteem & Confidence</option>
+                        <option value="burnout">Burnout & Exhaustion</option>
+                        <option value="personal-growth">Personal Growth</option>
+                        <option value="other">Other / Not Sure</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Urgency Level <span class="required">*</span></label>
+                    <div class="urgency-group">
+                        <div class="urgency-opt">
+                            <input type="radio" name="urgency" id="urg-low" value="low" checked />
+                            <label for="urg-low">🟢 Low<br><span style="font-size: 0.7rem; color: var(--muted);">When
+                                    convenient</span></label>
+                        </div>
+                        <div class="urgency-opt">
+                            <input type="radio" name="urgency" id="urg-med" value="medium" />
+                            <label for="urg-med">🟡 Medium<br><span
+                                    style="font-size: 0.7rem; color: var(--muted);">Within a week</span></label>
+                        </div>
+                        <div class="urgency-opt">
+                            <input type="radio" name="urgency" id="urg-high" value="high" />
+                            <label for="urg-high">🔴 High<br><span
+                                    style="font-size: 0.7rem; color: var(--muted);">Within 48 hours</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" class="form-textarea"
+                        placeholder="Anything you'd like your expert to know before the session..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit" id="submit-btn">Submit Appointment Request</button>
+            </form>
+
+            <p class="form-disclaimer">By submitting, you agree to MindQuilt's <a href="terms.html"
+                    style="color: var(--sage); text-decoration: underline;">Terms of Service</a> and <a
+                    href="privacy.html" style="color: var(--sage); text-decoration: underline;">Privacy Policy</a>. This
+                is not a substitute for emergency care.</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card">
+            <div class="modal-checkmark">
+                <svg viewBox="0 0 72 72">
+                    <circle class="circle" cx="36" cy="36" r="34" />
+                    <polyline class="check" points="22,38 32,48 50,26" />
+                </svg>
+            </div>
+            <h2 class="modal-title">Request Submitted!</h2>
+            <p class="modal-text">
+                Your appointment request<span id="modal-expert-text"></span> has been received. We'll send a
+                confirmation to your email within <strong>24 hours</strong>.
+            </p>
+            <div>
+                <a href="experts.html" class="modal-btn secondary">Browse Experts</a>
+                <a href="index.html" class="modal-btn">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="f-logo"><img src="logo.svg" alt="MindQuilt" height="28" /></div>
+                <p>A calm place to understand your mind — free articles, expert support, and crisis resources.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="games.html">Mind Games</a></li>
+                    <li><a href="sounds.html">Soothing Sounds</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="experts.html">Speak to Expert</a></li>
+                    <li><a href="crisis.html">Crisis Resources</a></li>
+                    <li><a href="booking.html">Book a Session</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2026 MindQuilt. Educational content only — not a substitute for professional medical
+            advice.</p>
+    </footer>
+
+    <div class="crisis-bar">🧑‍⚕️ If you are in crisis, &nbsp;<a href="https://988lifeline.org" target="_blank"
+            rel="noopener">call or text 988</a>&nbsp; (US) or text &nbsp;HOME&nbsp; to &nbsp;<a href="sms:741741"
+            target="_blank" rel="noopener">741741</a></div>
+
+    <script>
+        // Hamburger
+        document.getElementById('hamburger').addEventListener('click', function () {
+            const nav = document.getElementById('nav-links');
+            const open = nav.classList.toggle('open');
+            this.setAttribute('aria-expanded', open);
+        });
+
+        // Expert data
+        const experts = {
+            '1': { name: 'Dr. Ananya Sharma', specialty: 'Clinical Psychologist', photo: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&q=80' },
+            '2': { name: 'Rajesh Kapoor', specialty: 'Career Counselor', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80' },
+            '3': { name: 'Priya Menon', specialty: 'Life Coach', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&q=80' },
+            '4': { name: 'Dr. Vikram Rao', specialty: 'Clinical Psychologist', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&q=80' },
+            '5': { name: 'Meera Iyer', specialty: 'Career Counselor', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&q=80' },
+            '6': { name: 'Arjun Desai', specialty: 'Life Coach', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&q=80' },
+        };
+
+        // Pre-fill expert from query param
+        const params = new URLSearchParams(window.location.search);
+        const expertId = params.get('expert');
+        let selectedExpertName = '';
+
+        if (expertId && experts[expertId]) {
+            const expert = experts[expertId];
+            selectedExpertName = expert.name;
+            const preview = document.getElementById('expert-preview');
+            preview.style.display = 'flex';
+            document.getElementById('preview-photo').src = expert.photo;
+            document.getElementById('preview-photo').alt = expert.name;
+            document.getElementById('preview-name').textContent = expert.name;
+            document.getElementById('preview-spec').textContent = expert.specialty;
+            document.getElementById('submit-btn').textContent = `Book with ${expert.name}`;
+            document.title = `Book ${expert.name} — MindQuilt`;
+        }
+
+        // Set min date to today
+        const dateInput = document.getElementById('preferred-date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        // Form submit
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Basic validation
+            const name = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const date = document.getElementById('preferred-date').value;
+            const concern = document.getElementById('concern').value;
+
+            if (!name || !email || !date || !concern) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Show success modal
+            const modal = document.getElementById('success-modal');
+            const expertText = document.getElementById('modal-expert-text');
+            if (selectedExpertName) {
+                expertText.innerHTML = ' with <span class="modal-expert-name">' + selectedExpertName + '</span>';
+            }
+            modal.classList.add('show');
+        });
+
+        // Close modal on overlay click
+        document.getElementById('success-modal').addEventListener('click', function (e) {
+            if (e.target === this) this.classList.remove('show');
+        });
+    </script>
+
+</body>
+
+</html>

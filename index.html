@@ -467,128 +467,197 @@
             white-space: nowrap;
         }
 
-        /* Hero visual */
+        /* Hero visual — Stacked Cards */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .hero-photo-wrap {
+        .stacked-cards {
             position: relative;
-            width: 100%;
-            max-width: 460px;
-        }
-
-        .hero-photo-bg {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            right: -16px;
-            bottom: -16px;
-            background: linear-gradient(135deg, var(--sage-light) 0%, rgba(200, 220, 200, 0.4) 100%);
-            border-radius: 24px;
-        }
-
-        .hero-photo {
-            position: relative;
-            width: 100%;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 24px 60px rgba(78, 120, 78, 0.24), 0 6px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-photo img {
-            width: 100%;
+            width: 350px;
             height: 420px;
+        }
+
+        .stacked-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 350px;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(200, 220, 200, 0.5);
+            transition: transform 0.4s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.4s;
+            cursor: pointer;
+        }
+
+        .stacked-card-img {
+            width: calc(100% - 16px);
+            height: 290px;
+            margin: 8px 8px 0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .stacked-card-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
         }
 
-        .hero-photo-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 14px;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+        .stacked-card:hover .stacked-card-img img {
+            transform: scale(1.05);
         }
 
-        .photo-badge-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--sage-bg);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+        .stacked-card-body {
+            padding: 14px 18px;
         }
 
-        .photo-badge-text {
-            line-height: 1.35;
-        }
-
-        .photo-badge-text strong {
-            font-size: 0.86rem;
+        .stacked-card-body h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
             color: var(--charcoal-2);
+            margin-bottom: 4px;
+        }
+
+        .stacked-card-body p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Card stacking positions */
+        .stacked-card:nth-child(1) {
+            z-index: 10;
+        }
+
+        .stacked-card:nth-child(2) {
+            z-index: 5;
+        }
+
+        .stacked-card:nth-child(3) {
+            z-index: 1;
+        }
+
+        /* Fan-out on hover (applied via JS class on parent) */
+        .stacked-cards.fanned .stacked-card:nth-child(2) {
+            transform: translateX(-48px) rotate(-6deg);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+        }
+
+        .stacked-cards.fanned .stacked-card:nth-child(3) {
+            transform: translateX(48px) rotate(6deg);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+        }
+
+        /* Subtle idle float for depth */
+        .stacked-card:nth-child(2) {
+            transform: translateY(4px) translateX(-4px);
+        }
+
+        .stacked-card:nth-child(3) {
+            transform: translateY(8px) translateX(4px);
+        }
+
+
+        /* ── Elastic Line ── */
+        .elastic-line-section {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            overflow: visible;
+            margin: -60px 0 -20px;
+            z-index: 2;
+        }
+
+        .elastic-line-section:active {
+            cursor: grabbing;
+        }
+
+        .elastic-line-section svg {
+            width: 100%;
+            height: 100%;
             display: block;
         }
 
-        .photo-badge-text span {
-            font-size: 0.74rem;
-            color: var(--muted);
+        .elastic-line-section .elastic-path {
+            stroke: var(--sage);
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+            transition: stroke 0.2s;
         }
 
-        /* Floating accent card */
-        .hero-float-card {
+        .elastic-line-section:hover .elastic-path {
+            stroke: var(--sage-mid);
+        }
+
+        .elastic-line-section.grabbed .elastic-path {
+            stroke: var(--sage-dark);
+            stroke-width: 2;
+        }
+
+        .elastic-label {
             position: absolute;
-            top: -16px;
-            right: -24px;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(143, 175, 143, 0.25);
-            border-radius: 14px;
-            padding: 14px 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: var(--shadow-md);
-            animation: floatY 4s ease-in-out infinite;
+            top: 62%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            pointer-events: none;
+            text-align: center;
         }
 
-        @keyframes floatY {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .hero-float-card .fc-dot {
-            width: 8px;
-            height: 8px;
-            background: #5cb85c;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .hero-float-card span {
-            font-size: 0.8rem;
+        .elastic-label-top {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
             font-weight: 600;
-            color: var(--charcoal-2);
-            white-space: nowrap;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .elastic-line-section:hover .elastic-label-top {
+            opacity: 1;
+        }
+
+        .elastic-label-big {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1;
+            margin-top: 4px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.5s 0.1s, transform 0.5s 0.1s;
+        }
+
+        .elastic-label.visible .elastic-label-big {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .elastic-label-big em {
+            font-style: italic;
+            color: var(--sage-dark);
+        }
+
+        @media (max-width: 960px) {
+            .elastic-line-section {
+                height: 80px;
+                margin: -10px 0;
+            }
         }
 
         /* ── Features ── */
@@ -1361,6 +1430,308 @@
                 padding: 0 16px;
             }
         }
+
+        /* ── Gallery Bento Grid ── */
+        .gallery-section {
+            background: linear-gradient(180deg, rgba(237, 244, 237, 0.5) 0%, var(--off-white) 100%);
+        }
+
+        .gallery-bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 80px;
+            gap: 14px;
+            margin-top: 52px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.35s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 48px rgba(78, 120, 78, 0.22);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 43, 30, 0.82) 0%, rgba(30, 43, 30, 0.15) 45%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.35s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+        }
+
+        /* Bento spans */
+        .g-span-r3 {
+            grid-row: span 3;
+        }
+
+        .g-span-r2 {
+            grid-row: span 2;
+        }
+
+        .g-span-c2 {
+            grid-column: span 2;
+        }
+
+        .g-span-c1 {
+            grid-column: span 1;
+        }
+
+        /* ── Gallery Lightbox ── */
+        .gallery-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 43, 30, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .gallery-lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 800px;
+            width: 90%;
+            animation: lightboxIn 0.4s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        @keyframes lightboxIn {
+            from {
+                transform: scale(0.92) translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-img {
+            width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+            border-radius: 0 0 16px 16px;
+        }
+
+        .lightbox-info h3 {
+            font-family: var(--font-head);
+            font-size: 1.35rem;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .lightbox-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            border: none;
+            font-size: 1.2rem;
+            color: var(--charcoal-2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 10;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.12);
+            background: var(--white);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.32);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        .lightbox-thumbs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .lightbox-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.55;
+            transition: opacity 0.25s, border-color 0.25s, transform 0.25s;
+            flex-shrink: 0;
+        }
+
+        .lightbox-thumb:hover {
+            opacity: 0.85;
+            transform: scale(1.1);
+        }
+
+        .lightbox-thumb.active {
+            opacity: 1;
+            border-color: var(--white);
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gallery responsive */
+        @media (max-width: 960px) {
+            .gallery-bento {
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: 70px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-bento {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 65px;
+                gap: 10px;
+            }
+
+            .g-span-c2 {
+                grid-column: span 2;
+            }
+
+            .lightbox-thumbs {
+                gap: 6px;
+            }
+
+            .lightbox-thumb {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+            }
+
+            .lightbox-prev {
+                left: 6px;
+            }
+
+            .lightbox-next {
+                right: 6px;
+            }
+
+            .lightbox-nav {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -1379,8 +1750,9 @@
             <ul class="nav-links" id="nav-links" role="list">
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="experts.html">Find an Expert</a></li>
                 <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html">Speak to Expert</a></li>
                 <li><a href="crisis.html">Crisis Resources</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
@@ -1396,14 +1768,14 @@
                     <span class="hero-eyebrow-dot" aria-hidden="true"></span>
                     Mental Health Education &amp; Expert Support
                 </div>
-                <h1>A calm place to<br /><em>understand your mind.</em><br />Find expert help when you're ready.</h1>
+                <h1>A calm place to<br /><em>understand your mind.</em></h1>
                 <p class="hero-sub">
                     Free articles written for real life. A curated directory of licensed professionals ready to support
                     you — at your own pace, with no pressure.
                 </p>
                 <div class="hero-ctas">
                     <a href="blog.html" class="btn btn-sage">📖 Read Free Articles</a>
-                    <a href="experts.html" class="btn btn-clay">🌿 Find an Expert</a>
+                    <a href="blog.html" class="btn btn-sage">🌿 Browse Our Blog</a>
                 </div>
                 <div class="stats-row" aria-label="Platform highlights">
                     <div class="stat">
@@ -1421,31 +1793,57 @@
                 </div>
             </div>
 
-            <!-- Hero photo visual -->
+            <!-- Hero Stacked Cards -->
             <div class="hero-visual" aria-hidden="true">
-                <div class="hero-photo-wrap">
-                    <div class="hero-photo-bg"></div>
-                    <div class="hero-photo">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=640&h=480&fit=crop&q=82"
-                            alt="Person in a peaceful, calm setting" loading="eager"
-                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=640&h=480&fit=crop&q=82';" />
-                        <div class="hero-photo-badge">
-                            <div class="photo-badge-icon">🌿</div>
-                            <div class="photo-badge-text">
-                                <strong>Start at your own pace</strong>
-                                <span>No pressure, no commitments</span>
-                            </div>
+                <div class="stacked-cards" id="stacked-cards">
+                    <!-- Card 1 (front) -->
+                    <div class="stacked-card">
+                        <div class="stacked-card-img">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=640&h=480&fit=crop&q=82"
+                                alt="Person practicing yoga" loading="eager" />
+                        </div>
+                        <div class="stacked-card-body">
+                            <h4>Mindful Movement</h4>
+                            <p>Start your wellness journey with guided practices</p>
                         </div>
                     </div>
-                    <!-- Floating accent -->
-                    <div class="hero-float-card">
-                        <span class="fc-dot"></span>
-                        <span>50+ licensed experts online</span>
+                    <!-- Card 2 (behind left) -->
+                    <div class="stacked-card">
+                        <div class="stacked-card-img">
+                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=640&h=480&fit=crop&q=82"
+                                alt="Meditation at sunrise" loading="lazy" />
+                        </div>
+                        <div class="stacked-card-body">
+                            <h4>Morning Calm</h4>
+                            <p>Begin each day with clarity and intention</p>
+                        </div>
+                    </div>
+                    <!-- Card 3 (behind right) -->
+                    <div class="stacked-card">
+                        <div class="stacked-card-img">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=640&h=480&fit=crop&q=82"
+                                alt="Mountain landscape" loading="lazy" />
+                        </div>
+                        <div class="stacked-card-body">
+                            <h4>New Perspectives</h4>
+                            <p>See your journey from a higher vantage point</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- ── Elastic Line Separator ── -->
+    <div class="elastic-line-section" id="elastic-line" aria-hidden="true" title="Grab and pull the line!">
+        <svg id="elastic-svg" preserveAspectRatio="none">
+            <path class="elastic-path" id="elastic-path" d="" />
+        </svg>
+        <div class="elastic-label" id="elastic-label">
+            <p class="elastic-label-top">✽ Fancy Components</p>
+            <p class="elastic-label-big"><em>Pull the line</em></p>
+        </div>
+    </div>
 
     <!-- ── Feature Highlights ── -->
     <section class="features section" aria-labelledby="features-heading">
@@ -1465,13 +1863,6 @@
                     <a href="blog.html" class="feature-link">Browse articles →</a>
                 </div>
                 <div class="feature-card anim anim-d1">
-                    <div class="feature-icon fi-clay" aria-hidden="true">🌱</div>
-                    <h3>Expert Directory</h3>
-                    <p>Browse a curated list of licensed therapists, counselors, and coaches. Filter by specialty, view
-                        rates, and book a session with one click.</p>
-                    <a href="experts.html" class="feature-link">Find an expert →</a>
-                </div>
-                <div class="feature-card anim anim-d2">
                     <div class="feature-icon fi-teal" aria-hidden="true">🫂</div>
                     <h3>Crisis Support</h3>
                     <p>Always one tap away — every page on MindQuilt links directly to free, confidential crisis
@@ -1551,6 +1942,106 @@
         </div>
     </section>
 
+    <!-- ── Gallery Shots Collection ── -->
+    <section class="gallery-section section" aria-labelledby="gallery-heading">
+        <div class="container">
+            <div class="center">
+                <p class="label">Gallery shots collection</p>
+                <h2 class="heading" id="gallery-heading">Moments of calm &amp; connection</h2>
+                <p class="subtext">A curated visual collection celebrating mindfulness, nature, and the quiet moments
+                    that restore us.</p>
+            </div>
+            <div class="gallery-bento" id="gallery-grid">
+
+                <!-- 1: Tall left -->
+                <div class="gallery-item g-span-r3 g-span-c1 anim" data-gallery="0">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=900&fit=crop&q=80"
+                        alt="Person meditating at sunrise" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Morning Meditation</h4>
+                        <p>Starting each day with stillness</p>
+                    </div>
+                </div>
+
+                <!-- 2: Wide top -->
+                <div class="gallery-item g-span-r2 g-span-c2 anim anim-d1" data-gallery="1">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&h=500&fit=crop&q=80"
+                        alt="Sunlit forest path with green canopy" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Forest Therapy</h4>
+                        <p>Nature's own restorative space</p>
+                    </div>
+                </div>
+
+                <!-- 3: Tall right -->
+                <div class="gallery-item g-span-r3 g-span-c1 anim anim-d2" data-gallery="2">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=900&fit=crop&q=80"
+                        alt="Person in a yoga pose on a mountaintop" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Body &amp; Mind</h4>
+                        <p>Moving meditation through yoga</p>
+                    </div>
+                </div>
+
+                <!-- 4: Wide middle -->
+                <div class="gallery-item g-span-r2 g-span-c2 anim" data-gallery="3">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=500&fit=crop&q=80"
+                        alt="Serene tropical beach at sunset" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Ocean Calm</h4>
+                        <p>The rhythm of waves, a natural reset</p>
+                    </div>
+                </div>
+
+                <!-- 5: Tall -->
+                <div class="gallery-item g-span-r3 g-span-c1 anim anim-d1" data-gallery="4">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&h=900&fit=crop&q=80"
+                        alt="Woman relaxing peacefully in nature" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Finding Peace</h4>
+                        <p>Embracing quiet moments of solitude</p>
+                    </div>
+                </div>
+
+                <!-- 6: Wide bottom -->
+                <div class="gallery-item g-span-r2 g-span-c2 anim anim-d2" data-gallery="5">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&h=500&fit=crop&q=80"
+                        alt="Majestic mountain landscape with misty peaks" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Mountain Perspective</h4>
+                        <p>Seeing life from a higher vantage point</p>
+                    </div>
+                </div>
+
+                <!-- 7: Tall final -->
+                <div class="gallery-item g-span-r3 g-span-c1 anim" data-gallery="6">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=900&fit=crop&q=80"
+                        alt="Person journaling with a cup of tea" loading="lazy" />
+                    <div class="gallery-overlay">
+                        <h4>Reflective Writing</h4>
+                        <p>Putting thoughts on paper heals</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Gallery Lightbox ── -->
+    <div class="gallery-lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close gallery">✕</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-desc"></p>
+            </div>
+            <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+        </div>
+    </div>
+
     <!-- ── How It Works ── -->
     <section class="how-it-works section" aria-labelledby="how-heading">
         <div class="container">
@@ -1568,9 +2059,9 @@
                 </div>
                 <div class="step anim anim-d1" role="listitem">
                     <div class="step-num" aria-label="Step 2">2</div>
-                    <h3>Find Your Expert</h3>
-                    <p>Search our directory of verified, licensed professionals. Filter by specialty, check session
-                        prices, and read full profiles before committing.</p>
+                    <h3>Mind Games</h3>
+                    <p>Engage with interactive exercises designed to help you manage stress, improve focus, and
+                        understand your thought patterns.</p>
                 </div>
                 <div class="step anim anim-d2" role="listitem">
                     <div class="step-num" aria-label="Step 3">3</div>
@@ -1618,10 +2109,7 @@
         <div class="testimonials-track">
             <div class="testimonial-card anim">
                 <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-quote">"I found my therapist through MindQuilt in under 10 minutes. The whole
-                    process felt calm and unpressured — exactly what I needed when I was anxious about reaching out."
-                </p>
-                <span class="testimonial-author">— Aisha R., London</span>
+                <span class="testimonial-author">— Anonymous</span>
             </div>
             <div class="testimonial-card anim anim-d1">
                 <div class="testimonial-stars">★★★★★</div>
@@ -1664,8 +2152,9 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="experts.html">Find an Expert</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="games.html">Mind Games</a></li>
+                    <li><a href="sounds.html">Soothing Sounds</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1714,6 +2203,194 @@
             });
         });
 
+        // Stacked cards hover interaction
+        (function () {
+            const stack = document.getElementById('stacked-cards');
+            if (!stack) return;
+            const frontCard = stack.querySelector('.stacked-card:first-child');
+            if (!frontCard) return;
+            frontCard.addEventListener('mouseenter', () => stack.classList.add('fanned'));
+            frontCard.addEventListener('mouseleave', () => stack.classList.remove('fanned'));
+            // Touch support
+            frontCard.addEventListener('touchstart', () => {
+                stack.classList.toggle('fanned');
+            }, { passive: true });
+        })();
+
+        // ── Elastic Line (vanilla JS spring physics) ──
+        (function () {
+            const container = document.getElementById('elastic-line');
+            const svg = document.getElementById('elastic-svg');
+            const path = document.getElementById('elastic-path');
+            const label = document.getElementById('elastic-label');
+            if (!container || !svg || !path) return;
+
+            // Spring physics constants
+            const SPRING_STIFFNESS = 400;
+            const SPRING_DAMPING = 5;
+            const MASS = 1;
+            const GRAB_THRESHOLD = 8;
+            const RELEASE_THRESHOLD = 55;
+
+            let width = 0, height = 0;
+            let mouseX = 0, mouseY = 0;
+            let controlX = 0, controlY = 0;
+            let velocityX = 0, velocityY = 0;
+            let isGrabbed = false;
+            let isAnimating = false;
+            let hasDrawnIn = false;
+            let drawProgress = 0;
+            let lastTime = 0;
+
+            function measure() {
+                const rect = container.getBoundingClientRect();
+                width = rect.width;
+                height = rect.height;
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                controlX = width / 2;
+                controlY = height / 2;
+            }
+
+            measure();
+            window.addEventListener('resize', measure);
+
+            // Animated draw-in on scroll into view
+            const drawObserver = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting && !hasDrawnIn) {
+                    hasDrawnIn = true;
+                    startDrawIn();
+                    drawObserver.disconnect();
+                    label.classList.add('visible');
+                }
+            }, { threshold: 0.3 });
+            drawObserver.observe(container);
+
+            function startDrawIn() {
+                drawProgress = 0;
+                const duration = 600; // ms
+                const start = performance.now();
+                function step(now) {
+                    const elapsed = now - start;
+                    drawProgress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    drawProgress = 1 - Math.pow(1 - drawProgress, 3);
+                    updatePath();
+                    if (drawProgress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            // Mouse / touch tracking
+            function onPointerMove(clientX, clientY) {
+                const rect = container.getBoundingClientRect();
+                mouseX = clientX - rect.left;
+                mouseY = clientY - rect.top;
+
+                // Check bounds
+                if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
+                    if (isGrabbed) release();
+                    return;
+                }
+
+                const midY = height / 2;
+                const dist = Math.abs(mouseY - midY);
+
+                if (!isGrabbed && dist < GRAB_THRESHOLD) {
+                    isGrabbed = true;
+                    container.classList.add('grabbed');
+                } else if (isGrabbed && dist > RELEASE_THRESHOLD) {
+                    release();
+                }
+
+                if (isGrabbed) {
+                    // Amplify the displacement for a more dramatic pull
+                    controlX = mouseX;
+                    controlY = midY + 2.2 * (mouseY - midY);
+                    updatePath();
+                }
+            }
+
+            function release() {
+                isGrabbed = false;
+                container.classList.remove('grabbed');
+                // Start spring animation from current control point
+                velocityX = 0;
+                velocityY = 0;
+                if (!isAnimating) {
+                    isAnimating = true;
+                    lastTime = performance.now();
+                    requestAnimationFrame(springStep);
+                }
+            }
+
+            function springStep(now) {
+                const dt = Math.min((now - lastTime) / 1000, 0.05); // Cap dt
+                lastTime = now;
+
+                if (isGrabbed) { isAnimating = false; return; }
+
+                const targetX = width / 2;
+                const targetY = height / 2;
+
+                // Spring force: F = -k * displacement - damping * velocity
+                const dx = controlX - targetX;
+                const dy = controlY - targetY;
+
+                const forceX = (-SPRING_STIFFNESS * dx - SPRING_DAMPING * velocityX) / MASS;
+                const forceY = (-SPRING_STIFFNESS * dy - SPRING_DAMPING * velocityY) / MASS;
+
+                velocityX += forceX * dt;
+                velocityY += forceY * dt;
+
+                controlX += velocityX * dt;
+                controlY += velocityY * dt;
+
+                updatePath();
+
+                // Stop when settled
+                const settled = Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1 &&
+                    Math.abs(velocityX) < 0.1 && Math.abs(velocityY) < 0.1;
+                if (settled) {
+                    controlX = targetX;
+                    controlY = targetY;
+                    updatePath();
+                    isAnimating = false;
+                } else {
+                    requestAnimationFrame(springStep);
+                }
+            }
+
+            function updatePath() {
+                if (!hasDrawnIn && drawProgress < 1) {
+                    // Draw-in: reveal line from left to right
+                    const endX = width * drawProgress;
+                    path.setAttribute('d', `M0 ${height / 2} L${endX} ${height / 2}`);
+                    return;
+                }
+                // Quadratic bezier from left edge to right edge, with control point
+                path.setAttribute('d',
+                    `M0 ${height / 2} Q${controlX} ${controlY} ${width} ${height / 2}`
+                );
+            }
+
+            // Event listeners
+            container.addEventListener('mousemove', e => onPointerMove(e.clientX, e.clientY));
+            container.addEventListener('touchmove', e => {
+                const t = e.touches[0];
+                onPointerMove(t.clientX, t.clientY);
+            }, { passive: true });
+
+            container.addEventListener('mouseleave', () => {
+                if (isGrabbed) release();
+            });
+            container.addEventListener('touchend', () => {
+                if (isGrabbed) release();
+            });
+
+            // Initial render
+            updatePath();
+        })();
+
         // Crisis bar close
         document.getElementById('bar-close').addEventListener('click', () => {
             document.getElementById('crisis-bar').style.display = 'none';
@@ -1758,6 +2435,82 @@
 
         const statsRow = document.querySelector('.stats-row');
         if (statsRow) statsObserver.observe(statsRow);
+
+        // ── Gallery Lightbox ──
+        (function () {
+            const galleryData = [
+                { title: 'Morning Meditation', desc: 'Starting each day with stillness and intention.', url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Forest Therapy', desc: 'Shinrin-yoku — nature\'s own restorative medicine.', url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Body & Mind', desc: 'Moving meditation through mindful yoga practice.', url: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Ocean Calm', desc: 'The rhythm of waves — a natural nervous system reset.', url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Finding Peace', desc: 'Embracing quiet moments of reflection and solitude.', url: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Mountain Perspective', desc: 'Seeing life from a higher, clearer vantage point.', url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1100&h=700&fit=crop&q=85' },
+                { title: 'Reflective Writing', desc: 'Putting thoughts on paper — a simple act that heals.', url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1100&h=700&fit=crop&q=85' }
+            ];
+
+            const lightbox = document.getElementById('gallery-lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            const lbTitle = document.getElementById('lightbox-title');
+            const lbDesc = document.getElementById('lightbox-desc');
+            const lbThumbs = document.getElementById('lightbox-thumbs');
+            let currentIdx = 0;
+
+            // Build thumbnails
+            galleryData.forEach((item, i) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'lightbox-thumb' + (i === 0 ? ' active' : '');
+                thumb.innerHTML = `<img src="${item.url.replace('1100', '120').replace('700', '120')}" alt="${item.title}" />`;
+                thumb.addEventListener('click', () => showSlide(i));
+                lbThumbs.appendChild(thumb);
+            });
+
+            function showSlide(idx) {
+                currentIdx = idx;
+                const item = galleryData[idx];
+                lbImg.src = item.url;
+                lbImg.alt = item.title;
+                lbTitle.textContent = item.title;
+                lbDesc.textContent = item.desc;
+                lbThumbs.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
+                    t.classList.toggle('active', i === idx);
+                });
+            }
+
+            // Open lightbox from gallery item click
+            document.querySelectorAll('[data-gallery]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const idx = parseInt(el.dataset.gallery);
+                    showSlide(idx);
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showSlide((currentIdx + 1) % galleryData.length);
+                if (e.key === 'ArrowLeft') showSlide((currentIdx - 1 + galleryData.length) % galleryData.length);
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Nav buttons
+            document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSlide((currentIdx - 1 + galleryData.length) % galleryData.length);
+            });
+            document.getElementById('lightbox-next').addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSlide((currentIdx + 1) % galleryData.length);
+            });
+        })();
     </script>
 
 </body>

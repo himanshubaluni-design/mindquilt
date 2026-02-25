@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expert Profile — MindQuilt</title>
+    <meta name="description" content="View the full profile of a verified MindQuilt expert." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --white: #ffffff;
+            --off-white: #f7f9f6;
+            --charcoal: #2c2c2c;
+            --muted: #7a7a7a;
+            --sage: #8faf8f;
+            --sage-mid: #6d926d;
+            --sage-dark: #4a6b4a;
+            --sage-light: #b5d3b5;
+            --sage-bg: #eaf2ea;
+            --clay: #C4826A;
+            --clay-dark: #A66B55;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --max-w: 1100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding-bottom: 52px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Nav */
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid #e6ede6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            opacity: 0.7;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: var(--sage);
+        }
+
+        .nav-cta-btn {
+            background: var(--sage) !important;
+            color: var(--white) !important;
+            opacity: 1 !important;
+            padding: 8px 20px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta-btn:hover {
+            background: var(--sage-mid) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+        }
+
+        /* Profile Layout */
+        .profile-page {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 48px 24px 60px;
+        }
+
+        .profile-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--sage-mid);
+            margin-bottom: 28px;
+            transition: color 0.2s;
+        }
+
+        .profile-back:hover {
+            color: var(--sage-dark);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        /* Left column */
+        .profile-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .profile-photo-wrap {
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 4px solid var(--sage-bg);
+        }
+
+        .profile-verified {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--sage-dark);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+        }
+
+        .profile-verified::before {
+            content: '✓';
+        }
+
+        .sidebar-box {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid #e4ece4;
+            padding: 20px;
+        }
+
+        .sidebar-box h4 {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: var(--charcoal);
+        }
+
+        .sidebar-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-list li {
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--sage);
+            flex-shrink: 0;
+        }
+
+        .sidebar-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 14px;
+            background: var(--sage-bg);
+            border-radius: 12px;
+        }
+
+        .stat-item .stat-num {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            color: var(--sage-dark);
+            display: block;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        /* Right column */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .profile-name {
+            font-family: var(--font-head);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--charcoal);
+        }
+
+        .profile-specialty {
+            font-size: 0.95rem;
+            color: var(--sage-mid);
+            font-weight: 500;
+        }
+
+        .profile-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .profile-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .profile-section h3 {
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .profile-section p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .profile-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .profile-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 100px;
+            background: var(--sage-bg);
+            color: var(--sage-dark);
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid #e4ece4;
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .review-stars {
+            color: #f4a940;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        /* CTA */
+        .profile-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 12px;
+            background: var(--sage);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.2s;
+            font-family: var(--font-body);
+            border: none;
+            cursor: pointer;
+        }
+
+        .profile-cta:hover {
+            background: var(--sage-mid);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e2b1e;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-top {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 60px 24px 40px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .f-logo {
+            font-family: var(--font-head);
+            font-size: 1.25rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            max-width: 220px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-col a {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--sage-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 20px 24px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            font-size: 0.78rem;
+            opacity: 0.4;
+        }
+
+        /* Crisis Bar */
+        .crisis-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: #1e2b1e;
+            color: var(--white);
+            text-align: center;
+            padding: 11px 48px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .crisis-bar a {
+            color: var(--sage-light);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px 24px;
+                border-bottom: 1px solid #e4ece4;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav {
+                position: relative;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="MindQuilt home">
+                <img src="logo.svg" alt="MindQuilt" height="36" width="auto" loading="eager" />
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="games.html">Mind Games</a></li>
+                <li><a href="sounds.html">Soothing Sounds</a></li>
+                <li><a href="experts.html" class="active" aria-current="page">Speak to Expert</a></li>
+                <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="nav-cta-btn">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Profile Page -->
+    <div class="profile-page">
+        <a href="experts.html" class="profile-back">← Back to all experts</a>
+
+        <div class="profile-grid" id="profile-grid">
+            <!-- Left Sidebar -->
+            <div class="profile-sidebar">
+                <div class="profile-photo-wrap">
+                    <img class="profile-photo" id="profile-photo"
+                        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&q=80"
+                        alt="Expert photo" />
+                    <span class="profile-verified"> Verified Professional</span>
+                </div>
+
+                <div class="sidebar-stats">
+                    <div class="stat-item"><span class="stat-num" id="stat-rating">4.9</span><span
+                            class="stat-label">Rating</span></div>
+                    <div class="stat-item"><span class="stat-num" id="stat-years">12</span><span
+                            class="stat-label">Years Exp.</span></div>
+                    <div class="stat-item"><span class="stat-num" id="stat-sessions">850+</span><span
+                            class="stat-label">Sessions</span></div>
+                    <div class="stat-item"><span class="stat-num" id="stat-price">₹1,200</span><span
+                            class="stat-label">Per Session</span></div>
+                </div>
+
+                <div class="sidebar-box">
+                    <h4>Specialty Areas</h4>
+                    <ul class="sidebar-list" id="sidebar-specialties">
+                        <li>Anxiety Disorders</li>
+                        <li>OCD</li>
+                        <li>Trauma & PTSD</li>
+                        <li>Cognitive Behavioral Therapy</li>
+                        <li>Mindfulness-Based Therapy</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-box">
+                    <h4>Languages</h4>
+                    <ul class="sidebar-list">
+                        <li>English</li>
+                        <li>Hindi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="profile-content">
+                <div class="profile-header">
+                    <h1 class="profile-name" id="profile-name">Dr. Ananya Sharma</h1>
+                    <p class="profile-specialty" id="profile-specialty">Clinical Psychologist</p>
+                    <div class="profile-meta">
+                        <span>⭐ <span id="meta-rating">4.9</span></span>
+                        <span>🎓 PhD, Clinical Psychology — NIMHANS</span>
+                        <span>📍 Bengaluru, India</span>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>About</h3>
+                    <p id="profile-bio">Dr. Ananya Sharma is a licensed clinical psychologist with over 12 years of
+                        experience working with individuals dealing with anxiety, OCD, and trauma. She obtained her PhD
+                        from NIMHANS and has completed additional training in EMDR and mindfulness-based cognitive
+                        therapy.</p>
+                    <p style="margin-top: 12px;">Her approach combines evidence-based techniques with warmth and
+                        empathy, creating a safe space where clients feel truly heard. She believes in empowering her
+                        clients to develop lasting coping skills, not just managing symptoms.</p>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Therapeutic Approach</h3>
+                    <p>Dr. Sharma uses an integrative approach, drawing from Cognitive Behavioral Therapy (CBT),
+                        Acceptance and Commitment Therapy (ACT), and mindfulness techniques. Sessions are structured yet
+                        flexible, tailored to each individual's unique needs and pace.</p>
+                    <div class="profile-tags">
+                        <span class="profile-tag">CBT</span>
+                        <span class="profile-tag">ACT</span>
+                        <span class="profile-tag">EMDR</span>
+                        <span class="profile-tag">Mindfulness</span>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Qualifications</h3>
+                    <ul class="sidebar-list" style="margin-top: 8px;">
+                        <li>PhD in Clinical Psychology — NIMHANS, Bengaluru</li>
+                        <li>Certified EMDR Practitioner</li>
+                        <li>Member, Indian Association of Clinical Psychologists</li>
+                        <li>Published researcher — 8 peer-reviewed papers</li>
+                    </ul>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Client Reviews</h3>
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Dr. Sharma helped me understand my anxiety in a way no one else
+                                could. Her warm approach made me feel safe from the very first session."</p>
+                            <p class="review-author">— Verified Client, 3 months ago</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"I was skeptical about therapy, but Dr. Sharma's structured yet
+                                empathetic approach changed my perspective. Highly recommend her for anyone dealing with
+                                OCD."</p>
+                            <p class="review-author">— Verified Client, 6 months ago</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★☆</div>
+                            <p class="review-text">"Very professional and knowledgeable. She gave me practical tools I
+                                use every day. The only reason for 4 stars is availability — she's very popular!"</p>
+                            <p class="review-author">— Verified Client, 1 year ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="booking.html?expert=1" class="profile-cta" id="book-btn">Book a Session with Dr. Ananya
+                    Sharma</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="f-logo"><img src="logo.svg" alt="MindQuilt" height="28" /></div>
+                <p>A calm place to understand your mind — free articles, expert support, and crisis resources.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="games.html">Mind Games</a></li>
+                    <li><a href="sounds.html">Soothing Sounds</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="experts.html">Speak to Expert</a></li>
+                    <li><a href="crisis.html">Crisis Resources</a></li>
+                    <li><a href="booking.html">Book a Session</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2026 MindQuilt. Educational content only — not a substitute for professional medical
+            advice.</p>
+    </footer>
+
+    <div class="crisis-bar">🧑‍⚕️ If you are in crisis, &nbsp;<a href="https://988lifeline.org" target="_blank"
+            rel="noopener">call or text 988</a>&nbsp; (US) or text &nbsp;HOME&nbsp; to &nbsp;<a href="sms:741741"
+            target="_blank" rel="noopener">741741</a></div>
+
+    <script>
+        // Hamburger
+        document.getElementById('hamburger').addEventListener('click', function () {
+            const nav = document.getElementById('nav-links');
+            const open = nav.classList.toggle('open');
+            this.setAttribute('aria-expanded', open);
+        });
+
+        // Expert data (matches experts.html cards)
+        const experts = {
+            '1': { name: 'Dr. Ananya Sharma', specialty: 'Clinical Psychologist', photo: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&q=80', rating: '4.9', years: '12', sessions: '850+', price: '₹1,200' },
+            '2': { name: 'Rajesh Kapoor', specialty: 'Career Counselor', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80', rating: '4.8', years: '8', sessions: '620+', price: '₹900' },
+            '3': { name: 'Priya Menon', specialty: 'Life Coach', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80', rating: '4.9', years: '6', sessions: '480+', price: '₹800' },
+            '4': { name: 'Dr. Vikram Rao', specialty: 'Clinical Psychologist', photo: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&q=80', rating: '4.7', years: '15', sessions: '1200+', price: '₹1,500' },
+            '5': { name: 'Meera Iyer', specialty: 'Career Counselor', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80', rating: '4.8', years: '10', sessions: '740+', price: '₹1,000' },
+            '6': { name: 'Arjun Desai', specialty: 'Life Coach', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80', rating: '4.9', years: '9', sessions: '550+', price: '₹1,100' },
+        };
+
+        // Load expert by query param
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id') || '1';
+        const expert = experts[id] || experts['1'];
+
+        document.getElementById('profile-name').textContent = expert.name;
+        document.getElementById('profile-specialty').textContent = expert.specialty;
+        document.getElementById('profile-photo').src = expert.photo;
+        document.getElementById('profile-photo').alt = expert.name;
+        document.getElementById('stat-rating').textContent = expert.rating;
+        document.getElementById('meta-rating').textContent = expert.rating;
+        document.getElementById('stat-years').textContent = expert.years;
+        document.getElementById('stat-sessions').textContent = expert.sessions;
+        document.getElementById('stat-price').textContent = expert.price;
+        document.getElementById('book-btn').textContent = `Book a Session with ${expert.name}`;
+        document.getElementById('book-btn').href = `booking.html?expert=${id}`;
+        document.title = `${expert.name} — MindQuilt`;
+    </script>
+
+</body>
+
+</html>

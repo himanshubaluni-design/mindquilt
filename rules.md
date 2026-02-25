@@ -1,0 +1,8 @@
+- Never make assumptions. Ask me if something is unclear.
+- Use plain HTML, CSS, and JavaScript only. No frameworks.
+- Every page must work perfectly on mobile phones.
+- Keep the design calm, minimal, and professional.
+- Only build what is in instructions.md.
+- Always show me a preview before finalizing any page.
+- Add a crisis resources banner in the footer on every single page.
+- Commit to GitHub after each major page is completed.
