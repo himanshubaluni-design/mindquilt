@@ -413,10 +413,35 @@
                 justify-content: center;
             }
         }
+        /* Crisis Banner */
+        .crisis-banner {
+            background: #2D2D2D;
+            color: #fff;
+            text-align: center;
+            padding: 9px 20px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .crisis-banner a {
+            color: #b5d3b5;
+            text-decoration: underline;
+            font-weight: 600;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Crisis Banner -->
+    <div class="crisis-banner" role="complementary" aria-label="Crisis resources">
+        🆘 If you are in crisis, call or text <strong><a href="tel:988">988</a></strong> (US) · Text <strong>HOME</strong> to <strong>741741</strong> · <a href="crisis.html">More resources →</a>
+    </div>
 
     <div class="auth-page">
         <!-- Left Panel -->
@@ -548,11 +573,30 @@
     <!-- Toast notification -->
     <div class="toast" id="toast"></div>
 
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
-        // Tab switching
+        // ── Supabase client ──────────────────────────────────────────────
+        const SUPABASE_URL = 'https://lxxtdlfgdcckjlbdleak.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eHRkbGZnZGNja2psYmRsZWFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NTYwOTUsImV4cCI6MjA4NzMzMjA5NX0.wf81raVcsjeKbfoF6LGO71FxT_QpqptBWMIz7kteuf4';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Redirect if already logged in
+        (async () => {
+            const { data: { session } } = await sb.auth.getSession();
+            if (session) window.location.href = 'dashboard.html';
+        })();
+
+        // ── Tab switching ────────────────────────────────────────────────
         const tabs = document.querySelectorAll('.auth-tab');
         const formSignin = document.getElementById('form-signin');
         const formSignup = document.getElementById('form-signup');
+
+        // Auto-open signup tab if ?tab=signup in URL
+        if (new URLSearchParams(window.location.search).get('tab') === 'signup') {
+            document.getElementById('tab-signup').click();
+        }
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -568,43 +612,122 @@
             });
         });
 
-        // Toast helper
-        function showToast(message) {
+        // ── Toast helper ─────────────────────────────────────────────────
+        function showToast(message, isError = false) {
             const toast = document.getElementById('toast');
-            toast.textContent = '✓ ' + message;
+            toast.textContent = (isError ? '✗ ' : '✓ ') + message;
+            toast.style.background = isError ? '#b03a2e' : 'var(--sage-dark)';
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            setTimeout(() => toast.classList.remove('show'), 4000);
         }
 
-        // Sign In
-        formSignin.addEventListener('submit', function (e) {
+        function setLoading(btn, loading) {
+            btn.disabled = loading;
+            btn.textContent = loading ? 'Please wait...' : btn.dataset.label;
+        }
+
+        // Store original button labels
+        document.querySelectorAll('.btn-submit').forEach(b => b.dataset.label = b.textContent);
+
+        // ── Sign In ──────────────────────────────────────────────────────
+        formSignin.addEventListener('submit', async function (e) {
             e.preventDefault();
             const email = document.getElementById('signin-email').value.trim();
             const password = document.getElementById('signin-password').value;
             if (!email || !password) return;
-            showToast('Signed in successfully! Redirecting...');
-            setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+
+            const btn = formSignin.querySelector('.btn-submit');
+            setLoading(btn, true);
+
+            const { error } = await sb.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                setLoading(btn, false);
+                showToast(error.message || 'Sign in failed. Check your credentials.', true);
+            } else {
+                showToast('Signed in! Redirecting...');
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+            }
         });
 
-        // Sign Up
-        formSignup.addEventListener('submit', function (e) {
+        // ── Sign Up ──────────────────────────────────────────────────────
+        formSignup.addEventListener('submit', async function (e) {
             e.preventDefault();
             const name = document.getElementById('signup-name').value.trim();
             const email = document.getElementById('signup-email').value.trim();
             const password = document.getElementById('signup-password').value;
             const confirm = document.getElementById('signup-confirm').value;
 
-            if (!name || !email || !password || !confirm) return;
+            if (!name || !email || !password || !confirm) {
+                showToast('Please fill in all fields.', true);
+                return;
+            }
             if (password !== confirm) {
-                showToast('Passwords do not match');
+                showToast('Passwords do not match.', true);
                 return;
             }
             if (password.length < 8) {
-                showToast('Password must be at least 8 characters');
+                showToast('Password must be at least 8 characters.', true);
                 return;
             }
-            showToast('Account created! Welcome to MindQuilt 🎉');
-            setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+
+            const btn = formSignup.querySelector('.btn-submit');
+            setLoading(btn, true);
+
+            const { error } = await sb.auth.signUp({
+                email,
+                password,
+                options: { data: { full_name: name } }
+            });
+
+            if (error) {
+                setLoading(btn, false);
+                showToast(error.message || 'Sign up failed. Please try again.', true);
+            } else {
+                showToast('Account created! Check your email to confirm, then sign in.');
+                setTimeout(() => {
+                    document.getElementById('tab-signin').click();
+                    setLoading(btn, false);
+                }, 2500);
+            }
+        });
+
+        // ── Google OAuth ─────────────────────────────────────────────────
+        document.querySelectorAll('.btn-social').forEach(btn => {
+            if (btn.textContent.includes('Google')) {
+                btn.addEventListener('click', async () => {
+                    await sb.auth.signInWithOAuth({
+                        provider: 'google',
+                        options: { redirectTo: window.location.origin + '/index.html' }
+                    });
+                });
+            }
+            if (btn.textContent.includes('Facebook')) {
+                btn.addEventListener('click', async () => {
+                    await sb.auth.signInWithOAuth({
+                        provider: 'facebook',
+                        options: { redirectTo: window.location.origin + '/index.html' }
+                    });
+                });
+            }
+        });
+
+        // ── Forgot Password ──────────────────────────────────────────────
+        document.querySelector('.form-link[href="#"]').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signin-email').value.trim();
+            if (!email) {
+                showToast('Enter your email above first, then click Forgot Password.', true);
+                return;
+            }
+            const { error } = await sb.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/login.html'
+            });
+            if (error) {
+                showToast(error.message, true);
+            } else {
+                showToast('Password reset email sent! Check your inbox.');
+            }
         });
     </script>
 

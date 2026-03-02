@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply as an Expert — MindQuilt</title>
+    <meta name="description" content="Join MindQuilt's directory of verified mental health professionals. Apply to connect with clients who need your expertise." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --sage: #8FAF8F;
+            --sage-dark: #4d7a4d;
+            --sage-mid: #6e936e;
+            --sage-light: #C8DCC8;
+            --sage-bg: #EDF4ED;
+            --sage-pale: #f4f9f4;
+            --off-white: #F9F7F4;
+            --charcoal: #2D2D2D;
+            --clay: #C4826A;
+            --clay-dark: #a86850;
+            --white: #FFFFFF;
+            --muted: #6b7b6b;
+            --radius: 12px;
+            --max-w: 760px;
+            --font-head: 'DM Serif Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 28px rgba(0,0,0,0.09);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--off-white); color: var(--charcoal); line-height: 1.7; padding-bottom: 72px; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Nav */
+        nav { background: var(--white); border-bottom: 1px solid #e6ede6; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: var(--font-head); font-size: 1.35rem; display: flex; align-items: center; gap: 8px; color: var(--charcoal); }
+        .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--charcoal); opacity: 0.7; transition: opacity 0.2s; }
+        .nav-links a:hover { opacity: 1; }
+        .nav-cta { background: var(--sage); color: var(--white) !important; padding: 8px 18px; border-radius: 8px; opacity: 1 !important; font-weight: 600 !important; transition: background 0.2s !important; }
+        .nav-cta:hover { background: var(--sage-mid) !important; }
+        .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); margin: 5px 0; border-radius: 2px; }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
+        }
+
+        /* Page header */
+        .page-header { background: linear-gradient(135deg, var(--sage-bg) 0%, #dff0df 100%); padding: 60px 24px 48px; text-align: center; }
+        .page-header h1 { font-family: var(--font-head); font-size: 2.4rem; color: var(--charcoal); margin-bottom: 12px; line-height: 1.2; }
+        .page-header p { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin: 0 auto; }
+
+        /* Trust row */
+        .trust-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; padding: 24px; background: var(--white); border-bottom: 1px solid #edf4ed; }
+        .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+        .trust-item svg { width: 18px; height: 18px; fill: var(--sage); }
+
+        /* Main layout */
+        .page-body { max-width: var(--max-w); margin: 48px auto; padding: 0 24px; }
+
+        /* Form card */
+        .form-card { background: var(--white); border-radius: 16px; box-shadow: var(--shadow-md); padding: 40px; }
+
+        /* Section heading inside form */
+        .form-section-title { font-family: var(--font-head); font-size: 1.15rem; color: var(--charcoal); margin: 32px 0 18px; padding-bottom: 10px; border-bottom: 1px solid #edf4ed; }
+        .form-section-title:first-child { margin-top: 0; }
+
+        /* Form grid */
+        .form-grid { display: grid; gap: 20px; }
+        .form-grid-2 { grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--charcoal); }
+        .form-group label span.req { color: var(--clay); margin-left: 2px; }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #dce8dc;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            background: var(--off-white);
+            color: var(--charcoal);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(143,175,143,0.14);
+            background: var(--white);
+        }
+        .form-input::placeholder, .form-textarea::placeholder { color: #bfc9bf; }
+        .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+        .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%236b7b6b' d='M4 6l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; cursor: pointer; }
+
+        /* Checkbox grid */
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 4px; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--charcoal); cursor: pointer; }
+        .checkbox-item input[type="checkbox"] { accent-color: var(--sage); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+
+        /* Price input with prefix */
+        .input-prefix-wrap { position: relative; }
+        .input-prefix { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--muted); font-weight: 600; pointer-events: none; }
+        .form-input.has-prefix { padding-left: 30px; }
+
+        /* Submit area */
+        .submit-area { margin-top: 36px; text-align: center; }
+        .btn-submit { display: inline-block; padding: 15px 48px; background: var(--clay); color: var(--white); border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: background 0.2s, transform 0.1s; box-shadow: 0 4px 16px rgba(196,130,106,0.3); }
+        .btn-submit:hover { background: var(--clay-dark); }
+        .btn-submit:active { transform: scale(0.98); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .submit-note { font-size: 0.78rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+        .submit-note a { color: var(--sage-mid); text-decoration: underline; }
+
+        /* Success state */
+        .success-state { display: none; text-align: center; padding: 48px 24px; }
+        .success-state.visible { display: block; }
+        .success-icon { width: 72px; height: 72px; background: var(--sage-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; }
+        .success-state h2 { font-family: var(--font-head); font-size: 1.7rem; color: var(--charcoal); margin-bottom: 12px; }
+        .success-state p { color: var(--muted); font-size: 0.95rem; max-width: 400px; margin: 0 auto 24px; }
+        .btn-back { display: inline-block; padding: 12px 28px; background: var(--sage); color: var(--white); border-radius: 10px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
+        .btn-back:hover { background: var(--sage-mid); }
+
+        /* Error message */
+        .error-msg { background: #fff0ee; border: 1px solid #f5c5bb; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #8b3d2e; margin-bottom: 20px; display: none; }
+        .error-msg.visible { display: block; }
+
+        /* Footer */
+        footer { background: #1e2b1e; color: rgba(255,255,255,0.7); padding: 32px 0; font-size: 0.82rem; text-align: center; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #fff; }
+
+        /* Crisis banner */
+        .crisis-banner { background: #2D2D2D; color: #fff; text-align: center; padding: 9px 20px; font-size: 0.82rem; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; }
+        .crisis-banner a { color: #b5d3b5; text-decoration: underline; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.svg" alt="" height="28" aria-hidden="true" />
+                MindQuilt
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="experts.html">Find an Expert</a></li>
+                <li><a href="crisis.html">Crisis Resources</a></li>
+                <li><a href="login.html" class="nav-cta">Sign In</a></li>
+            </ul>
+            <button class="nav-hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Apply to Join as an Expert</h1>
+        <p>Share your expertise with people who are ready to get support. We review every application manually.</p>
+    </div>
+
+    <div class="trust-row">
+        <div class="trust-item">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.5 5 5.5.8-4 3.9.9 5.5L10 13.6l-4.9 2.6.9-5.5L2 6.8 7.5 6z"/></svg>
+            Verified credentials only
+        </div>
+        <div class="trust-item">
+            <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm.75 11.5h-1.5v-5.5h1.5v5.5zm0-7h-1.5V5h1.5v1.5z"/></svg>
+            Reviewed within 5 business days
+        </div>
+        <div class="trust-item">
+            <svg viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 12V9h2v5H9zm0-7V5h2v2H9z"/></svg>
+            Keep 100% of session fees
+        </div>
+    </div>
+
+    <div class="page-body">
+        <div class="form-card">
+
+            <!-- Error -->
+            <div class="error-msg" id="error-msg" role="alert"></div>
+
+            <!-- Application Form -->
+            <form id="apply-form" novalidate>
+
+                <p class="form-section-title">Personal Information</p>
+                <div class="form-grid form-grid-2">
+                    <div class="form-group">
+                        <label for="full_name">Full Name <span class="req">*</span></label>
+                        <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Dr. Jane Doe" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required />
+                    </div>
+                </div>
+
+                <p class="form-section-title">License & Credentials</p>
+                <div class="form-grid form-grid-2">
+                    <div class="form-group">
+                        <label for="license_type">License Type <span class="req">*</span></label>
+                        <select id="license_type" name="license_type" class="form-select" required>
+                            <option value="" disabled selected>Select license type</option>
+                            <option>Licensed Clinical Social Worker (LCSW)</option>
+                            <option>Licensed Professional Counselor (LPC)</option>
+                            <option>Licensed Marriage and Family Therapist (LMFT)</option>
+                            <option>Psychologist (PhD / PsyD)</option>
+                            <option>Psychiatrist (MD / DO)</option>
+                            <option>Licensed Mental Health Counselor (LMHC)</option>
+                            <option>Life Coach (ICF Certified)</option>
+                            <option>Career Counselor</option>
+                            <option>Other Licensed Mental Health Professional</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="license_number">License Number <span class="req">*</span></label>
+                        <input type="text" id="license_number" name="license_number" class="form-input" placeholder="e.g. LPC-12345" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country <span class="req">*</span></label>
+                        <select id="country" name="country" class="form-select" required>
+                            <option value="" disabled selected>Select country</option>
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                            <option>Australia</option>
+                            <option>India</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State / Province <span class="req">*</span></label>
+                        <input type="text" id="state" name="state" class="form-input" placeholder="e.g. California" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="years_experience">Years of Experience <span class="req">*</span></label>
+                        <select id="years_experience" name="years_experience" class="form-select" required>
+                            <option value="" disabled selected>Select range</option>
+                            <option>1–2 years</option>
+                            <option>3–5 years</option>
+                            <option>6–10 years</option>
+                            <option>11–20 years</option>
+                            <option>20+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="session_price">Session Price (per hour, USD) <span class="req">*</span></label>
+                        <div class="input-prefix-wrap">
+                            <span class="input-prefix">$</span>
+                            <input type="number" id="session_price" name="session_price" class="form-input has-prefix" placeholder="120" min="0" max="1000" required />
+                        </div>
+                    </div>
+                </div>
+
+                <p class="form-section-title">Specialties</p>
+                <div class="form-group">
+                    <label>Select all areas that apply <span class="req">*</span></label>
+                    <div class="checkbox-grid" id="specialties-grid">
+                        <label class="checkbox-item"><input type="checkbox" value="Anxiety & Stress" /> Anxiety &amp; Stress</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Depression" /> Depression</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Trauma & PTSD" /> Trauma &amp; PTSD</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Relationships" /> Relationships</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Grief & Loss" /> Grief &amp; Loss</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Work & Burnout" /> Work &amp; Burnout</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Self-Esteem" /> Self-Esteem</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Anger Management" /> Anger Management</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Life Transitions" /> Life Transitions</label>
+                        <label class="checkbox-item"><input type="checkbox" value="LGBTQ+ Affirming" /> LGBTQ+ Affirming</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Addiction & Recovery" /> Addiction &amp; Recovery</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Career Counseling" /> Career Counseling</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Eating Disorders" /> Eating Disorders</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Sleep Issues" /> Sleep Issues</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Mindfulness & CBT" /> Mindfulness &amp; CBT</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Child & Teen Therapy" /> Child &amp; Teen Therapy</label>
+                    </div>
+                </div>
+
+                <p class="form-section-title">About You</p>
+                <div class="form-group">
+                    <label for="bio">Short Bio (shown on your profile) <span class="req">*</span></label>
+                    <textarea id="bio" name="bio" class="form-textarea" rows="5" placeholder="Tell potential clients about your approach, experience, and what kind of clients you work best with. (150–500 words recommended)" required></textarea>
+                </div>
+
+                <div class="submit-area">
+                    <button type="submit" class="btn-submit" id="submit-btn">Submit Application</button>
+                    <p class="submit-note">
+                        By submitting, you confirm that all information is accurate and you agree to our
+                        <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.<br />
+                        We will review your application and reach out to your provided email within 5 business days.
+                    </p>
+                </div>
+
+            </form>
+
+            <!-- Success State -->
+            <div class="success-state" id="success-state">
+                <div class="success-icon">🌿</div>
+                <h2>Application Received</h2>
+                <p>Thank you for applying! We'll review your credentials and reach out to <span id="confirm-email" style="font-weight:600;"></span> within 5 business days.</p>
+                <a href="index.html" class="btn-back">Back to MindQuilt</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="experts.html">Find an Expert</a>
+        <a href="crisis.html">Crisis Resources</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <br /><br />
+        <span style="opacity:0.5;">© 2026 MindQuilt. Educational purposes only. Not medical advice.</span>
+    </footer>
+
+    <div class="crisis-banner" role="complementary">
+        🆘 If you are in crisis, call or text <strong><a href="tel:988">988</a></strong> · Text <strong>HOME</strong> to <strong>741741</strong> · <a href="crisis.html">More resources →</a>
+    </div>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://lxxtdlfgdcckjlbdleak.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eHRkbGZnZGNja2psYmRsZWFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NTYwOTUsImV4cCI6MjA4NzMzMjA5NX0.wf81raVcsjeKbfoF6LGO71FxT_QpqptBWMIz7kteuf4';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const form = document.getElementById('apply-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const successState = document.getElementById('success-state');
+
+        function showError(msg) {
+            errorMsg.textContent = msg;
+            errorMsg.classList.add('visible');
+            errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideError() {
+            errorMsg.classList.remove('visible');
+        }
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            hideError();
+
+            // Gather values
+            const full_name = document.getElementById('full_name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const license_type = document.getElementById('license_type').value;
+            const license_number = document.getElementById('license_number').value.trim();
+            const country = document.getElementById('country').value;
+            const state = document.getElementById('state').value.trim();
+            const years_experience = document.getElementById('years_experience').value;
+            const session_price = parseFloat(document.getElementById('session_price').value) || 0;
+            const bio = document.getElementById('bio').value.trim();
+
+            // Specialties
+            const checked = document.querySelectorAll('#specialties-grid input[type="checkbox"]:checked');
+            const specialties = Array.from(checked).map(c => c.value).join(', ');
+
+            // Validation
+            if (!full_name || !email || !license_type || !license_number || !country || !state || !years_experience || !bio) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+            if (!specialties) {
+                showError('Please select at least one specialty.');
+                return;
+            }
+            if (bio.length < 50) {
+                showError('Your bio should be at least 50 characters.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const { error } = await sb.from('expert_applications').insert([{
+                full_name,
+                email,
+                license_type,
+                license_number,
+                country,
+                state,
+                years_experience,
+                specialties,
+                session_price,
+                bio,
+                submitted_at: new Date().toISOString()
+            }]);
+
+            if (error) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+                showError('Submission failed: ' + (error.message || 'Please try again.'));
+            } else {
+                form.style.display = 'none';
+                document.getElementById('confirm-email').textContent = email;
+                successState.classList.add('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>
